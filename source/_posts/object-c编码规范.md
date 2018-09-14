@@ -1,35 +1,40 @@
 ---
 title: object-c编码规范
 date: 2018-09-03 11:02:54
-tags:
+tags: 
+top: 100
 ---
 
-原文Google Objective-C Style Guide       
-    老大是一位重度代码洁癖的处女座，对代码规范非常苛刻，经常改动我的代码就为了他能看的下去。曾在我提交的茫茫代码里面愣是指出某处的空格少了一个(囧)。我记得老大说花时间在某一方面，必然在某一方面有所收获，在代码上花时间，那么必然对技术有所提升，对泡妞上花时间，必然在泡妞上有更多的心得。。。  写博客也是因为老大的建议，即便写的不深，很是粗糙，但是经常写博客，花时间总结，可以记录自己的整个学习过程，也有助于自我思考，自我表达。< 屁话太多了吧(路过人员的心声) >      
+# 总览 #
+
+参考资料[Google Objective-C Style Guide](https://zh-google-styleguide.readthedocs.io/en/latest/google-objc-styleguide/)   
+    
+   老大是一位重度代码洁癖的处女座，对代码规范非常苛刻，以前经常改动我的代码就为了他能看的顺眼。我记得曾在我提交的茫茫代码行中愣是指出某处的空格少了一个(囧)。    
+    其实我们花时间在某一方面，必然在某一方面有所收获，在代码上花时间，那么必然对技术有所提升，对泡妞上花时间，必然在泡妞上有更多的心得。。。  写博客也是因为老大的建议，即便写的不深，很是粗糙，但是经常写博客，花时间总结，可以记录自己的整个学习过程，也有助于自我思考，自我表达。< 屁话太多了吧(路过人员的心声) >      
     
 	前沿：其实 每一门开发语言都有自己的代码规范，我们应该遵循它的代码规范去使用它，这就是这篇文章的来源。    
 	
 
-总览     
+<!--more--> 
 
 ## 背景知识 ##
     
  Objective-C是一个C语言的扩展语言，非常动态，非常的“面向对象”，它被设计成既拥有复杂的面向对象设计理念又可以轻松使用与阅读的语言，也是Mac OS X和iPhone开发的首选语言。
 
-  Cocoa是Mac OS X的主要应用框架，提供迅速开发各种功能的Mac OS X应用的Objective-C类集合。
+   Cocoa是Mac OS X的主要应用框架，提供迅速开发各种功能的Mac OS X应用的Objective-C类集合。
 
   Apple已经有一个很好也被广泛接受的Objective-C的编码规范，Google也有类似的C++编码规范，这份Objective-C编码规范很自然是Apple和Google的共同推荐的组合。所以，在阅读本规范前，确保你已经阅读了:
 
-  Apple's Cocoa Coding Guidelines 
-  Google's Open Source C++ Style Guide 
+  * [Apple's Cocoa Coding Guidelines](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/FrameworkImpl.html)     
+  * [Google's Open Source C++ Style Guide](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/) 
 
-  注意所有已在Google的C++编码规范里的禁用条款在Objective-C里也适用，除非本文档明确指出反对意见。 
+  > 注意所有已在Google的C++编码规范里的禁用条款在Objective-C里也适用，除非本文档明确指出反对意见。 
+  
+本文档旨在描述可供可适用于所有Mac OS X代码的Objective-C(包括Objective-C++)编码规范和实践。规范中的许多条款已经改进也不断的被其他的项目和团队所证明其指导性。Google的相关开源项目都遵守此规范。
 
-  本文档旨在描述可供可适用于所有Mac OS X代码的Objective-C(包括Objective-C++)编码规范和实践。规范中的许多条款已经改进也不断的被其他的项目和团队所证明其指导性。Google的相关开源项目都遵守此规范。
+  Google已经发布了一份作为[Google Toolbox for Mac project](https://code.google.com/p/google-toolbox-for-mac/) (文档中简称为`GTM`)的组成部分的遵守本规范的开源代码。这份开放代码也是本文很好的例证(原文看不太懂－－Code meant to be shared across different projects is a good candidate to be included in this repository. )
 
-  Google已经发布了一份作为Google Toolbox for Mac project (文档中简称为GTM)的组成部分的遵守本规范的开源代码。这份开放代码也是本文很好的例证(原文看不太懂－－Code meant to be shared across different projects is a good candidate to be included in this repository. )
-
-  注意本文不是Objective-C的教学指南，我们假设读者已经了解语言。如果你是一个Objective-C的初学者或需要重温，请阅读The Objective-C Programming Language .
+  注意本文不是Objective-C的教学指南，我们假设读者已经了解语言。如果你是一个Objective-C的初学者或需要重温，请阅读[The Objective-C Programming Language](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html) .
 
 
 示例 
@@ -82,7 +87,7 @@ iOS代码
 @end  
 ```
 
- __注意：笔者不建议在全局变量命名的时候在以 _ 开头，比如 NSString *_foo; 因为很容易让人误会是property属性，我们应该尽量让阅读者可以方便的理解代码，而不是出现诱导因素。__
+ __注意：有朋友喜欢在全局变量命名时以_开头，其实我不建议，比如 NSString *_foo; 因为在阅读时很容易让人误会是property属性，我们应该尽量让阅读者可以方便的理解代码，而不是出现诱导因素。__
 
   下例是一份源文件，展示对接口的@implementation 的实现的正确注释和留间隔。它也包括了主要方法如getters,setters,init ,和dealloc 的相关实现。  
     
@@ -252,7 +257,7 @@ iOS代码
 ```
 
 
-@public 和 @private 
+### @public 和 @private ###
 
 权限控制符@public 和@private 缩进一个空格.
 
@@ -271,7 +276,7 @@ iOS代码
 ```
 
 
-## 异常 ##
+### 异常 ###
  
 每个异常标签的@ 和开括号({ )写在统一行，标签和开括号间隔一个空格，同样适用于@catch 语句。
 
@@ -327,7 +332,7 @@ iOS代码
 类别的文件名应该包含扩展类的名字，比如 `GTMNSString+Utils.h` or `GTMNSTextView+Autocomplete.h` 
 
 
-* Objective-C++ 
+### Objective-C++ ###
 
 在一份源文件里，Objective-C++代码遵守当前方法/函数的风格
 
@@ -379,19 +384,19 @@ int CrossPlatformAPI::DoSomethingPlatformSpecific() {
 
 ```
 
- * 类命名 
+### 类命名 ###
 
    类名(不包括类别和协议名)应该用大写开头的驼峰命名法。
 
    在应用级别的代码里，尽量不要使用带前缀的类名。每个类都有相同的前缀不能提高可读性。不过如果是编写多个应用间的共享代码，前缀就是可接受并推荐的做法了(型如 GTMSendMessage )。（注：笔者建议加入前缀，因为这并不是单单为了提高可读性，也为了与引入进来的类做区分，所以合适的前缀是有必要的）
 
- * 类别命名 
+### 类别命名 ### 
 
    类别命名应该以两三个字符的分类前缀作为一个项目或通用的公用部分。类别名应该包含类的扩展。
 
    举个例子，如果我们想要创建一个基于NSString 的类别用于解析，我们应该把类别放到名字是GTMNSString+Parsing.h 的文件里，而类别本身的名字则是GTMStringParsingAdditions (是的，我们明白这个类别和其文件名字不匹配，但这个文件可能还包括其他用于解析相关的类别)。类别的方法应该都使用一个前缀(型如gtm_myCategoryMethodOnAString ),以防止Objective-C代码在单名空间里冲突。如果代码本来就不考虑共享或在不同的地址空间(address-space)，方法命名规则就没必要恪守了。
 
- * Objective-C 方法命名 
+### Objective-C 方法命名 ###
 
    方法使用小写开头的驼峰法命名，每个参数都应该小写开头。
 
@@ -413,7 +418,7 @@ iOS代码
 
    变量名使用小写开头的驼峰法，类成员变量名最后加一个下划线，比如:myLovalVariable, myInstanceVariable_ . 下面看不懂，原文Members used for KVO/KVC bindings may begin with a leading underscore iff use of Objective-C 2.0's @property isn't allowed. 
 
- * 一般变量命名 
+#### 一般变量命名 ####
         
    不要使用匈牙利命名法去标记语法，比如静态类型或变量类型(int或pointer之类的)。使变量名尽量可以推测其用途属性具有描述性。别一心想着少打几个字母，让你的代码可以迅速被理解更加重要。比如:
    
@@ -436,16 +441,16 @@ userInfo = [someObject object];
 port = [network port];  
 ```
 
- * 实体变量 
+#### 实例变量 ####
 
-   实体变量用驼峰法命名并后缀下划线，就像usernameTextField_ . 然而我们允许一种例外就是用KVO/KVC去绑定一个实体变量而Objective-C 2.0 不能用(因为操作系统的限制)的情况，此时也可用前缀下划线的方法给每个变量命名。如果可以使用Objective-C 2.0，@property 和 @synthesize 提供了遵守命名规范的解决方法。
+   实例变量用驼峰法命名并后缀下划线，就像 `usernameTextField_` . 然而我们允许一种例外就是用KVO/KVC去绑定一个实体变量而Objective-C 2.0 不能用(因为操作系统的限制)的情况，此时也可用前缀下划线的方法给每个变量命名。如果可以使用Objective-C 2.0，`@property` 和 `@synthesize` 提供了遵守命名规范的解决方法。
 
- * 常量 
+#### 常量 ####
    
-   常量(预定义，枚举，局部常量等)使用小写k开头的驼峰法，比如kInvalidHandle , kWritePerm . 
+   常量(预定义，枚举，局部常量等)使用小写k开头的驼峰法，比如 `kInvalidHandle` , `kWritePerm` . 
 
 
-### 注释 ###
+## 注释 ##
 
 尽管写起来很痛苦，但注释仍然是使代码保持可读性的极端重要的方式。下面的条款描述了你应该注释什么以及在哪里做注释。但是记住:即使注释是如此重要，最好的代码还是自说明式的。起一个有意义的名字比起一个晦涩的名字然后在用注释去解释它好的多。
 
@@ -453,7 +458,7 @@ port = [network port];
 
    同样，所有C++编码规范的条款仍然适用，只是增加了一些条款，如下.
 
- * 文件注释 
+### 文件注释 ###
 
    每个文件的开头都是版权声明，接着是文件内容的描述。
 
@@ -466,7 +471,7 @@ port = [network port];
 
    如果你把别人写的文件做了相当大的改动，就把自己添加到作者栏去。这样别的开发者就方便联系这个文件的实际开发人员了。
 
- * 声明注释 
+### 声明部分注释 ###
 
    每个接口，类别，协议都必须伴随描述它的用途以及如何整合的注释。
    
@@ -487,7 +492,7 @@ iOS代码
 
    文档默认类都是同步的，如果类实例可以多线程访问，必须要加上额外的说明。     
 
- * 实现注释      
+### 实现部分注释 ###
 
   使用竖线引用变量或符号，而不是用引号。    
 
@@ -507,7 +512,7 @@ iOS代码
 // Remember to call |StringWithoutSpaces("foo bar baz")|  
 ```
 
- * 对象所有权 
+### 对象所有权 ###
 
    使指针所有权的模型尽可能清晰，当它属于Objective-C的使用惯例时(不懂，原文是Make the pointer ownership model as explicit as possible when it falls outside the most common Objective-C usage idioms. )
 
@@ -544,7 +549,7 @@ iOS代码
 
 ## Cocoa和Objective-C特性 ##
 
- * 成员变量应该定义为@private
+### 成员变量应该定义为@private ###
  
 iOS代码
 
@@ -559,26 +564,26 @@ iOS代码
 @end  
 ```
 
- * 明确指定初始化 
+### 明确指定初始化函数 ###
 
    * 注释并说明指定的初始化。
 
    明确指定初始化对想要子类化你的类的时候时很重要的。那样，子类化时只需要做一个或多个初始化去保证初值即可。这也有助于在以后调试你的类时明了初始化流程。
 
-  * 重写指定初始化 
+### 重写指定初始化函数 ###
 
    当重写一个子类并需要init... 方法，注意要重写父类的指定初始化方法。
 
    如果你没有正确重写父类的指定初始化方法，你的初始化方法可能不会被调用，这会导致很多微妙而难以排除的错误。
 
-  * 初始化 
+### 初始化 ###
 
    没必要在初始化方法里把变量初始化为0 或者nil ,这是多余的。
 
    所有新分配内存的对象内容都初始化为0(除了 isa )，所以不要在init 方法里做无谓的重初始化为0的操作。
 
 
-  * 保持公有API简明 
+### 保持公有API简明 ###
 
    保持你的类简单，避免"厨房水槽"似的APIs，如果一个方法没必要公开就不要公开。使用私有类别保证公开头文件的简洁。
 

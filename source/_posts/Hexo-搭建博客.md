@@ -5,6 +5,8 @@ date: 2018-08-30 13:51:03
 tags: [hexo,博客] 
 categories: 技能
 description:  快速搭建 Hexo+Github 博客
+photo: 
+ - https://ws4.sinaimg.cn/large/006tNbRwgy1fv14rbu7bmj31kw0p2qk0.jpg
 ---
 ## 搭建环境 ##
 1. 安装安装环境:`homebrew`--->`nodejs`--->`hexo`,确保我们电脑安装了 ruby ,因为 homebrew 安装时依赖ruby的,使用`ruby --version`查看ruby版本    
