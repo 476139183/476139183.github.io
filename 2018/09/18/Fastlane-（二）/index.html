@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="段雨田的Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="打包到 AppStore上篇文章 我们已经成功的打包app到蒲公英了。那么我们也可以尝试将app上传到AppStore.废话不多说，先简单的打包一个 ipa 到 AppStore 。       12345678910111213desc &amp;quot;release&amp;quot;lane :release dosigh # 更新证书gym(      scheme:&amp;quot;your need u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fastlane （二）">
+<meta property="og:url" content="http://yoursite.com/2018/09/18/Fastlane-（二）/index.html">
+<meta property="og:site_name" content="段雨田的Blog">
+<meta property="og:description" content="打包到 AppStore上篇文章 我们已经成功的打包app到蒲公英了。那么我们也可以尝试将app上传到AppStore.废话不多说，先简单的打包一个 ipa 到 AppStore 。       12345678910111213desc &amp;quot;release&amp;quot;lane :release dosigh # 更新证书gym(      scheme:&amp;quot;your need u">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg">
+<meta property="og:updated_time" content="2018-09-19T09:38:47.109Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fastlane （二）">
+<meta name="twitter:description" content="打包到 AppStore上篇文章 我们已经成功的打包app到蒲公英了。那么我们也可以尝试将app上传到AppStore.废话不多说，先简单的打包一个 ipa 到 AppStore 。       12345678910111213desc &amp;quot;release&amp;quot;lane :release dosigh # 更新证书gym(      scheme:&amp;quot;your need u">
+<meta name="twitter:image" content="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/18/Fastlane-（二）/"/>
+
+
+
+
+
+  <title>Fastlane （二） | 段雨田的Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<!--     <a href="https://github.com/476139183"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+ -->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">段雨田的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一个不知所云的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/Fastlane-（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Duan yutian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/localImage/background.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="段雨田的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Fastlane （二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T16:59:29+08:00">
+                2018-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/18/Fastlane-（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/18/Fastlane-（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg" rel="gallery_cjm8yqitb0015y4fymeu2laf1"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h1 id="打包到-AppStore"><a href="#打包到-AppStore" class="headerlink" title="打包到 AppStore"></a>打包到 AppStore</h1><p><a href="">上篇文章</a> 我们已经成功的打包app到蒲公英了。那么我们也可以尝试将app上传到AppStore.<br>废话不多说，先简单的打包一个 ipa 到 AppStore 。      </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">desc &quot;release&quot;</span><br><span class="line">lane :release do</span><br><span class="line">sigh # 更新证书</span><br><span class="line">gym(</span><br><span class="line">      scheme:&quot;your need up schemeName&quot;, # scheme,</span><br><span class="line">    configuration: &quot;Release&quot;, # 配置 Release or Debug</span><br><span class="line">      export_method: &quot;app-store&quot;)       # 打包类型，前文已经讲过</span><br><span class="line"></span><br><span class="line"> deliver(submit_for_review: false, #是否自动提交审核</span><br><span class="line">         skip_screenshots: true,  # 是否跳过截图</span><br><span class="line">       skip_metadata: true,  # 是否跳过元数据（标题，描述）</span><br><span class="line">         force: true)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>关于<code>scheme</code>的设置请查看<a href="https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/ConfigureBots.html#//apple_ref/doc/uid/TP40013292-CH9-SW3" target="_blank" rel="noopener">文档</a></p>
+<p>调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastlane release</span><br></pre></td></tr></table></figure>
+<p>在项目无误的情况下,提交成功！<br><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvezjej76pj30ve0ge766.jpg" alt="success"></p>
+<h1 id="了解更多"><a href="#了解更多" class="headerlink" title="了解更多"></a>了解更多</h1><p>在<a href="">上篇文章</a>的基础上，因为我们选择的是自定义，所以并没有创建 <code>Deliverfile</code>，<code>screenshots</code>和<code>metadata</code>目录，也就没有app的更多的设置,比如提交的各种信息，截图等。我们可以使用如下命令进行创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deliver init</span><br></pre></td></tr></table></figure>
+<p>此时会要求输入你的 <code>Your Apple ID Username</code> 和 <code>password</code>,<code>The Bundle Identifier of your App</code>.(因为我已经登录过了。所以并未出现要输入账号的密码)。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1533163-d4cae722f895945e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/787" alt=""></p>
+<blockquote>
+<p>如果开发者账号上没有对应的bundle id的App，会提示是否创建一个新的App,这里我们选择否(n)，因为这样快速创建的App设置的信息有限，只能设置App名称等一些基本信息，我们可以通过produce工具创建一个可以设置更多信息的App</p>
+</blockquote>
+<h1 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h1><p>我们可以通过编辑 <code>Deliverfile</code>来设置app的相关属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"># Apple ID用户名，账号名称</span><br><span class="line">username &quot;xxxx@xxxxx.com&quot; </span><br><span class="line"></span><br><span class="line"># bundle identifier</span><br><span class="line">app_identifier &quot;xxx.com.cn&quot; # The bundle identifier of your app</span><br><span class="line"></span><br><span class="line"># 版权声明</span><br><span class="line">copyright &quot;深圳xxxx有限公司&quot;</span><br><span class="line"></span><br><span class="line"># 支持的语言</span><br><span class="line">supportedLanguages = &#123;</span><br><span class="line">    &quot;cmn-Hans&quot; =&gt; &quot;zh-Hans&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 副标题</span><br><span class="line">subtitle(</span><br><span class="line">  &apos;zh-Hans&apos; =&gt; &quot;副标题&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># App应用名称</span><br><span class="line">name(</span><br><span class="line">  &apos;zh-Hans&apos; =&gt; &quot;应用名称&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 关键字</span><br><span class="line">keywords(</span><br><span class="line">  &apos;zh-Hans&apos; =&gt; &quot;各种关键字,用逗号隔开&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 支持网址</span><br><span class="line">support_url(&#123;</span><br><span class="line">  &apos;zh-Hans&apos; =&gt; &quot;http://baidu.com&quot;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># App价格</span><br><span class="line">price_tier 0</span><br><span class="line"></span><br><span class="line"># 应用程序图标的路径</span><br><span class="line"># app_icon &apos;./fastlane/metadata/AppIcon.png&apos;</span><br><span class="line"></span><br><span class="line"># 屏幕截图的文件夹的路径</span><br><span class="line">screenshots_path &apos;./fastlane/screenshots&apos;</span><br><span class="line"></span><br><span class="line"># 指定上传ipa路径,</span><br><span class="line">ipa &apos;./Ipa/xxxx.ipa&apos;</span><br><span class="line"></span><br><span class="line"># 自动发布 app: false,则需要手动发布</span><br><span class="line">automatic_release false</span><br><span class="line"></span><br><span class="line"># 提交审核信息:加密, idfa 等，对应的是提交审核的时候，需选择的选项</span><br><span class="line">submission_information(&#123;    </span><br><span class="line">    export_compliance_encryption_updated: false,</span><br><span class="line">    export_compliance_uses_encryption: false,</span><br><span class="line">    content_rights_contains_third_party_content: false,</span><br><span class="line">    add_id_info_uses_idfa: false</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"># 应用审核小组的联系信息 app 审核信息</span><br><span class="line">app_review_information(</span><br><span class="line">  first_name: &quot;段&quot;,</span><br><span class="line">  last_name: &quot;xx&quot;,</span><br><span class="line">  phone_number: &quot;+86 18237485911&quot;,</span><br><span class="line">  email_address: &quot;xxxx@ apple.com.cn&quot;,</span><br><span class="line">  demo_user: &quot;测试登录账号&quot;,</span><br><span class="line">  demo_password: &quot;测试登录密码&quot;,</span><br><span class="line">  notes: &quot;这里可以写一些备注，完全和网页一致的写法就行了&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>更多<a href="https://www.jianshu.com/p/867b397c7939" target="_blank" rel="noopener">编辑内容</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>等待初始化完成之后，工程目录下就多了一个 fastlane目录，其内容如下：<br><img src="http://cc.cocimg.com/api/uploads/20170519/1495177333947263.png" alt=""></p>
+<blockquote>
+<p><code>metadata</code> 是包含应用在ITC上面的各种信息，可以使用它配置我们的ITC，建议使用 <code>Deliverfile</code>，因为<code>Deliverfile</code>会覆盖 <code>metadata</code> 的设置<br>screenshots 屏幕截图数据。</p>
+</blockquote>
+<p>咱们来看主要的，Appfile 和 Fastfile, Deliverfile。</p>
+<h2 id="Appfile"><a href="#Appfile" class="headerlink" title="Appfile"></a>Appfile</h2><p>Appfile用来存放 <code>app_identifier</code>，<code>apple_id</code>和 <code>team_id</code>。 了解详情，它的格式是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app_identifier &quot;com.xxx.xxx&quot; # app的bundle identifier</span><br><span class="line">apple_id &quot;xxx@xxx.com&quot; # 你的Apple ID</span><br><span class="line"> </span><br><span class="line">team_id &quot;XXXXXXXXXX&quot; # Team ID</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<p>你也可以为每个lane(后面会讲到)提供不同的 <code>app_identifier</code>, <code>apple_id</code> 和 <code>team_id</code>，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app_identifier &quot;com.aaa.aaa&quot;</span><br><span class="line">apple_id &quot;aaa@aaa.com&quot;</span><br><span class="line">team_id &quot;AAAAAAAAAA&quot;</span><br><span class="line"> </span><br><span class="line">for_lane :inhouse do</span><br><span class="line">  app_identifier &quot;com.bbb.bbb&quot;</span><br><span class="line">  apple_id &quot;bbb@bbb.com&quot;</span><br><span class="line">  team_id &quot;AAAAAAAAAA&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>配置好<code>Appfile</code>，fastlane就不会每一次都询问你的账号和id了</p>
+<h2 id="Fastfile"><a href="#Fastfile" class="headerlink" title="Fastfile"></a>Fastfile</h2><p>Fastfile 管理你所创建的 lane ，<code>了解详情</code>。它的格式是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">···</span><br><span class="line"># 自动更新fastlane 工具</span><br><span class="line"># update_fastlane</span><br><span class="line"> </span><br><span class="line">#需要的fastlane的最小版本，在每次执行之后会检查是否有新版本，如果有会在最后末尾追加新版本提醒</span><br><span class="line">fastlane_version &quot;2.30.1&quot;</span><br><span class="line"> </span><br><span class="line">#默认使用平台是 ios，也就是说文件可以定义多个平台</span><br><span class="line">default_platform :ios</span><br><span class="line"> </span><br><span class="line">platform :ios do</span><br><span class="line">  before_all do</span><br><span class="line">    # ENV[&quot;SLACK_URL&quot;] = &quot;https://hooks.slack.com/services/...&quot;</span><br><span class="line">    cocoapods</span><br><span class="line"> </span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line">  desc &quot;Runs all the tests&quot;</span><br><span class="line">  lane :test do</span><br><span class="line">    scan</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line">  desc &quot;提交一个新的Beta版本到 Apple TestFlight&quot;</span><br><span class="line">  desc &quot;This will also make sure the profile is up to date&quot;</span><br><span class="line">  lane :beta do</span><br><span class="line">    # match(type: &quot;appstore&quot;) # more information: https://codesigning.guide</span><br><span class="line">    gym(scheme: &quot;Docment&quot;) # Build your app - more options available</span><br><span class="line">    pilot</span><br><span class="line"> </span><br><span class="line">    # sh &quot;your_script.sh&quot;</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line">  desc &quot;部署一个新版本到App Store&quot;</span><br><span class="line">  lane :release do</span><br><span class="line">    # match(type: &quot;appstore&quot;)</span><br><span class="line">    # snapshot</span><br><span class="line">    gym(scheme: &quot;Docment&quot;) # Build your app - more options available</span><br><span class="line">    deliver(force: true)</span><br><span class="line">    # frameit</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line">  # 你可以定义自己的lane</span><br><span class="line"> </span><br><span class="line">  #执行lane成功后的回调</span><br><span class="line">  after_all do |lane|</span><br><span class="line">    # slack(</span><br><span class="line">    #   message: &quot;Successfully deployed new App Update.&quot;</span><br><span class="line">    # )</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line">  # 如果流程发生异常会走这里并终止</span><br><span class="line">  error do |lane, exception|</span><br><span class="line">    # slack(</span><br><span class="line">    #   message: exception.message,</span><br><span class="line">    #   success: false</span><br><span class="line">    # )</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>系统级lane      </p>
+<table>
+<thead>
+<tr>
+<th>执行顺序</th>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>before_all</td>
+<td>在执行 lane 之前只执行一次。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>before_each</td>
+<td>每次执行 lane 之前都会执行一次。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>lane</td>
+<td>自定义的任务。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>after_each</td>
+<td>每次执行 lane 之后都会执行一次。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>after_all</td>
+<td>在执行 lane 成功结束之后执行一次。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>error</td>
+<td>在执行上述情况任意环境报错都会中止并执行一次。</td>
+</tr>
+</tbody>
+</table>
+<p>我们也可以定义一个自己的lane：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">desc &quot;企业版&quot;</span><br><span class="line">  lane :inHouse do</span><br><span class="line">  gym(scheme: &quot;XXX&quot;,</span><br><span class="line">      export_method:&quot;enterprise&quot;,</span><br><span class="line">      output_directory &quot;./build&quot;, # 打包后的 ipa 文件存放的目录</span><br><span class="line">      output_name &quot;XXX&quot;  # ipa 文件名</span><br><span class="line">   )</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<p>其中一个lane就是一个任务，里面是一个个的action组成的工作流。<br>利用目前支持的工具可以做所有包含自动化和可持续化构建的每个环节，详情请查看<a href="">上篇文章的工具类</a></p>
+<h2 id="Deliverfile"><a href="#Deliverfile" class="headerlink" title="Deliverfile"></a>Deliverfile</h2><p>交付文件。在这个文件里面可以设置iTunes connect的所有配置项，例如：</p>
+<p>release_notes，此版本新增内容。</p>
+<p>copyright，版权信息。</p>
+<p>submit_for_review，上传完成后是否直接提交新版本进行审查。</p>
+<p>force，跳过HTML报告文件验证。</p>
+<p>…</p>
+<p>请在设置 <code>release_nores</code> 、<code>support_url</code> 、<code>private_url</code> 等配置的时候，采用 hash 的方式写，<a href="https://www.cnblogs.com/Mien/archive/2008/08/22/1273950.html" target="_blank" rel="noopener">国家代码</a>，例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">release_notes(</span><br><span class="line">	# 中国</span><br><span class="line">	&apos;zh-Hans&apos; =&gt; ENV[&apos;RELEASE_NOTES&apos;],</span><br><span class="line">	# 澳大利亚</span><br><span class="line">	&apos;en-au&apos; =&gt; ENV[&apos;RELEASE_NOTES_AU&apos;],</span><br><span class="line">	# 美国</span><br><span class="line">	&apos;en-us&apos; =&gt; ENV[&apos;RELEASE_NOTES_US&apos;]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>具体的配置可以在文章最后查看.</p>
+<h1 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h1><h3 id="使用produce，在iTunes-Connect或者Apple-Developer-Center上创建新的iOS应用程序"><a href="#使用produce，在iTunes-Connect或者Apple-Developer-Center上创建新的iOS应用程序" class="headerlink" title="使用produce，在iTunes Connect或者Apple Developer Center上创建新的iOS应用程序"></a>使用produce，在iTunes Connect或者Apple Developer Center上创建新的iOS应用程序</h3><p>进入项目根目录，找到fastlane文件夹下的Fastfile文件， 编辑文件，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">platform :ios do</span><br><span class="line"> desc &quot;create new app&quot;</span><br><span class="line"> lane :produce_app do</span><br><span class="line">   produce(</span><br><span class="line">     username: &quot;xxxx@gmail.com&quot;,# APPle ID</span><br><span class="line">     app_name: &quot;小鱼小鱼吃虾米&quot;,#App 名称</span><br><span class="line">     app_identifier: &quot;com.test.www.FastlaneTest&quot;,#App bundle id</span><br><span class="line">     app_version: &quot;1.0&quot;,#App 版本</span><br><span class="line">     sku: &quot;10023500&quot;,#App sku</span><br><span class="line">     language: &quot;Simplified Chinese&quot;,#App 语言，默认English</span><br><span class="line">   )</span><br><span class="line"> end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1533163-dabebfdee644cc43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/855" alt=""></p>
+<p><strong>备注：language这个选项不能直接写Chinese，语言选项如下</strong><br><em>[“Brazilian Portuguese”, “Danish”, “Dutch”, “English”, “English_Australian”, “English_CA”, “English_UK”, “Finnish”, “French”, “French_CA”, “German”, “Greek”, “Indonesian”, “Italian”, “Japanese”, “Korean”, “Malay”, “Norwegian”, “Portuguese”, “Russian”, “Simplified Chinese”, “Spanish”, “Spanish_MX”, “Swedish”, “Thai”, “Traditional Chinese”, “Turkish”, “Vietnamese”]</em></p>
+<p>在terminal中执行fastlane produce_app命令，创建成功提示如下：<br><img src="https://upload-images.jianshu.io/upload_images/1533163-ea43827f2e8ffd7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/855" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1533163-361175ae5018d974.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/949" alt=""></p>
+<h3 id="使用cert创建签名证书-Certificates"><a href="#使用cert创建签名证书-Certificates" class="headerlink" title="使用cert创建签名证书(Certificates)"></a>使用cert创建签名证书(Certificates)</h3><p>在Fastfile中添加以下内容</p>
+<h4 id="生成开发证书"><a href="#生成开发证书" class="headerlink" title="生成开发证书:"></a>生成开发证书:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lane :create_certificates do</span><br><span class="line">    cert(</span><br><span class="line">      username: &quot;xxxx@gmail.com&quot;,# APPle ID</span><br><span class="line">      development: true,# 创建一个开发证书</span><br><span class="line">      force: &quot;false&quot;,#即使存在现有证书，也要创建证书，默认为false</span><br><span class="line">      output_path: &quot;./certs/development&quot;,#存储所有证书和私钥的目录的路径</span><br><span class="line">    )</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="https://upload-images.jianshu.io/upload_images/1533163-bc94a147af5bdb6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/857" alt=""></p>
+<h4 id="生成生产证书"><a href="#生成生产证书" class="headerlink" title="生成生产证书:"></a>生成生产证书:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lane :create_dcertificates do</span><br><span class="line">    cert(</span><br><span class="line">      username: &quot;xxxx@gmail.com&quot;,# APPle ID</span><br><span class="line">      development: false,# 创建一个开发证书</span><br><span class="line">      force: &quot;false&quot;,#即使存在现有证书，也要创建证书，默认为false</span><br><span class="line">      output_path: &quot;./certs/distribution&quot;,#存储所有证书和私钥的目录的路径</span><br><span class="line">    )</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1533163-cc38aa742b08fc2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/845" alt=""></p>
+<p><strong>开发和生产证书，修改development的boolean值及output_path路径即可</strong></p>
+<h3 id="使用sigh-生成描述文件-mobileprovision"><a href="#使用sigh-生成描述文件-mobileprovision" class="headerlink" title="使用sigh 生成描述文件(mobileprovision)"></a>使用sigh 生成描述文件(mobileprovision)</h3><p>在Fastfile中</p>
+<h4 id="生成开发mobileprovision"><a href="#生成开发mobileprovision" class="headerlink" title="生成开发mobileprovision"></a>生成开发mobileprovision</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">lane :get_dev_provisioningProfile do</span><br><span class="line">  get_provisioning_profile(</span><br><span class="line">    username: &quot;xxxx@gmail.com&quot;,# APPle ID</span><br><span class="line">    development: true,# 创建一个开发mobileprovision</span><br><span class="line">    app_identifier: &quot;com.test.www.FastlaneTest&quot;,#bundle identifier</span><br><span class="line">    output_path: &quot;./certs/development&quot;,#存储mobileprovision的目录的路径</span><br><span class="line">    filename: &quot;fastlane_dev.mobileprovision&quot;,#用于生成的供应配置文件的文件名（必须包含.mobileprovision）</span><br><span class="line">  )</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1533163-db43c3e1861439bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/853" alt=""></p>
+<h4 id="生成生产mobileprovision"><a href="#生成生产mobileprovision" class="headerlink" title="生成生产mobileprovision"></a>生成生产mobileprovision</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">lane :get_provisioningProfile do</span><br><span class="line">   get_provisioning_profile(</span><br><span class="line">     username: &quot;xxxx@gmail.com&quot;,# APPle ID</span><br><span class="line">     development: false,# 创建一个开发证书</span><br><span class="line">     app_identifier: &quot;com.test.www.FastlaneTest&quot;,#bundle identifier</span><br><span class="line">     output_path: &quot;./certs/distribution&quot;,#存储mobileprovision的目录的路径</span><br><span class="line">     filename: &quot;fastlane_distr.mobileprovision&quot;,#用于生成的供应配置文件的文件名（必须包含.mobileprovision）</span><br><span class="line">   )</span><br><span class="line"> end</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1533163-a5eaaeed82991868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/853" alt=""><br>找到 <code>certs/development&amp;&amp;distribution</code>目录下的证书及<code>.mobileprovision</code>文件，并安装到电脑上<br><img src="https://upload-images.jianshu.io/upload_images/1533163-de34c42dd8886483.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/595" alt=""></p>
+<h3 id="使用gym来打包ipa"><a href="#使用gym来打包ipa" class="headerlink" title="使用gym来打包ipa"></a>使用gym来打包ipa</h3><p>示例   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">lane :inhouse do</span><br><span class="line">  # 以下两个action来自fastlane-plugin-versioning，</span><br><span class="line">  # 第一个递增 Build，第二个设定Version。</span><br><span class="line">  # 如果你有多个target，就必须指定target的值，否则它会直接找找到的第一个plist修改</span><br><span class="line">    increment_build_number_in_plist(target: &apos;FastlaneTest&apos;)</span><br><span class="line">    increment_version_number_in_plist(</span><br><span class="line">      target: &apos;FastlaneTest&apos;,</span><br><span class="line">      version_number: &apos;1.0&apos;</span><br><span class="line">    )</span><br><span class="line">    # gym用来编译ipa</span><br><span class="line">    gym(scheme: &apos;FastlaneTest&apos;,#打包scheme</span><br><span class="line">    export_method:&quot;enterprise&quot;,#打包类型app-store, ad-hoc, enterprise, development</span><br><span class="line">    output_directory: &quot;./build&quot;,#ipa打包存放路径</span><br><span class="line">    output_name: &apos;inhouse.ipa&apos;#ipa名称</span><br><span class="line">    )</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>这里是官方提供的一些 <a href="https://github.com/fastlane/examples" target="_blank" rel="noopener">例子</a>。      </li>
+<li>想了解 fastlane 命令的话可以执行 <code>fastlane --help</code>      </li>
+<li>查看可用任务的列表，可以执行命令 <code>fastlane lanes</code></li>
+<li><p>可以安装一些插件来辅助，查看插件 <code>fastlane search_plugins</code>, 比如修改版本号的 <a href="https://github.com/SiarheiFedartsou/fastlane-plugin-versioning" target="_blank" rel="noopener">versioning</a>,以及 同样功能的 <code>fastlane-plugin-versioning</code><br>安装上面的插件,使用 <code>fastlane add_plugin [name] # 安装方法</code><br>比如      </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastlane add_plugin versioning</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多个 lane 的话实际上是可以相互调用的，这个其实特别实用。例如：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">default_platform :ios</span><br><span class="line"> </span><br><span class="line">platform :ios do</span><br><span class="line"> </span><br><span class="line">  lane :prepare do</span><br><span class="line">    cocoapods</span><br><span class="line">    match</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">  desc &apos;fastlane build&apos;   &apos;fastlane build type:adhoc&apos;</span><br><span class="line">  lane :build do |options|</span><br><span class="line">    # 调用上面的 prepare 任务</span><br><span class="line">    prepare</span><br><span class="line"> </span><br><span class="line">    case options[:type]</span><br><span class="line">    when &apos;adhoc&apos;</span><br><span class="line">      adhoc</span><br><span class="line">    else</span><br><span class="line">      appstore</span><br><span class="line">    end</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">  lane : adhoc do</span><br><span class="line">  ···</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line">  lane : appstore do</span><br><span class="line">  ···</span><br><span class="line">  end</span><br><span class="line"> </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>我们可以在 Fastfile 文件中添加一个函数来设置version号和build号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">default_platform :ios</span><br><span class="line"> </span><br><span class="line">def prepare_version(options)</span><br><span class="line">    increment_version_number(</span><br><span class="line">        version_number: options[:version]</span><br><span class="line">    )</span><br><span class="line"> </span><br><span class="line">    increment_build_number(</span><br><span class="line">        build_number: options[:build]</span><br><span class="line">    )</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>然后可以在一个lane中使用这个函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lane :appstore do |options|</span><br><span class="line">   ···</span><br><span class="line">    prepare_version(options)</span><br><span class="line">   ···</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>然后执行这个lane的时候：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastlane appstore version:2.4.0 build:2.0</span><br></pre></td></tr></table></figure>
+<h1 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h1><p><a href="https://www.jianshu.com/p/ecaca8ac86e3" target="_blank" rel="noopener">相关文章</a></p>
+<p><a href="https://www.jianshu.com/p/44bbe1a31b52" target="_blank" rel="noopener">fastlane 实现自定义Action</a></p>
+<p><a href="https://www.jianshu.com/p/46118a562b5b" target="_blank" rel="noopener">使用fastlane自动增加版本号</a></p>
+<h4 id="Deliverfile-编辑示例"><a href="#Deliverfile-编辑示例" class="headerlink" title="Deliverfile 编辑示例"></a><a href="https://docs.fastlane.tools/actions/deliver/" target="_blank" rel="noopener">Deliverfile 编辑示例</a></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># app_identifier</span><br><span class="line">app_identifier ENV[&apos;APP_IDENTIFIER&apos;]</span><br><span class="line"># 用户名,Apple ID电子邮件地址</span><br><span class="line">username ENV[&apos;APPLE_ID&apos;]</span><br><span class="line"># 团队ID</span><br><span class="line">team_id ENV[&apos;TEAM_ID&apos;]</span><br><span class="line"># 团队name</span><br><span class="line">team_name ENV[&apos;TEAM_NAME&apos;]</span><br><span class="line"># copyright</span><br><span class="line">copyright ENV[&apos;COPYRIGHT&apos;]</span><br><span class="line"># 关键字</span><br><span class="line">keywords(</span><br><span class="line">    &apos;zh-Hans&apos; =&gt; ENV[&apos;KEYWORDS&apos;],</span><br><span class="line">)</span><br><span class="line"># 新版本修改记录</span><br><span class="line">release_notes(</span><br><span class="line">    # 中国</span><br><span class="line">    &apos;zh-Hans&apos; =&gt; ENV[&apos;RELEASE_NOTES&apos;],</span><br><span class="line">    # 澳大利亚</span><br><span class="line">    &apos;en-au&apos; =&gt; ENV[&apos;RELEASE_NOTES_AU&apos;],</span><br><span class="line">    # 美国</span><br><span class="line">    &apos;en-us&apos; =&gt; ENV[&apos;RELEASE_NOTES_US&apos;]</span><br><span class="line">)</span><br><span class="line"># 支持网址</span><br><span class="line">support_url(</span><br><span class="line">    # 中国</span><br><span class="line">    &apos;zh-Hans&apos; =&gt; ENV[&apos;SUPPORT_URL&apos;],</span><br><span class="line">    # 澳大利亚</span><br><span class="line">    &apos;en-au&apos; =&gt; ENV[&apos;SUPPORT_URL_AU&apos;],</span><br><span class="line">    # 美国</span><br><span class="line">    &apos;en-us&apos; =&gt; ENV[&apos;SUPPORT_URL_US&apos;]</span><br><span class="line">)</span><br><span class="line"># 隐私政策网址 国家代码 https://www.cnblogs.com/Mien/archive/2008/08/22/1273950.html</span><br><span class="line">privacy_url(</span><br><span class="line">    # 中国</span><br><span class="line">    &apos;zh-Hans&apos; =&gt; ENV[&apos;PRIVACY_URL&apos;],</span><br><span class="line">    # 澳大利亚</span><br><span class="line">    &apos;en-au&apos; =&gt; ENV[&apos;PRIVACY_URL_AU&apos;],</span><br><span class="line">    # 美国</span><br><span class="line">    &apos;en-us&apos; =&gt; ENV[&apos;PRIVACY_URL_US&apos;]</span><br><span class="line">)</span><br><span class="line"># 上传完成后提交新版本进行审查</span><br><span class="line">submit_for_review false</span><br><span class="line"># 跳过HTML报告文件验证</span><br><span class="line">force true</span><br><span class="line"># 启用iTC的分阶段发布功能 灰度发布</span><br><span class="line">phased_release true</span><br><span class="line"># 应用审核小组的联系信息 app 审核信息</span><br><span class="line">app_review_information(</span><br><span class="line">  first_name: &quot;xx&quot;,</span><br><span class="line">  last_name: &quot;xx&quot;,</span><br><span class="line">  phone_number: &quot;+86 18888888888&quot;,</span><br><span class="line">  email_address: &quot;xxxx&quot;,</span><br><span class="line">  demo_user: &quot;test1@test.com&quot;,</span><br><span class="line">  demo_password: &quot;test123&quot;</span><br><span class="line">)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>最后，附上一个Fastfile脚本和一些自定义Actions：<br><a href="https://github.com/thierryxing/Fastfiles" target="_blank" rel="noopener">https://github.com/thierryxing/Fastfiles</a></p>
+<p>另外，Fastlane也提供了一些国外团队的Example：<br><a href="https://github.com/fastlane/examples" target="_blank" rel="noopener">https://github.com/fastlane/examples</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/18/Fastlane-安装/" rel="next" title="Fastlane 安装 和 发布到蒲公英">
+                <i class="fa fa-chevron-left"></i> Fastlane 安装 和 发布到蒲公英
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/19/jenkins-自动化部署/" rel="prev" title="jenkins 安装">
+                jenkins 安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/localImage/background.png"
+                alt="Duan yutian" />
+            
+              <p class="site-author-name" itemprop="name">Duan yutian</p>
+              <p class="site-description motion-element" itemprop="description">雾里看花</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lx.nextdev.cn/" title="凌霄的博客" target="_blank">凌霄的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#打包到-AppStore"><span class="nav-number">1.</span> <span class="nav-text">打包到 AppStore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#了解更多"><span class="nav-number">2.</span> <span class="nav-text">了解更多</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑"><span class="nav-number">3.</span> <span class="nav-text">编辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">4.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Appfile"><span class="nav-number">4.1.</span> <span class="nav-text">Appfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fastfile"><span class="nav-number">4.2.</span> <span class="nav-text">Fastfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deliverfile"><span class="nav-number">4.3.</span> <span class="nav-text">Deliverfile</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具使用"><span class="nav-number">5.</span> <span class="nav-text">工具使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用produce，在iTunes-Connect或者Apple-Developer-Center上创建新的iOS应用程序"><span class="nav-number">5.0.1.</span> <span class="nav-text">使用produce，在iTunes Connect或者Apple Developer Center上创建新的iOS应用程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用cert创建签名证书-Certificates"><span class="nav-number">5.0.2.</span> <span class="nav-text">使用cert创建签名证书(Certificates)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成开发证书"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">生成开发证书:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成生产证书"><span class="nav-number">5.0.2.2.</span> <span class="nav-text">生成生产证书:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用sigh-生成描述文件-mobileprovision"><span class="nav-number">5.0.3.</span> <span class="nav-text">使用sigh 生成描述文件(mobileprovision)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成开发mobileprovision"><span class="nav-number">5.0.3.1.</span> <span class="nav-text">生成开发mobileprovision</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成生产mobileprovision"><span class="nav-number">5.0.3.2.</span> <span class="nav-text">生成生产mobileprovision</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用gym来打包ipa"><span class="nav-number">5.0.4.</span> <span class="nav-text">使用gym来打包ipa</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">5.1.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他-1"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Deliverfile-编辑示例"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">Deliverfile 编辑示例</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Duan yutian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Duan.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/09/18/Fastlane-（二）/';
+          this.page.identifier = '2018/09/18/Fastlane-（二）/';
+          this.page.title = 'Fastlane （二）';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Duan.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":80,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

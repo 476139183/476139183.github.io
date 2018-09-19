@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="自动化,Fastlane," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="段雨田的Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前沿 在使用Fastlane打包之前，你的项目必须是正确的。我的意思是说，你得用原生的方式成功Archive，并可以upload你的测试项目！否则会导致Fastlane打包失败">
+<meta name="keywords" content="自动化,Fastlane">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fastlane 安装 和 发布到蒲公英">
+<meta property="og:url" content="http://yoursite.com/2018/09/18/Fastlane-安装/index.html">
+<meta property="og:site_name" content="段雨田的Blog">
+<meta property="og:description" content="前沿 在使用Fastlane打包之前，你的项目必须是正确的。我的意思是说，你得用原生的方式成功Archive，并可以upload你的测试项目！否则会导致Fastlane打包失败">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png">
+<meta property="og:updated_time" content="2018-09-19T09:02:49.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fastlane 安装 和 发布到蒲公英">
+<meta name="twitter:description" content="前沿 在使用Fastlane打包之前，你的项目必须是正确的。我的意思是说，你得用原生的方式成功Archive，并可以upload你的测试项目！否则会导致Fastlane打包失败">
+<meta name="twitter:image" content="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/18/Fastlane-安装/"/>
+
+
+
+
+
+  <title>Fastlane 安装 和 发布到蒲公英 | 段雨田的Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<!--     <a href="https://github.com/476139183"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+ -->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">段雨田的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一个不知所云的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/Fastlane-安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Duan yutian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/localImage/background.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="段雨田的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Fastlane 安装 和 发布到蒲公英</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T14:53:54+08:00">
+                2018-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/18/Fastlane-安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/18/Fastlane-安装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" rel="gallery_cjm8yqilp0000y4fyfy2nxqd2"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h1 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h1><blockquote>
+<p>在使用Fastlane打包之前，你的项目必须是正确的。我的意思是说，你得用原生的方式成功Archive，并可以upload你的测试项目！否则会导致Fastlane打包失败<br><a id="more"></a><br>当你看到这篇文章的时候，说明你已经厌烦不停的打包等一系列<code>没有技术含量的、乏味</code>的工作,然后会去寻找偷懒的方法，于是找到了 <code>Fastlane</code> ，因为 <a href="https://github.com/fastlane/fastlane" target="_blank" rel="noopener">Fastlane</a> 在网上有很多资料，也介绍了蛮多，这里只是简单的点出一些重点。        </p>
+</blockquote>
+<p>Fastlane命令是一个流程控制的命令行工具(CLI)，通过内部集成action和第三方的action完成一系列控制流程。运行Fastlane命令行工具，会读取当前目录或者 <code>./fastlane</code> 目录下的 <code>Fastfile</code> 配置文件。</p>
+<blockquote>
+<p>在Fastfile中：</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><code>action</code> :  Fastlane中的每一条命令都是一个扩展(action)，下面提到的deliver，sigh之类的工具本身是CLI，但是在Fastlane中内嵌了对他们支持的action<br><code>lane</code> : Fastlane中流程的合集，每一个动作即可以是action，也可以是其他的lane。语法和ruby中的rake非常像</p>
+</blockquote>
+</blockquote>
+<h1 id="Fastlane组件"><a href="#Fastlane组件" class="headerlink" title="Fastlane组件"></a>Fastlane组件</h1><p><code>不是一个人的王者，而是团队的荣誉</code>, Fastlane 是一套基于 Ruby 的工具集合，它包括了诸多工具:</p>
+<ul>
+<li>测试<ul>
+<li><code>scan</code> =&gt; 自动运行测试工具，并且可以生成漂亮的HTML报告 </li>
+</ul>
+</li>
+<li>证书，配置文件<ul>
+<li><code>cert</code> =&gt; 自动创建管理iOS代码签名证书</li>
+<li><code>sigh</code> =&gt; 是用来创建、更新、下载、修复Provisioning Profile的工具</li>
+<li><code>pem</code> =&gt; 自动生成、更新推送配置文件</li>
+<li><code>match</code> =&gt; 一个新的证书和配置文件管理工具,它会把所有需要用到的证书传到git私有库上，任何需要配置的机器直接用match同步回来就不用管证书问题了，小团队福音啊！</li>
+</ul>
+</li>
+<li>截图<ul>
+<li><code>snapshot</code> =&gt; 用Xcode7推出的UI test功能实现自动化截图</li>
+<li><code>frameit</code> =&gt; 可以把截的图片自动套上一层手机的物理边框</li>
+</ul>
+</li>
+<li>编译<ul>
+<li><code>gym</code> =&gt; Fastlane家族的自动化编译工具，和其他工具配合的非常默契</li>
+</ul>
+</li>
+<li>发布<ul>
+<li>produce =&gt; 如果你的产品还没在iTunes Connect(iTC)或者Apple Developer Center(ADC)建立，produce可以自动帮你完成这些工作</li>
+<li>deliver =&gt; 自动上传截图，APP的元数据，二进制(ipa)文件到iTunes Connect</li>
+</ul>
+</li>
+<li>TestFlight管理<ul>
+<li><code>pilot</code> =&gt; 管理TestFlight的测试用户，上传二进制文件</li>
+<li><code>boarding</code> =&gt; 建立一个添加测试用户界面，发给测试者，可自行添加邮件地址，并同步到iTC</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>更多工具可以去查看<a href="https://docs.fastlane.tools" target="_blank" rel="noopener">官方文档</a></p>
+</blockquote>
+<h1 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h1><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><h4 id="检查-Xcode-CLT-是否安装"><a href="#检查-Xcode-CLT-是否安装" class="headerlink" title="检查 Xcode CLT 是否安装"></a>检查 Xcode CLT 是否安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br></pre></td></tr></table></figure>
+<p>如果终端提示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select: error: command line tools are already installed, use &quot;Software Update&quot; to install updates</span><br></pre></td></tr></table></figure></p>
+<p>说明已经安装成功</p>
+<h4 id="Ruby"><a href="#Ruby" class="headerlink" title="Ruby"></a>Ruby</h4><p>确保已经安装好 <code>ruby</code>、<code>rubygems</code>、<code>bundler</code>，Fastlane要求Ruby版本，当前最新版本要求ruby版本&gt;=2.1。使用以下命令查看ruby版本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br></pre></td></tr></table></figure></p>
+<p>相关链接:      </p>
+<p><a href="http://www.cnblogs.com/foxting/p/4520829.html" target="_blank" rel="noopener">《MAC机中安装RUBY环境》</a><br><a href="https://blog.csdn.net/maojudong/article/details/7918291/" target="_blank" rel="noopener">《Ruby系列文章之6 —OS X 10.8.1 系统 HomeBrew 的安装和简单使用》</a></p>
+<h3 id="安装fastlane"><a href="#安装fastlane" class="headerlink" title="安装fastlane"></a>安装fastlane</h3><p>最新的安装命令如下：<a href="https://blog.csdn.net/top_roboo/article/details/52087192" target="_blank" rel="noopener">解决方法</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /usr/local/bin fastlane</span><br></pre></td></tr></table></figure>
+<p>彻底解决方法 <a href="https://www.macx.cn/thread-2167166-1-5.html?mod=viewthread&amp;tid=2167166&amp;extra=page%253D5&amp;page=1" target="_blank" rel="noopener">解除 OSX 10.11 Rootless 的方法</a> </p>
+<blockquote>
+<p>该命令可以用来更新fastlane</p>
+</blockquote>
+<p>如果不是最新版本 还可以在项目文件里面执行指定版本来更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /usr/local/bin/ fastlane --version2.104.0</span><br></pre></td></tr></table></figure>
+<p>检查版本 fastlane    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fastlane -v</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">安装参考于该[文章](https://www.jianshu.com/p/abc2063f0981)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 初始化 ###</span><br><span class="line">打开[Terminal(终端)](sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist)，进入项目根目录下，初始化fastlane</span><br></pre></td></tr></table></figure>
+<p>fastlane init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">出现如下选项，`一般选择第4项`：      </span><br><span class="line">![](https://ws1.sinaimg.cn/large/006tNbRwgy1fvelhb6udrj30ve0k8zor.jpg) </span><br><span class="line"> 选项含义:</span><br><span class="line">    </span><br><span class="line"> * ① 自动化截图</span><br><span class="line"> * ② 将测试版分发自动化到TestFlight</span><br><span class="line"> * ③ 自动上传、发布到App Store</span><br><span class="line"> * ④ 手动设置 - 手动设置您的项目以使您的任务自动化</span><br><span class="line"> </span><br><span class="line">然后，输入开发者账号密码      </span><br><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/1533163-1fd4760349f624e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/587)</span><br><span class="line"></span><br><span class="line">以上就表示成功安装了Fastlane</span><br><span class="line"></span><br><span class="line">如果遇到下面的问题，一直卡在不动</span><br><span class="line">![](https://ws1.sinaimg.cn/large/006tNbRwgy1fveljinsb7j30vo0aiq50.jpg)</span><br><span class="line"></span><br><span class="line">那么可以不用管他，`关闭终端`或者`终止命令`即可。</span><br><span class="line"></span><br><span class="line">![](https://ws4.sinaimg.cn/large/006tNbRwgy1fvello1s6ej305i03j74m.jpg)</span><br><span class="line">## 发布到蒲公英（可选）##</span><br><span class="line">详情请移步[蒲公英](https://www.pgyer.com/doc/view/fastlane)</span><br><span class="line"></span><br><span class="line">### 安装蒲公英的 fastlane 插件 ###</span><br><span class="line">在`项目根`目录下，安装蒲公英插件:</span><br></pre></td></tr></table></figure></p>
+<p>fastlane add_plugin pgyer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">稍等几秒钟</span><br><span class="line">如果出现类似下面的信息，就说明安装成功了：</span><br><span class="line">![](https://ws1.sinaimg.cn/large/006tNbRwgy1fvet3cqvatj30vc08i40m.jpg)</span><br><span class="line">期间会询问是否可以修改文件信息，选择`y`即可</span><br><span class="line"></span><br><span class="line">### 编辑 ###</span><br><span class="line">Fastlane 会自动在 App 目录中生成 fastlane 目录，其中就会有 Fastlane 的配置文件 fastlane/Fastfile，这里，我们用 vim 打开：</span><br></pre></td></tr></table></figure></p>
+<p>vim ./fastlane/Fastfile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后，我们找到我们在用的工作流（action），在 build_app 指令后，加入蒲公英插件的配置信息。例如：</span><br></pre></td></tr></table></figure></p>
+<p>lane :beta do<br>  build_app(export_method: “development”)<br>  pgyer(api_key: “7f15xxxxxxxxxxxxxxxxxx141”, user_key: “4a5bcxxxxxxxxxxxxxxx3a9e”)<br>end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 注意：</span><br><span class="line"></span><br><span class="line">&gt;以上的 `api_key` 和 `user_key`，请开发者在自己账号下的 `应用管理` - `App概述` - `API` 中可以找到，并替换到以上相应的位置。</span><br><span class="line">&gt;在 Xcode 8.3 和 Xcode 8.3 以后的版本中，对于 `build_app` 的 `export_method` 的值，需要根据开发者的打包类型进行设置，可选的值有：`app-store`、`ad-hoc`、`development`、`enterprise`。对于 Xcode 8.3 以下的版本，则不需要设置 `export_method`。</span><br><span class="line"></span><br><span class="line">### 打包并自动上传 App 到蒲公英 ###</span><br><span class="line">经过以上配置后，就可以使用 Fastlane 来打包 App，并自动上传到蒲公英了。在终端下，定位到项目所在目录，输入以下命令即可：</span><br></pre></td></tr></table></figure></p>
+<p>fastlane beta<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后就充满激情的等待      </span><br><span class="line"></span><br><span class="line">![](https://ws2.sinaimg.cn/large/006tNbRwgy1fvdrmzvucwg305a05aq3g.gif)      </span><br><span class="line"></span><br><span class="line">最后打包成功提示</span><br><span class="line"></span><br><span class="line">![蒲公英](https://ws1.sinaimg.cn/large/006tNbRwgy1fvelgi3hnaj30vi0cmjsz.jpg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 其他 #</span><br><span class="line"></span><br><span class="line">### 卸载 ####</span><br></pre></td></tr></table></figure></p>
+<p>gem/brew uninstall fastlane<br><code>`</code></p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>在项目中手动删除 fastlane文件夹即可。</p>
+<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>完成了发布到蒲公英之后肯定不再仅仅满足于此，毕竟 Fastlane 是集成一系列的自动化工具的，后面会进行一些详细的操作，比如上传到 <code>APP Store Connect</code>.详情请移步 <a href="">Fastlane (二)</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自动化/" rel="tag"># 自动化</a>
+          
+            <a href="/tags/Fastlane/" rel="tag"># Fastlane</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/18/OpenGL-EL-二/" rel="next" title="OpenGL EL (二)">
+                <i class="fa fa-chevron-left"></i> OpenGL EL (二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/18/Fastlane-（二）/" rel="prev" title="Fastlane （二）">
+                Fastlane （二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/localImage/background.png"
+                alt="Duan yutian" />
+            
+              <p class="site-author-name" itemprop="name">Duan yutian</p>
+              <p class="site-description motion-element" itemprop="description">雾里看花</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lx.nextdev.cn/" title="凌霄的博客" target="_blank">凌霄的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前沿"><span class="nav-number">1.</span> <span class="nav-text">前沿</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fastlane组件"><span class="nav-number">2.</span> <span class="nav-text">Fastlane组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作流程"><span class="nav-number">3.</span> <span class="nav-text">操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境"><span class="nav-number">3.0.1.</span> <span class="nav-text">环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#检查-Xcode-CLT-是否安装"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">检查 Xcode CLT 是否安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ruby"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">Ruby</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装fastlane"><span class="nav-number">3.0.2.</span> <span class="nav-text">安装fastlane</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">3.0.3.</span> <span class="nav-text">删除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后续"><span class="nav-number">4.</span> <span class="nav-text">后续</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Duan yutian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Duan.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/09/18/Fastlane-安装/';
+          this.page.identifier = '2018/09/18/Fastlane-安装/';
+          this.page.title = 'Fastlane 安装 和 发布到蒲公英';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Duan.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":80,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>
