@@ -90,10 +90,11 @@ live2d:
   mobile:
     show: true # 是否在手机显示
 
-
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
+Plugins: hexo-generate-feed
+
+##Themes: https://hexo.io/themes/
 theme: next
 
 

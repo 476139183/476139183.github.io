@@ -2,9 +2,12 @@
 title: OpenGL ES (一)
 date: 2018-09-06 15:34:08
 password:
-tags:
+tags: 
+  - OpenGL
+  - iOS进阶
 top:
 categories:
+  - iOS
 photos: 
   - http://d-pic-image.yesky.com/1080x-/uploadImages/2017/014/00/FP43CP909564.jpg
 

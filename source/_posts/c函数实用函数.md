@@ -8,7 +8,7 @@ tags:
 好了，疑问先放着，我们进入正题，在iOS开发中我们经常遇到 浮点数的 四舍五入、进位、摸位 方法。
 
 我们可以通过速查表查看所有的C函数，`https://baike.baidu.com/item/Objective-C函数速查实例手册?fr=aladdin`    
-
+<!--more-->
 这里列出常用的几个函数：    
 1，四舍五入法    
     `float numberToRound`;

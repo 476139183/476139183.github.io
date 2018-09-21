@@ -3,7 +3,8 @@ title: Hexo 搭建博客（一）
 id: Hexo-0830
 date: 2018-08-30 13:51:03
 tags: [hexo,博客] 
-categories: 技能
+categories: 
+  - 技能
 description:  快速搭建 Hexo+Github 博客
 photo: 
  - https://ws4.sinaimg.cn/large/006tNbRwgy1fv14rbu7bmj31kw0p2qk0.jpg
