@@ -578,49 +578,57 @@
         
           
             <h2 id="一、简述"><a href="#一、简述" class="headerlink" title="一、简述"></a>一、简述</h2><ol>
-<li><p>Jenkins本身是用java语言开发的，所以安装Jenkins之前，要保证你的电脑有jdk，如果没有，请到如下链接下载：<a href="http://rj.baidu.com/soft/detail/25851.html?ald" target="_blank" rel="noopener">http://rj.baidu.com/soft/detail/25851.html?ald</a> ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。</p>
-</li>
-<li><p>进入<a href="https://jenkins.io/index.html" target="_blank" rel="noopener">Jenkins的官网</a> ,然后下载并安装Jenkins。此处有两种安装方法，使用命令行安装和使用jenkins.pkg安装，建议使用后一种</p>
-</li>
-<li><p>命令行使用 <code>homebrew</code> 安装</p>
-</li>
+<li><code>Jenkins</code> 本身是用 <code>java</code> 语言开发的，所以安装 <code>Jenkins</code> 之前，要保证你的电脑有<code>jdk</code>，如果没有，请到参考<a href="">《MAC安装JDK及环境变量配置》</a> ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ brew search jenkins</span><br><span class="line">jenkins</span><br><span class="line">$ brew install jenkins</span><br></pre></td></tr></table></figure>
-<p>启动jenkins    </p>
-<p><code>$ jenkins</code></p>
-<h2 id="二、Jenkins的安装"><a href="#二、Jenkins的安装" class="headerlink" title="二、Jenkins的安装"></a>二、Jenkins的安装</h2><ol start="3">
-<li><p>下载安装   </p>
+<h2 id="二、Jenkins的安装"><a href="#二、Jenkins的安装" class="headerlink" title="二、Jenkins的安装"></a>二、Jenkins的安装</h2><h3 id="1-1-jenkins-pkg"><a href="#1-1-jenkins-pkg" class="headerlink" title="1.1 jenkins.pkg"></a>1.1 jenkins.pkg</h3><p>进入<a href="https://jenkins.io/index.html" target="_blank" rel="noopener">Jenkins的官网</a> ,然后下载并安装Jenkins</p>
 <blockquote>
 <p>也可以直接点击下载<a href="http://mirrors.jenkins-ci.org/osx/latest" target="_blank" rel="noopener">最新版本</a></p>
 </blockquote>
-<p><strong><em>1.</em></strong> 点击链接进入官网<br><img src="http://upload-images.jianshu.io/upload_images/3008243-84988033422d9c16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong><em>2.</em></strong> 点击download<br><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvezxiaiajj31ga11egsn.jpg" alt=""><br><strong><em>3.</em></strong> 我选择的是Mac OS X下载并安装</p>
-<p><strong><em>4.</em></strong> 点击直接安装即可，在下图中，选择自定义，取消 <code>start at boot as“jenkins”</code>，一般不需要自启动<br><img src="http://upload-images.jianshu.io/upload_images/3008243-26bfb9a02d0f5d07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong><em>5.</em></strong> 安装完成后，会直接跳转到如下界面，如果没有跳转或者跳转失败，可通过执行如下命令 <code>open /Applications/Jenkins/jenkins.war</code> 进入到该界面<br><img src="http://upload-images.jianshu.io/upload_images/3008243-23951942a9c703fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-</ol>
+<p> <strong><em>1.</em></strong> 点击链接进入官网</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/3008243-84988033422d9c16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p> <strong><em>2.</em></strong> 点击download</p>
+<p> <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvezxiaiajj31ga11egsn.jpg" alt=""> </p>
+<p> <strong><em>3.</em></strong> 我选择的是Mac OS X下载并安装</p>
+<p> <strong><em>4.</em></strong> 点击直接安装即可，在下图中，选择自定义，取消 <code>start at boot as“jenkins”</code>，一般不需要自启动<br> <img src="http://upload-images.jianshu.io/upload_images/3008243-26bfb9a02d0f5d07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="1-2-命令行安装"><a href="#1-2-命令行安装" class="headerlink" title="1.2 命令行安装"></a>1.2 命令行安装</h3><p>命令行使用 <code>homebrew</code> 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ brew search jenkins</span><br><span class="line">jenkins</span><br><span class="line">$ brew install jenkins</span><br></pre></td></tr></table></figure>
+<p>启动jenkins    </p>
+<p><code>$ jenkins</code></p>
+<h3 id="2-进入页面"><a href="#2-进入页面" class="headerlink" title="2. 进入页面"></a>2. 进入页面</h3><p>安装完成后，会直接跳转到如下界面，如果没有跳转或者跳转失败，可通过执行如下命令 <code>open /Applications/Jenkins/jenkins.war</code> 进入到该界面<br><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fvfywcg9ewj30ri09tabf.jpg" alt=""></p>
 <blockquote>
 <p>如果打开没有反应，启动不了，就在浏览器直接打开：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> ，就可以进入到上面界面了。</p>
 </blockquote>
 <blockquote>
 <blockquote>
-<p>发现还是打不开， cd进入到jenkins.war包所在目录,执行以下命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort=8080</span><br></pre></td></tr></table></figure></p>
+<p>发现还是打不开， cd进入到jenkins.war包所在目录,执行以下命令:</p>
 </blockquote>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort=8080</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>httpPort指的就是Jenkins所使用的http端口,这里指定8080(默认的就是这个),可根据具体情况来修改。待Jenkins启动后,在浏览器页面输入以下地址:<br><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
 </blockquote>
 <blockquote>
 <p>这个时候可能会报一个错误。如果出现了上面的问题，原因可能是Java环境有问题，重新安装JDK环境即可。</p>
 </blockquote>
-<p> <strong><em>6.</em></strong> 观察图中的路径，然后打开你的终端，执行如下命令（注意：该命令仅在安装Jenkins的过程中执行才有效；安装成功后，再在终端中执行是无效的）：<br> <img src="http://upload-images.jianshu.io/upload_images/3008243-2a47f39bad79ed3e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p> <strong><em>7.</em></strong> 然后将我们得到的password输入到“Administrator password“中，即可进入如下界面，接着安装一些建议的插件，安装过程中，有的插件可能会安装失败，可以跳过，之后需要对应的插件时，再重新安装即可，具体后面会讲到：<br> <img src="http://upload-images.jianshu.io/upload_images/3008243-cf1635160604dc56?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p> <strong><em>8.</em></strong> 插件安装完成后，可能会卡在如下界面，不会自动跳转，刷新下界面即可：<br> <img src="http://upload-images.jianshu.io/upload_images/3008243-03f427bb5a3553da?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p> <strong><em>9.</em></strong> 在刷新后的界面中注册，输入用户名和密码，如下：<br> <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvezybgexnj31iw1byado.jpg" alt=""></p>
-<p> <strong><em>10.</em></strong> 注册成功后，点击”Start using Jenkins”<br> <img src="http://upload-images.jianshu.io/upload_images/3008243-bb59d4a3085e0e4c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="三、Jenkins的使用"><a href="#三、Jenkins的使用" class="headerlink" title="三、Jenkins的使用"></a>三、Jenkins的使用</h2><p>安装常用插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fvezz4ovfnj31kw0nxn2d.jpg" alt=""></p>
+<p> <strong><em>6.</em></strong> 观察图中的路径，将地址中的文件打开，或者打开你的终端，执行<code>cat</code>命令（注意：该命令仅在安装Jenkins的过程中执行才有效；安装成功后，再在终端中执行是无效的）：    </p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fvfyxf1rl8j30vg054wga.jpg" alt="">     </p>
+<p> <strong><em>7.</em></strong> 然后将我们得到的 <code>password</code> 输入到 <code>Administrator password</code> 中，即可进入如下界面, 选第一个,接着安装一些建议的插件，安装过程中，有的插件可能会安装失败，可以跳过，之后需要对应的插件时，再重新安装即可，具体后面会讲到：</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/3008243-cf1635160604dc56?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p> <strong><em>8.</em></strong> 插件安装完成后，可能会卡在如下界面，不会自动跳转，刷新下界面即可：</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/3008243-03f427bb5a3553da?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p> <strong><em>9.</em></strong> 在刷新后的界面中注册，输入用户名和密码，如下：</p>
+<p> <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fvezybgexnj31iw1byado.jpg" alt=""></p>
+<p> <strong><em>10.</em></strong> 注册成功后，点击”Start using Jenkins”</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/3008243-bb59d4a3085e0e4c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="三、Jenkins的使用"><a href="#三、Jenkins的使用" class="headerlink" title="三、Jenkins的使用"></a>三、Jenkins的使用</h2><h3 id="安装常用插件"><a href="#安装常用插件" class="headerlink" title="安装常用插件"></a>安装常用插件</h3><ul>
+<li>Xcode</li>
+<li>Keychains and provisioning profiles management</li>
+</ul>
+<p>…. </p>
+<p>如下图，进行管理:<br><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fvezz4ovfnj31kw0nxn2d.jpg" alt=""></p>
+<h3 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h3><h4 id="1-新建一个自由风格的软件项目"><a href="#1-新建一个自由风格的软件项目" class="headerlink" title="1.新建一个自由风格的软件项目"></a>1.新建一个自由风格的软件项目</h4><h4 id="2-配置git地址"><a href="#2-配置git地址" class="headerlink" title="2.配置git地址"></a>2.配置git地址</h4><p><img src="http://upload-images.jianshu.io/upload_images/80578-98eb62f65d91d0b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="立即构建下，提示构建成功"><a href="#立即构建下，提示构建成功" class="headerlink" title="立即构建下，提示构建成功"></a>立即构建下，提示构建成功</h4><p><img src="http://upload-images.jianshu.io/upload_images/80578-747f024d24255bab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>那么构建后的项目在哪里呢？<br>通过系统管理-&gt;系统设置-&gt;主目录 点击高级，可以查看到<br><img src="http://upload-images.jianshu.io/upload_images/80578-a7d73b8be1152ced.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>Jenkins的安装方式不同（<a href="http://www.cnblogs.com/ihojin/p/mac-install-jenkins.html" target="_blank" rel="noopener">Mac 安装 Jenkins</a>），卸载方法也不同</p>
 <h4 id="一-通过安装包安装的卸载方式"><a href="#一-通过安装包安装的卸载方式" class="headerlink" title="一.通过安装包安装的卸载方式"></a>一.通过安装包安装的卸载方式</h4><ul>
 <li><p>方法1：打开终端，执行命令 /Library/Application Support/Jenkins/Uninstall.command</p>
@@ -774,7 +782,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg" rel="gallery_cjm9z5g3j0015h6fyncnbeoqz"
+                 href="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg" rel="gallery_cjmbn6z1100158sfyqqdwi0qu"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg" itemprop="contentUrl"/>
               </a>
@@ -1077,7 +1085,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" rel="gallery_cjm9z5fvt0001h6fymnngrfz3"
+                 href="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" rel="gallery_cjmbn6ytp00018sfyzsdrpaa5"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" itemprop="contentUrl"/>
               </a>
@@ -1403,7 +1411,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://d-pic-image.yesky.com/1080x-/uploadImages/2017/014/00/FP43CP909564.jpg" rel="gallery_cjm9z5g1y000yh6fyegh1yrlr"
+                 href="http://d-pic-image.yesky.com/1080x-/uploadImages/2017/014/00/FP43CP909564.jpg" rel="gallery_cjmbn6yzk000y8sfy6wmmhdh8"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://d-pic-image.yesky.com/1080x-/uploadImages/2017/014/00/FP43CP909564.jpg" itemprop="contentUrl"/>
               </a>
@@ -2156,6 +2164,10 @@
                     <a href="http://lx.nextdev.cn/" title="凌霄的博客" target="_blank">凌霄的博客</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cherryblog.site" title="cherryBlog" target="_blank">cherryBlog</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -2492,6 +2504,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   
