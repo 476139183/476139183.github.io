@@ -87,29 +87,21 @@
 
 
 
-<meta name="description" content="安装JDK 访问Oracle官网，浏览到首页的底部菜单 ,然后按下图提示操作:         点击“JDK DOWNLOAD”按钮：    选择“Accept Lisence Agreement”同意协议:    点击Mac OS X x64后面的下载链接：  下载完成后点击安装包，按提示即可完成安装。  打开Finder,可以在下图所示的路径中找到安装好的jdk 1.8.0_40.jdk:(建">
+<meta name="description" content="文章来源 终于周五了，周末一定要好好休息一波，每逢周五的文章都会较为轻松。 大家在平时开发过程中，是不是经常要查一些单词的意思，或者某个中文词语、某段中文希望翻译成英文。 一般情况下，我们可以通过某个翻译app，比如有道；又或者打开浏览器打开web 在线翻译。 那么这两个操作我还是觉得有点重，我觉得这样翻译才有意思：  我们可以不跳出 Studio，直接翻译，或者在自己喜欢的 命令行工具中直接敲英">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAC安装JDK及环境变量配置">
-<meta property="og:url" content="http://yoursite.com/2018/09/19/MAC安装JDK及环境变量配置/index.html">
+<meta property="og:title" content="推荐两个实用开源项目">
+<meta property="og:url" content="http://yoursite.com/2018/09/21/推荐两个实用开源项目/index.html">
 <meta property="og:site_name" content="段雨田的Blog">
-<meta property="og:description" content="安装JDK 访问Oracle官网，浏览到首页的底部菜单 ,然后按下图提示操作:         点击“JDK DOWNLOAD”按钮：    选择“Accept Lisence Agreement”同意协议:    点击Mac OS X x64后面的下载链接：  下载完成后点击安装包，按提示即可完成安装。  打开Finder,可以在下图所示的路径中找到安装好的jdk 1.8.0_40.jdk:(建">
+<meta property="og:description" content="文章来源 终于周五了，周末一定要好好休息一波，每逢周五的文章都会较为轻松。 大家在平时开发过程中，是不是经常要查一些单词的意思，或者某个中文词语、某段中文希望翻译成英文。 一般情况下，我们可以通过某个翻译app，比如有道；又或者打开浏览器打开web 在线翻译。 那么这两个操作我还是觉得有点重，我觉得这样翻译才有意思：  我们可以不跳出 Studio，直接翻译，或者在自己喜欢的 命令行工具中直接敲英">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135011647-96008710.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135051835-861363050.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135219866-685515947.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135306585-54248836.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416153110191-1153954158.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416153449941-591903183.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416164957082-1418925235.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416165627113-2136824168.png">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/0069RVTdgy1fv5of7a721j30zk0mwacf.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/0069RVTdgy1fv5jtc8u1ej30fu0a6mxk.jpg">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416170843160-212359895.png">
-<meta property="og:updated_time" content="2018-09-19T09:46:07.351Z">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/MOu2ZNAwZwMW57ETEyJJCuGIkXkPo51uBAIW0uZax6hZPyXpib6R7O4UlHgFberEPVuj8a74PtNKcdM6YrWV30Q/640?wx_fmt=gif&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/MOu2ZNAwZwMW57ETEyJJCuGIkXkPo51u33LGUjZP8ZnX1GOOARTiaUj3o7tJuNquqALpvLG0FmdSibycO28eWibmA/640?wx_fmt=gif&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/MOu2ZNAwZwMW57ETEyJJCuGIkXkPo51u3eBI3g6HicNKcBWY3w9X98d5UA4MRJnpYrM9yYEE2md4u2rkyLXoqeg/640?wx_fmt=gif&wxfrom=5&wx_lazy=1">
+<meta property="og:updated_time" content="2018-09-21T06:49:33.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MAC安装JDK及环境变量配置">
-<meta name="twitter:description" content="安装JDK 访问Oracle官网，浏览到首页的底部菜单 ,然后按下图提示操作:         点击“JDK DOWNLOAD”按钮：    选择“Accept Lisence Agreement”同意协议:    点击Mac OS X x64后面的下载链接：  下载完成后点击安装包，按提示即可完成安装。  打开Finder,可以在下图所示的路径中找到安装好的jdk 1.8.0_40.jdk:(建">
-<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135011647-96008710.png">
+<meta name="twitter:title" content="推荐两个实用开源项目">
+<meta name="twitter:description" content="文章来源 终于周五了，周末一定要好好休息一波，每逢周五的文章都会较为轻松。 大家在平时开发过程中，是不是经常要查一些单词的意思，或者某个中文词语、某段中文希望翻译成英文。 一般情况下，我们可以通过某个翻译app，比如有道；又或者打开浏览器打开web 在线翻译。 那么这两个操作我还是觉得有点重，我觉得这样翻译才有意思：  我们可以不跳出 Studio，直接翻译，或者在自己喜欢的 命令行工具中直接敲英">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_gif/MOu2ZNAwZwMW57ETEyJJCuGIkXkPo51uBAIW0uZax6hZPyXpib6R7O4UlHgFberEPVuj8a74PtNKcdM6YrWV30Q/640?wx_fmt=gif&wxfrom=5&wx_lazy=1">
 
 
 
@@ -139,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/19/MAC安装JDK及环境变量配置/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/21/推荐两个实用开源项目/"/>
 
 
 
 
 
-  <title>MAC安装JDK及环境变量配置 | 段雨田的Blog</title>
+  <title>推荐两个实用开源项目 | 段雨田的Blog</title>
   
 
 
@@ -283,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/MAC安装JDK及环境变量配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/推荐两个实用开源项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Duan yutian">
@@ -300,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MAC安装JDK及环境变量配置</h1>
+          <h1 class="post-title" itemprop="name headline">推荐两个实用开源项目</h1>
         
 
         <div class="post-meta">
@@ -312,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T17:45:36+08:00">
-                2018-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T14:48:43+08:00">
+                2018-09-21
               </time>
             
 
@@ -323,6 +315,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -331,9 +345,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/19/MAC安装JDK及环境变量配置/#comments" itemprop="discussionUrl">
+                <a href="/2018/09/21/推荐两个实用开源项目/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/19/MAC安装JDK及环境变量配置/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/09/21/推荐两个实用开源项目/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -341,7 +355,7 @@
 
           
           
-             <span id="/2018/09/19/MAC安装JDK及环境变量配置/" class="leancloud_visitors" data-flag-title="MAC安装JDK及环境变量配置">
+             <span id="/2018/09/21/推荐两个实用开源项目/" class="leancloud_visitors" data-flag-title="推荐两个实用开源项目">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -372,78 +386,43 @@
       
 
       
-        <h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1><ol>
-<li>访问<a href="http://www.oracle.com" target="_blank" rel="noopener">Oracle官网</a>，浏览到首页的底部菜单 ,然后按下图提示操作:     </li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135011647-96008710.png" alt=""></p>
-<ol start="2">
-<li>点击“JDK DOWNLOAD”按钮：</li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135051835-861363050.png" alt=""></p>
-<ol start="3">
-<li>选择“Accept Lisence Agreement”同意协议:</li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135219866-685515947.png" alt=""></p>
-<ol start="4">
-<li>点击Mac OS X x64后面的下载链接：<br><img src="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135306585-54248836.png" alt=""></li>
-</ol>
-<p>下载完成后点击安装包，按提示即可完成安装。</p>
-<ol start="5">
-<li>打开Finder,可以在下图所示的路径中找到安装好的jdk 1.8.0_40.jdk:(建议直接使用<code>/Library/Java</code>前往,因为我居然找不到该目录)</li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416153110191-1153954158.png" alt=""></p>
-<ol start="6">
-<li>其中Contents下的Home文件夹，是该JDK的根目录。</li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416153449941-591903183.png" alt=""></p>
-<blockquote>
-<p>其中：</p>
+        <p><a href="https://mp.weixin.qq.com/s/Bm6cwzA2yAxr5kpDwUz9YQ" target="_blank" rel="noopener">文章来源</a></p>
+<p>终于周五了，周末一定要好好休息一波，每逢周五的文章都会较为轻松。</p>
+<p>大家在平时开发过程中，是不是经常要查一些单词的意思，或者某个中文词语、某段中文希望翻译成英文。</p>
+<p>一般情况下，我们可以通过某个翻译app，比如有道；又或者打开浏览器打开web 在线翻译。</p>
+<p>那么这两个操作我还是觉得有点重，我觉得这样翻译才有意思：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/MOu2ZNAwZwMW57ETEyJJCuGIkXkPo51uBAIW0uZax6hZPyXpib6R7O4UlHgFberEPVuj8a74PtNKcdM6YrWV30Q/640?wx_fmt=gif&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p>我们可以不跳出 Studio，直接翻译，或者在自己喜欢的 命令行工具中直接敲英文。</p>
+<p>是不是更加轻量。</p>
+<p>那么还有个场景，例如我正在看源码，看到一段英文注释或者单词想要翻译，当时我正在源码中操作，我并不希望copy 到命令行，再来看结果，你可以这样：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/MOu2ZNAwZwMW57ETEyJJCuGIkXkPo51u33LGUjZP8ZnX1GOOARTiaUj3o7tJuNquqALpvLG0FmdSibycO28eWibmA/640?wx_fmt=gif&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p>这样的操作就连贯很多了，而且支持多种语言，还能直接播放声音。</p>
+<p>至于推荐它还有个更大的原因就是，目前有700多次提交，近期还在更新。</p>
+<p>接下来就是详细介绍一哈了。</p>
+<h2 id="1-翻译插件"><a href="#1-翻译插件" class="headerlink" title="1. 翻译插件"></a>1. 翻译插件</h2><p><a href="https://github.com/YiiGuxing/TranslationPlugin" target="_blank" rel="noopener">https://github.com/YiiGuxing/TranslationPlugin</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>网络良好的很开心了，搜索安装即可：</p>
+<p><code>Preferences(Settings)</code> &gt; <code>Plugins</code> &gt; <code>Browse repositories...</code> &gt; 搜索并找到 <code>Translation</code> &gt; <code>Install Plugin</code></p>
+<p>网络不太流畅的，可以下载zip 包: </p>
+<p><code>下载最新发布的插件包</code> -&gt; <code>Preferences(Settings)</code> &gt; <code>Plugins</code> &gt; <code>Install plugin from disk...</code></p>
+<p>这个文档写的很清楚，而且还有一些别的功能，比如，我并不是划词查询，我就想查某个单词的意思，也可以唤起翻译面板：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/MOu2ZNAwZwMW57ETEyJJCuGIkXkPo51u3eBI3g6HicNKcBWY3w9X98d5UA4MRJnpYrM9yYEE2md4u2rkyLXoqeg/640?wx_fmt=gif&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p>当然这样就是通过快捷键打开了，具体支持哪些快捷键，自己看文档吧。</p>
+<h2 id="2-命令行翻译"><a href="#2-命令行翻译" class="headerlink" title="2. 命令行翻译"></a>2. 命令行翻译</h2><blockquote>
+<p>项目介绍：不喜欢安装有道词典的应用程序，因为太耗资源还一堆广告，但是用浏览器打开dict.youdao.com也挺麻烦的，不是吗？快来试试我的有道词典命令行工具吧！</p>
 </blockquote>
+<p> <a href="https://github.com/kenshinji/yddict" target="_blank" rel="noopener">https://github.com/kenshinji/yddict</a></p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install yddict -g</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><code>bin目录</code>下存放JDK用于开发的一些终端命令工具。常见的工具如：<br>“javac”的作用是将java源文件编译为class文件(即自解码文件)；<br>“java”命令的作用是运行class文件。</p>
+<p>安装如果因为权限为问题失败，可以加上以管理员身份运行；如果安装完成后提示node.js 版本过低，记得升级。</p>
 </blockquote>
-<blockquote>
-<p><code>db目录</code>下是java开发的一个开源的关系型数据库；</p>
-</blockquote>
-<blockquote>
-<p><code>include目录</code>下是一些C语言的头文件；</p>
-</blockquote>
-<blockquote>
-<p><code>jre目录</code>下JDK所依赖的java运行时；</p>
-</blockquote>
-<blockquote>
-<p><code>lib目录</code>下存放JDK开发工具所依赖的一些库文件；</p>
-</blockquote>
-<blockquote>
-<p><code>man目录</code>下存放JDK开发工具的说明文档。</p>
-</blockquote>
-<ol start="7">
-<li>安装好JDK后需要配置JDK的环境变量，方法请参考：<a href="http://www.cnblogs.com/quickcodes/p/5398709.html" target="_blank" rel="noopener">Mac下如何配置环境变量</a>，方法有部分不对，下面以配置JDK的环境变量为例，示范如何配置环境变量，后续在安装Android、Maven、MongoDB等时都会需要配置相应的环境变量。</li>
-</ol>
-<h1 id="配置JDK的环境变量"><a href="#配置JDK的环境变量" class="headerlink" title="配置JDK的环境变量"></a>配置JDK的环境变量</h1><ol>
-<li><p>打开终端。（cd /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk）</p>
-</li>
-<li><p>如果你是第一次配置环境变量，可以使用 <code>touch ~/.bash_profile</code> 创建一个 <code>.bash_profile</code> 的隐藏配置文件(如果你是为编辑已存在的配置文件，则使用 <code>open -e ~/.bash_profile</code> 命令)：</p>
-</li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416164957082-1418925235.png" alt=""></p>
-<ol start="3">
-<li>输入 <code>open -e ~/.bash_profile</code> 命令：</li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416165627113-2136824168.png" alt=""></p>
-<blockquote>
-<p>ps:如果没有权限 就使用<code>sudo touch ~/.bash_profile</code>,而编辑的时候我是用sublime打开的。</p>
-</blockquote>
-<ol start="4">
-<li>输入如下配置：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home</span><br><span class="line">PATH=$JAVA_HOME/bin:$PATH:.</span><br><span class="line">CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.</span><br><span class="line">export JAVA_HOME</span><br><span class="line">export PATH</span><br><span class="line">export CLASSPATH</span><br></pre></td></tr></table></figure>
-<p>然后保存关闭该窗口。（我的是jdk-10.0.2.jdk）</p>
-<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fv5of7a721j30zk0mwacf.jpg" alt=""></p>
-<p>5.使用”source ~/.bash_profile”使配置生效 然后输入”java -version”，如果看到jdk版本为10.0.2则说明配置已经生效：</p>
-<p>6.输入 echo $JAVA_HOME 显示刚才配置的路径</p>
-<p><img src="https://ws1.sinaimg.cn/large/0069RVTdgy1fv5jtc8u1ej30fu0a6mxk.jpg" alt=""></p>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201604/877813-20160416170843160-212359895.png" alt=""></p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><code>yd &lt;要查询的单词&gt;</code></p>
+<p>默认情况下，查出来的单词是白色的文字，如果 AS 是默认主题，那么就会看不到。当然，颜色支持我们自己设置。</p>
+<p>默认在 <em><code>用户主目录下.config/configstore/yddict.json</code></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.config/configstore/yddict.json </span><br><span class="line">&#123;</span><br><span class="line">    &quot;color&quot;: &quot;green&quot;,</span><br><span class="line">    &quot;spinner&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以自由修改这个字的颜色。</p>
+<p>推荐完毕，祝大家周末愉快！</p>
+<p>推荐阅读：</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&amp;mid=2650826203&amp;idx=1&amp;sn=4c83f119ae3a7e818a65357cb78e5df5&amp;chksm=80b7b145b7c038538ef46e7b16d41b6dc5d622b6a3c72ce67ce9735c49709f011d334e1366f9&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">启动优化提升60%</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&amp;mid=2650826201&amp;idx=1&amp;sn=3b843ffedf6d8fe56288612b0f9360c9&amp;chksm=80b7b147b7c0385171c9a69668abe86921360adfa123c136b13243a0d09fbd3e80723645397c&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">给大家分享一个面试经验</a></p>
 
       
     </div>
@@ -468,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/19/jenkins-自动化部署/" rel="next" title="jenkins 安装">
-                <i class="fa fa-chevron-left"></i> jenkins 安装
+              <a href="/2018/09/19/MAC安装JDK及环境变量配置/" rel="next" title="MAC安装JDK及环境变量配置">
+                <i class="fa fa-chevron-left"></i> MAC安装JDK及环境变量配置
               </a>
             
           </div>
@@ -477,10 +456,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/21/推荐两个实用开源项目/" rel="prev" title="推荐两个实用开源项目">
-                推荐两个实用开源项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -678,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置JDK的环境变量"><span class="nav-number">2.</span> <span class="nav-text">配置JDK的环境变量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-翻译插件"><span class="nav-number">1.</span> <span class="nav-text">1. 翻译插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-命令行翻译"><span class="nav-number">2.</span> <span class="nav-text">2. 命令行翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">2.0.2.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -872,9 +847,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/09/19/MAC安装JDK及环境变量配置/';
-          this.page.identifier = '2018/09/19/MAC安装JDK及环境变量配置/';
-          this.page.title = 'MAC安装JDK及环境变量配置';
+          this.page.url = 'http://yoursite.com/2018/09/21/推荐两个实用开源项目/';
+          this.page.identifier = '2018/09/21/推荐两个实用开源项目/';
+          this.page.title = '推荐两个实用开源项目';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Duan.disqus.com/embed.js';
