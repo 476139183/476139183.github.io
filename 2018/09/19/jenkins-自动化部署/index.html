@@ -87,12 +87,12 @@
 
 
 
-<meta name="description" content="一、简述 Jenkins 本身是用 java 语言开发的，所以安装 Jenkins 之前，要保证你的电脑有jdk，如果没有，请到参考《MAC安装JDK及环境变量配置》 ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。">
+<meta name="description" content="一、简述 Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。Jenkins 本身是用 java 语言开发的，所以安装 Jenkins 之前，要保证你的电脑有jdk，如果没有，请到参考《MAC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jenkins 安装">
 <meta property="og:url" content="http://yoursite.com/2018/09/19/jenkins-自动化部署/index.html">
 <meta property="og:site_name" content="段雨田的Blog">
-<meta property="og:description" content="一、简述 Jenkins 本身是用 java 语言开发的，所以安装 Jenkins 之前，要保证你的电脑有jdk，如果没有，请到参考《MAC安装JDK及环境变量配置》 ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。">
+<meta property="og:description" content="一、简述 Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。Jenkins 本身是用 java 语言开发的，所以安装 Jenkins 之前，要保证你的电脑有jdk，如果没有，请到参考《MAC">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3008243-84988033422d9c16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fvezxiaiajj31ga11egsn.jpg">
@@ -104,13 +104,21 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fvezybgexnj31iw1byado.jpg">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3008243-bb59d4a3085e0e4c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fvezz4ovfnj31kw0nxn2d.jpg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-e68106251e4a5eaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-98eb62f65d91d0b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-747f024d24255bab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-a7d73b8be1152ced.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-21T07:13:38.875Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-7398252ed1c1104c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fvh8d0pc1aj30hm0hsmyp.jpg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-0da04c60564cecca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-60758d04253a56b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/80578-084d215fb776d43c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fvh897f6v0j30ii0kw760.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fvh8al45v2j31f80giabm.jpg">
+<meta property="og:updated_time" content="2018-09-21T08:53:12.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins 安装">
-<meta name="twitter:description" content="一、简述 Jenkins 本身是用 java 语言开发的，所以安装 Jenkins 之前，要保证你的电脑有jdk，如果没有，请到参考《MAC安装JDK及环境变量配置》 ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。">
+<meta name="twitter:description" content="一、简述 Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。Jenkins 本身是用 java 语言开发的，所以安装 Jenkins 之前，要保证你的电脑有jdk，如果没有，请到参考《MAC">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3008243-84988033422d9c16.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -375,8 +383,15 @@
 
       
         <h2 id="一、简述"><a href="#一、简述" class="headerlink" title="一、简述"></a>一、简述</h2><ol>
-<li><code>Jenkins</code> 本身是用 <code>java</code> 语言开发的，所以安装 <code>Jenkins</code> 之前，要保证你的电脑有<code>jdk</code>，如果没有，请到参考<a href="">《MAC安装JDK及环境变量配置》</a> ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。</li>
+<li>Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。<br><code>Jenkins</code> 本身是用 <code>java</code> 语言开发的，所以安装 <code>Jenkins</code> 之前，要保证你的电脑有<code>jdk</code>，如果没有，请到参考<a href="">《MAC安装JDK及环境变量配置》</a> ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。</li>
 </ol>
+<p>根据官方定义，Jenkins有以下的用途：</p>
+<ul>
+<li>构建项目      </li>
+<li>跑测试用例检测bug      </li>
+<li>静态代码检测       </li>
+<li>部署      </li>
+</ul>
 <a id="more"></a> 
 <h2 id="二、Jenkins的安装"><a href="#二、Jenkins的安装" class="headerlink" title="二、Jenkins的安装"></a>二、Jenkins的安装</h2><h3 id="1-1-jenkins-pkg"><a href="#1-1-jenkins-pkg" class="headerlink" title="1.1 jenkins.pkg"></a>1.1 jenkins.pkg</h3><p>进入<a href="https://jenkins.io/index.html" target="_blank" rel="noopener">Jenkins的官网</a> ,然后下载并安装Jenkins</p>
 <blockquote>
@@ -421,12 +436,30 @@
 <h2 id="三、Jenkins的使用"><a href="#三、Jenkins的使用" class="headerlink" title="三、Jenkins的使用"></a>三、Jenkins的使用</h2><h3 id="安装常用插件"><a href="#安装常用插件" class="headerlink" title="安装常用插件"></a>安装常用插件</h3><ul>
 <li>Xcode</li>
 <li>Keychains and provisioning profiles management</li>
+<li>Git Plugin</li>
+<li>Xcode integration<br>…. </li>
 </ul>
-<p>…. </p>
 <p>如下图，进行管理:<br><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fvezz4ovfnj31kw0nxn2d.jpg" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/80578-e68106251e4a5eaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h3 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h3><h4 id="1-新建一个自由风格的软件项目"><a href="#1-新建一个自由风格的软件项目" class="headerlink" title="1.新建一个自由风格的软件项目"></a>1.新建一个自由风格的软件项目</h4><h4 id="2-配置git地址"><a href="#2-配置git地址" class="headerlink" title="2.配置git地址"></a>2.配置git地址</h4><p><img src="http://upload-images.jianshu.io/upload_images/80578-98eb62f65d91d0b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h4 id="立即构建下，提示构建成功"><a href="#立即构建下，提示构建成功" class="headerlink" title="立即构建下，提示构建成功"></a>立即构建下，提示构建成功</h4><p><img src="http://upload-images.jianshu.io/upload_images/80578-747f024d24255bab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>那么构建后的项目在哪里呢？<br>通过系统管理-&gt;系统设置-&gt;主目录 点击高级，可以查看到<br><img src="http://upload-images.jianshu.io/upload_images/80578-a7d73b8be1152ced.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在jenkins的workspace目录中，可以看到构建的项目</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/80578-7398252ed1c1104c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="编译配置（很关键）"><a href="#编译配置（很关键）" class="headerlink" title="编译配置（很关键）"></a>编译配置（很关键）</h4><p>上面虽然编译成功了，但是你发现根本没有看到ipa文件，所以还需要进行下面的配置：增加构建步骤</p>
+<p>这就用到我们上面安装的Xcode插件了</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fvh8d0pc1aj30hm0hsmyp.jpg" alt=""></p>
+<p>Xcode插件配置</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/80578-0da04c60564cecca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/80578-60758d04253a56b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>配置完成，点击立即构建，查看ipa所在的路径</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/80578-084d215fb776d43c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>OK，一个简单的打包就完成了。</p>
+<h2 id="结合FastLane"><a href="#结合FastLane" class="headerlink" title="结合FastLane"></a>结合FastLane</h2><p>配置好Git，在 <code>增加构建步骤</code> 的时候，选择脚本</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fvh897f6v0j30ii0kw760.jpg" alt=""></p>
+<p>添加 shell 命令：<br><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fvh8al45v2j31f80giabm.jpg" alt=""></p>
+<blockquote>
+<p>我这里做了三步，1.cd 到项目路径  2，执行fastlane 打包  3，发送qq邮件</p>
+</blockquote>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>Jenkins的安装方式不同（<a href="http://www.cnblogs.com/ihojin/p/mac-install-jenkins.html" target="_blank" rel="noopener">Mac 安装 Jenkins</a>），卸载方法也不同</p>
 <h4 id="一-通过安装包安装的卸载方式"><a href="#一-通过安装包安装的卸载方式" class="headerlink" title="一.通过安装包安装的卸载方式"></a>一.通过安装包安装的卸载方式</h4><ul>
 <li><p>方法1：打开终端，执行命令 /Library/Application Support/Jenkins/Uninstall.command</p>
@@ -438,6 +471,16 @@
 <li>打开终端 <code>brew uninstall jenkins</code></li>
 </ul>
 <p>完成之后再次打开<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a>  访问不了，说明卸载成功</p>
+<h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2><p>Jenkins做的操作其实很简单，它只是将我们平时做的每一步重复的操作自动化了而已。因此，iOS中Jenkins要做的分为以下几步：</p>
+<ol>
+<li>拉取远端代码      </li>
+<li>由于某种条件触发后开始自动编译，打包     </li>
+<li>将生成的ipa文件上传到指定位置，供测试下载测试      </li>
+</ol>
+<p>这三步中，每一步Jenkins什么都没做，它只是调用了Mac中的一些工具，具体的说就是使用了命令行工具。有的做成了可视化的插件，有的还是要通过自己写命令来实现。典型的就是编译和打包的命令是调用xcodebuild命令。<br>也就是说我们可以也可以结合 <code>Fastlane</code> 来打包，简化 <code>Jenkins</code>的操作和需要安装的插件。</p>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="https://www.jianshu.com/p/41ecb06ae95f" target="_blank" rel="noopener">Jenkins持续集成iOS项目</a></p>
+<p><a href="https://www.imooc.com/article/26327?block_id=tuijian_wz#" target="_blank" rel="noopener">Jenkins踩坑记录</a></p>
+<p><a href="https://www.cnblogs.com/Rocky_/p/8297260.html" target="_blank" rel="noopener">Jenkins 构建触发器</a></p>
 
       
     </div>
@@ -592,7 +635,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -603,7 +646,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -672,7 +715,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、简述"><span class="nav-number">1.</span> <span class="nav-text">一、简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Jenkins的安装"><span class="nav-number">2.</span> <span class="nav-text">二、Jenkins的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-jenkins-pkg"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 jenkins.pkg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-命令行安装"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 命令行安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-进入页面"><span class="nav-number">2.3.</span> <span class="nav-text">2. 进入页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Jenkins的使用"><span class="nav-number">3.</span> <span class="nav-text">三、Jenkins的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装常用插件"><span class="nav-number">3.1.</span> <span class="nav-text">安装常用插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目实战"><span class="nav-number">3.2.</span> <span class="nav-text">项目实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-新建一个自由风格的软件项目"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.新建一个自由风格的软件项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置git地址"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.配置git地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#立即构建下，提示构建成功"><span class="nav-number">3.2.3.</span> <span class="nav-text">立即构建下，提示构建成功</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载"><span class="nav-number">4.1.</span> <span class="nav-text">卸载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-通过安装包安装的卸载方式"><span class="nav-number">4.1.1.</span> <span class="nav-text">一.通过安装包安装的卸载方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-通过-Homebrew-安装的卸载方式"><span class="nav-number">4.1.2.</span> <span class="nav-text">二.通过 Homebrew 安装的卸载方式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、简述"><span class="nav-number">1.</span> <span class="nav-text">一、简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Jenkins的安装"><span class="nav-number">2.</span> <span class="nav-text">二、Jenkins的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-jenkins-pkg"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 jenkins.pkg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-命令行安装"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 命令行安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-进入页面"><span class="nav-number">2.3.</span> <span class="nav-text">2. 进入页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Jenkins的使用"><span class="nav-number">3.</span> <span class="nav-text">三、Jenkins的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装常用插件"><span class="nav-number">3.1.</span> <span class="nav-text">安装常用插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目实战"><span class="nav-number">3.2.</span> <span class="nav-text">项目实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-新建一个自由风格的软件项目"><span class="nav-number">3.2.1.</span> <span class="nav-text">1.新建一个自由风格的软件项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置git地址"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.配置git地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#立即构建下，提示构建成功"><span class="nav-number">3.2.3.</span> <span class="nav-text">立即构建下，提示构建成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译配置（很关键）"><span class="nav-number">3.2.4.</span> <span class="nav-text">编译配置（很关键）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结合FastLane"><span class="nav-number">4.</span> <span class="nav-text">结合FastLane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载"><span class="nav-number">5.1.</span> <span class="nav-text">卸载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-通过安装包安装的卸载方式"><span class="nav-number">5.1.1.</span> <span class="nav-text">一.通过安装包安装的卸载方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-通过-Homebrew-安装的卸载方式"><span class="nav-number">5.1.2.</span> <span class="nav-text">二.通过 Homebrew 安装的卸载方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text">#</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">7.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
             
 
           </div>
