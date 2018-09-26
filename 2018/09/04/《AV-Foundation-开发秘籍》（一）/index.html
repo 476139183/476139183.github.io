@@ -87,16 +87,31 @@
 
 
 
-<meta name="description" content="雾里看花">
-<meta property="og:type" content="website">
-<meta property="og:title" content="段雨田的Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="AVFoundation简介AVFoundation是苹果在iOS和OS X系统中用于处理基于时间的媒体数据的Objective-C框架. 供使用者来开发媒体类型的应用程序。  如果只是进行简单的视频录制，使用UIKit中的UIImagePickerController就可以了。如果需要播放视频，使用AVKit框架也足够了。但是如果需要进行视频文件的处理等更灵活等操作，就需要使用到AVFounda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《AV Foundation 开发秘籍》之 数据的采集和编码">
+<meta property="og:url" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/index.html">
 <meta property="og:site_name" content="段雨田的Blog">
-<meta property="og:description" content="雾里看花">
+<meta property="og:description" content="AVFoundation简介AVFoundation是苹果在iOS和OS X系统中用于处理基于时间的媒体数据的Objective-C框架. 供使用者来开发媒体类型的应用程序。  如果只是进行简单的视频录制，使用UIKit中的UIImagePickerController就可以了。如果需要播放视频，使用AVKit框架也足够了。但是如果需要进行视频文件的处理等更灵活等操作，就需要使用到AVFounda">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/avfoundation.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/capture.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/connection.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/pcm.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/24bit.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/8bit.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/chroma.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/luma.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/yuv.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/i420p.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/nv12.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/time-redundancy.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/mov-atom.gif">
+<meta property="og:updated_time" content="2018-09-26T08:11:59.015Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="段雨田的Blog">
-<meta name="twitter:description" content="雾里看花">
+<meta name="twitter:title" content="《AV Foundation 开发秘籍》之 数据的采集和编码">
+<meta name="twitter:description" content="AVFoundation简介AVFoundation是苹果在iOS和OS X系统中用于处理基于时间的媒体数据的Objective-C框架. 供使用者来开发媒体类型的应用程序。  如果只是进行简单的视频录制，使用UIKit中的UIImagePickerController就可以了。如果需要播放视频，使用AVKit框架也足够了。但是如果需要进行视频文件的处理等更灵活等操作，就需要使用到AVFounda">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/avfoundation.png">
 
 
 
@@ -126,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/"/>
 
 
 
 
 
-  <title>段雨田的Blog</title>
+  <title>《AV Foundation 开发秘籍》之 数据的采集和编码 | 段雨田的Blog</title>
   
 
 
@@ -151,8 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 <!--     <a href="https://github.com/476139183"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
  -->
@@ -256,1348 +270,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/是它，是它，就是它！/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/25/是它，是它，就是它！/" itemprop="url">是它，是它，就是它！--<小丑回魂></a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T16:29:09+08:00">
-                2018-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂谈/" itemprop="url" rel="index">
-                    <span itemprop="name">杂谈</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/25/是它，是它，就是它！/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/25/是它，是它，就是它！/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/25/是它，是它，就是它！/" class="leancloud_visitors" data-flag-title="是它，是它，就是它！--<小丑回魂>">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/" rel="gallery_cjmivg4va001au3fy6kmvzpf9"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <blockquote>
-<p>二零一七年九月份，北美炸出一部现象级电影，一举打破北美九月份票房影史纪录，完全碾压之前开启招魂恐怖电影宇宙的《安娜贝尔2》！成本仅3500万美元，上映两周票房已跻身R级恐怖片影史第三。影片改编自恐怖大师史蒂芬·金的同名作品，名字只有一个字：它（It）。</p>
-</blockquote>
-<p>是它，是它，就是它！2017年度恐怖最佳！</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/25/是它，是它，就是它！/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/推荐两个实用开源项目/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/21/推荐两个实用开源项目/" itemprop="url">推荐两个实用开源项目</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T14:48:43+08:00">
-                2018-09-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/21/推荐两个实用开源项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/21/推荐两个实用开源项目/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/21/推荐两个实用开源项目/" class="leancloud_visitors" data-flag-title="推荐两个实用开源项目">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://mp.weixin.qq.com/s/Bm6cwzA2yAxr5kpDwUz9YQ" target="_blank" rel="noopener">文章来源</a></p>
-<p>终于周五了，周末一定要好好休息一波，每逢周五的文章都会较为轻松。</p>
-<p>大家在平时开发过程中，是不是经常要查一些单词的意思，或者某个中文词语、某段中文希望翻译成英文。</p>
-<p>一般情况下，我们可以通过某个翻译app，比如有道；又或者打开浏览器打开web 在线翻译。</p>
-<p>那么这两个操作我还是觉得有点重，我觉得这样翻译才有意思：</p>
-<p><img src="/2018/09/21/推荐两个实用开源项目/640.gif" alt="目录">    </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/21/推荐两个实用开源项目/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/MAC安装JDK及环境变量配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/19/MAC安装JDK及环境变量配置/" itemprop="url">MAC安装JDK及环境变量配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T17:45:36+08:00">
-                2018-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/19/MAC安装JDK及环境变量配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/19/MAC安装JDK及环境变量配置/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/19/MAC安装JDK及环境变量配置/" class="leancloud_visitors" data-flag-title="MAC安装JDK及环境变量配置">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1><ol>
-<li>访问<a href="http://www.oracle.com" target="_blank" rel="noopener">Oracle官网</a>，浏览到首页的底部菜单 ,然后按下图提示操作:     </li>
-</ol>
-<p><img src="http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135011647-96008710.png" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/19/MAC安装JDK及环境变量配置/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/jenkins-自动化部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/19/jenkins-自动化部署/" itemprop="url">jenkins 安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T17:39:58+08:00">
-                2018-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/19/jenkins-自动化部署/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/19/jenkins-自动化部署/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/19/jenkins-自动化部署/" class="leancloud_visitors" data-flag-title="jenkins 安装">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="一、简述"><a href="#一、简述" class="headerlink" title="一、简述"></a>一、简述</h2><ol>
-<li>Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。<br><code>Jenkins</code> 本身是用 <code>java</code> 语言开发的，所以安装 <code>Jenkins</code> 之前，要保证你的电脑有<code>jdk</code>，如果没有，请到参考<a href="">《MAC安装JDK及环境变量配置》</a> ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。</li>
-</ol>
-<p>根据官方定义，Jenkins有以下的用途：</p>
-<ul>
-<li>构建项目      </li>
-<li>跑测试用例检测bug      </li>
-<li>静态代码检测       </li>
-<li>部署      </li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/19/jenkins-自动化部署/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/Fastlane-（二）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/18/Fastlane-（二）/" itemprop="url">Fastlane （二）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T16:59:29+08:00">
-                2018-09-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/18/Fastlane-（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/18/Fastlane-（二）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/18/Fastlane-（二）/" class="leancloud_visitors" data-flag-title="Fastlane （二）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg" rel="gallery_cjmivg4v80018u3fy7fwbz6hm"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://pic1.zhimg.com/v2-ac01e78370df1fbbcf031f3de1b33a5c_r.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h1 id="打包到-AppStore"><a href="#打包到-AppStore" class="headerlink" title="打包到 AppStore"></a>打包到 AppStore</h1><p><a href="">上篇文章</a> 我们已经成功的打包app到蒲公英了。那么我们也可以尝试将app上传到AppStore.<br>废话不多说，先简单的打包一个 ipa 到 AppStore 。  </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/18/Fastlane-（二）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/Fastlane-安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/18/Fastlane-安装/" itemprop="url">Fastlane 安装 和 发布到蒲公英</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T14:53:54+08:00">
-                2018-09-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/18/Fastlane-安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/18/Fastlane-安装/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/18/Fastlane-安装/" class="leancloud_visitors" data-flag-title="Fastlane 安装 和 发布到蒲公英">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" rel="gallery_cjmivg4nt0001u3fy66r6albn"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h1 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h1><blockquote>
-<p>在使用Fastlane打包之前，你的项目必须是正确的。我的意思是说，你得用原生的方式成功Archive，并可以upload你的测试项目！否则会导致Fastlane打包失败<br></p></blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/18/Fastlane-安装/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/OpenGL-EL-二/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/18/OpenGL-EL-二/" itemprop="url">OpenGL EL (二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T09:19:50+08:00">
-                2018-09-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/18/OpenGL-EL-二/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/18/OpenGL-EL-二/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/18/OpenGL-EL-二/" class="leancloud_visitors" data-flag-title="OpenGL EL (二)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/06/OpenGL-ES-一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/06/OpenGL-ES-一/" itemprop="url">OpenGL ES (一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T15:34:08+08:00">
-                2018-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/06/OpenGL-ES-一/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/06/OpenGL-ES-一/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/06/OpenGL-ES-一/" class="leancloud_visitors" data-flag-title="OpenGL ES (一)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://d-pic-image.yesky.com/1080x-/uploadImages/2017/014/00/FP43CP909564.jpg" rel="gallery_cjmivg4tl0010u3fy01af2rg7"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://d-pic-image.yesky.com/1080x-/uploadImages/2017/014/00/FP43CP909564.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <!--
-<div align=center>![1](http://d-pic-image.yesky.com/1080x-/uploadImages/2017/014/00/FP43CP909564.jpg)<div>
--->
-<p>最近，斗破苍穹电视剧上映的，里面的梗就不用多提， <code>三十年河东，三十年河西，莫欺少年穷</code> 指不定口碑低开高走呢。<br>人生也是一样, 无法预料,学历代表你的过去，能力代表你的现在，学习代表你的将来.<br>所以学无止境，需精益求精，不断的学习，才能蹒跚前行。    </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/06/OpenGL-ES-一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
 
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -1627,9 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/04/《AV-Foundation-开发秘籍》（一）/" itemprop="url">《AV Foundation 开发秘籍》之 数据的采集和编码</a></h1>
+          <h1 class="post-title" itemprop="name headline">《AV Foundation 开发秘籍》之 数据的采集和编码</h1>
         
 
         <div class="post-meta">
@@ -1701,9 +374,7 @@
       
 
       
-        
-          
-            <h2 id="AVFoundation简介"><a href="#AVFoundation简介" class="headerlink" title="AVFoundation简介"></a>AVFoundation简介</h2><p>AVFoundation是苹果在iOS和OS X系统中用于处理基于时间的媒体数据的Objective-C框架. 供使用者来开发媒体类型的应用程序。</p>
+        <h2 id="AVFoundation简介"><a href="#AVFoundation简介" class="headerlink" title="AVFoundation简介"></a>AVFoundation简介</h2><p>AVFoundation是苹果在iOS和OS X系统中用于处理基于时间的媒体数据的Objective-C框架. 供使用者来开发媒体类型的应用程序。</p>
 <p><img src="/2018/09/04/《AV-Foundation-开发秘籍》（一）/avfoundation.png" alt=""></p>
 <p>如果只是进行简单的视频录制，使用UIKit中的<code>UIImagePickerController</code>就可以了。如果需要播放视频，使用AVKit框架也足够了。但是如果需要进行视频文件的处理等更灵活等操作，就需要使用到AVFoundation等底层的框架了。</p>
 <ul>
@@ -1824,8 +495,6 @@
 </ul>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   在完整的数字音频生产流程流程中，最终的成品品质是由信号采样量化,信号编码，信号传输，信号同步，信号处理，信号存储等多个环节共同决定的，      </span><br><span class="line">   很大程度依赖与软硬件的性能指标，而工作者对与采样量化相关概念的明确，是音频质量的一道重要的保障，总的来说 工作中选择采样率与量化位深的原则有几点</span><br><span class="line"><span class="number">1</span>.在高精度和系统性能之间选取平衡点</span><br><span class="line"><span class="number">2</span>.一般不低于 24bit/<span class="number">44</span>.1kHz规格</span><br><span class="line"><span class="number">3</span>.尽可能减少流程中采样率转换的次数</span><br><span class="line"><span class="number">4</span>.在降低量化位深时，进行有效的技术补偿</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -1842,158 +511,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/03/iOS-架构思想漫谈/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Duan yutian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/localImage/background.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="段雨田的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/03/iOS-架构思想漫谈/" itemprop="url">iOS 组件化+热切换+热更新+MVVM 架构思想漫谈</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T16:45:46+08:00">
-                2018-09-03
-              </time>
+              <a href="/2018/09/03/iOS-架构思想漫谈/" rel="next" title="iOS 组件化+热切换+热更新+MVVM 架构思想漫谈">
+                <i class="fa fa-chevron-left"></i> iOS 组件化+热切换+热更新+MVVM 架构思想漫谈
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2018/09/06/OpenGL-ES-一/" rel="prev" title="OpenGL ES (一)">
+                OpenGL ES (一) <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/03/iOS-架构思想漫谈/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/03/iOS-架构思想漫谈/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/09/03/iOS-架构思想漫谈/" class="leancloud_visitors" data-flag-title="iOS 组件化+热切换+热更新+MVVM 架构思想漫谈">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>移动互联网发展10余年来，移动应用也谁之发生了翻天覆地的变化。从最初的几M小应用到现在动则几十上百M；从最初的一个人几个小功能，到现在的几十上百号人，比PC网页还要齐全还要强大的功能。在此过程中，原有的单Project，MVC架构，一个月一发版，已经远远不能满足当前移动应用的开发。于是乎，一个新的名词便诞生了–移动架构师。<br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/03/iOS-架构思想漫谈/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -2003,14 +546,38 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
 
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -2018,6 +585,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -2038,8 +619,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -2128,6 +718,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AVFoundation简介"><span class="nav-number">1.</span> <span class="nav-text">AVFoundation简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据采集"><span class="nav-number">2.</span> <span class="nav-text">数据采集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#采集过程"><span class="nav-number">2.1.</span> <span class="nav-text">采集过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例代码"><span class="nav-number">2.1.1.</span> <span class="nav-text">示例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#音频采集相关概念"><span class="nav-number">2.2.</span> <span class="nav-text">音频采集相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PCM"><span class="nav-number">2.2.1.</span> <span class="nav-text">PCM</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像采集相关概念"><span class="nav-number">2.3.</span> <span class="nav-text">图像采集相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图像的位深度"><span class="nav-number">2.3.1.</span> <span class="nav-text">图像的位深度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#YUV格式"><span class="nav-number">2.3.2.</span> <span class="nav-text">YUV格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频编码"><span class="nav-number">2.4.</span> <span class="nav-text">视频编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本原理"><span class="nav-number">2.4.1.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用编码器"><span class="nav-number">2.4.2.</span> <span class="nav-text">常用编码器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#H-264"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">H.264</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#H-265"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">H.265</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬件编解码和软件编解码"><span class="nav-number">2.4.3.</span> <span class="nav-text">硬件编解码和软件编解码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视频容器-格式"><span class="nav-number">2.4.4.</span> <span class="nav-text">视频容器(格式)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -2292,6 +898,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2309,6 +919,18 @@
       <script id="dsq-count-scr" src="https://Duan.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/09/04/《AV-Foundation-开发秘籍》（一）/';
+          this.page.identifier = '2018/09/04/《AV-Foundation-开发秘籍》（一）/';
+          this.page.title = '《AV Foundation 开发秘籍》之 数据的采集和编码';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Duan.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
