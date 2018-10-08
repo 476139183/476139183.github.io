@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://476139183.github.io/2018/09/18/OpenGL-EL-%E4%BA%8C/</loc>
+    <lastmod>2018-10-08T09:34:01.715Z</lastmod>
+  </url>  <url>
+    <loc>https://476139183.github.io/2018/09/06/OpenGL-ES-%E4%B8%80/</loc>
+    <lastmod>2018-10-08T08:01:48.922Z</lastmod>
+  </url>  <url>
     <loc>https://476139183.github.io/2018/09/04/%E3%80%8AAV-Foundation-%E5%BC%80%E5%8F%91%E7%A7%98%E7%B1%8D%E3%80%8B%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
-    <lastmod>2018-09-28T01:55:11.087Z</lastmod>
+    <lastmod>2018-09-28T01:59:25.716Z</lastmod>
   </url>  <url>
     <loc>https://476139183.github.io/2018/09/18/Fastlane-%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2018-09-27T07:49:57.076Z</lastmod>
@@ -31,17 +37,11 @@
     <loc>https://476139183.github.io/2018/09/03/iOS-%E6%9E%B6%E6%9E%84%E6%80%9D%E6%83%B3%E6%BC%AB%E8%B0%88/</loc>
     <lastmod>2018-09-18T06:59:29.406Z</lastmod>
   </url>  <url>
-    <loc>https://476139183.github.io/2018/09/18/OpenGL-EL-%E4%BA%8C/</loc>
-    <lastmod>2018-09-18T01:19:50.612Z</lastmod>
-  </url>  <url>
     <loc>https://476139183.github.io/2018/08/30/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2018-09-14T09:53:25.219Z</lastmod>
   </url>  <url>
     <loc>https://476139183.github.io/2018/08/30/Hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2018-09-14T09:53:07.815Z</lastmod>
-  </url>  <url>
-    <loc>https://476139183.github.io/2018/09/06/OpenGL-ES-%E4%B8%80/</loc>
-    <lastmod>2018-09-14T09:52:30.273Z</lastmod>
   </url>  <url>
     <loc>https://476139183.github.io/2018/08/28/hello-world/</loc>
     <lastmod>2018-09-07T06:32:56.463Z</lastmod>

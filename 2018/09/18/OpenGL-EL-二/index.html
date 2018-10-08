@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="OpenGL," />
 
 
 
@@ -87,17 +87,20 @@
 
 
 
-<meta name="description" content="雾里看花">
+<meta name="description" content="Open GL 是不可能再学了，这辈子都不可能，学又学不会，只能随便贴一些图凑才能维持的了生活。幸好百度里面有很多大佬，个个都是人才，说话又好听，还乐于助人，写了很多教程，我超喜欢抄袭百度里面的东西。">
+<meta name="keywords" content="OpenGL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL EL (二)">
 <meta property="og:url" content="https://476139183.github.io/2018/09/18/OpenGL-EL-二/index.html">
 <meta property="og:site_name" content="段雨田的Blog">
-<meta property="og:description" content="雾里看花">
+<meta property="og:description" content="Open GL 是不可能再学了，这辈子都不可能，学又学不会，只能随便贴一些图凑才能维持的了生活。幸好百度里面有很多大佬，个个都是人才，说话又好听，还乐于助人，写了很多教程，我超喜欢抄袭百度里面的东西。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-18T01:19:50.612Z">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-7df2c429b9a823419871ff2f910c4b55_1200x500.jpg">
+<meta property="og:updated_time" content="2018-10-08T09:34:01.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL EL (二)">
-<meta name="twitter:description" content="雾里看花">
+<meta name="twitter:description" content="Open GL 是不可能再学了，这辈子都不可能，学又学不会，只能随便贴一些图凑才能维持的了生活。幸好百度里面有很多大佬，个个都是人才，说话又好听，还乐于助人，写了很多教程，我超喜欢抄袭百度里面的东西。">
+<meta name="twitter:image" content="https://pic4.zhimg.com/v2-7df2c429b9a823419871ff2f910c4b55_1200x500.jpg">
 
 
 
@@ -358,9 +361,97 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://pic4.zhimg.com/v2-7df2c429b9a823419871ff2f910c4b55_1200x500.jpg" rel="gallery_cjn03odsb000ze1fycf9g44nw"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://pic4.zhimg.com/v2-7df2c429b9a823419871ff2f910c4b55_1200x500.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
-        
+        <p>Open GL 是不可能再学了，这辈子都不可能，学又学不会，只能随便贴一些图凑才能维持的了生活。幸好百度里面有很多大佬，个个都是人才，说话又好听，还乐于助人，写了很多教程，我超喜欢抄袭百度里面的东西。</p>
+<a id="more"></a>
+<p>是的，很遗憾，我还是咬牙继续看下去。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fvpgwbrpcsg30f709tqv7.gif" alt=""></p>
+<p>退后，我要开始装逼了。。。</p>
+<h2 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h2><p><a href="https://476139183.github.io/2018/09/06/OpenGL-ES-一/">上一篇 OpenGL ES (一) </a> 提到了一些基本的概念，这一次不出意外，还是继续了解一些基本的 Api 或者 使用流程</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>和任何程序一样，OpenGL程序需要输入，然后经过渲染管线，即一系列的着色器（着色器贯穿本书的始终），最后得到一个二维图像（像素矩阵），见下图。</p>
+<p><img src="https://images2015.cnblogs.com/blog/339551/201604/339551-20160407230518609-1222931067.jpg" alt=""></p>
+<p>所以在调用OpenGL API进行绘制图像之前，先将所需数据加载到显存中，以便于OpenGL在绘制时对其进行相关处理。填充后的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"> 1 #include &lt;iostream&gt;</span><br><span class="line"> 2 #include &quot;StdAfx.h&quot;</span><br><span class="line"> 3 </span><br><span class="line"> 4 GLuint Buffer_ID;</span><br><span class="line"> 5 const int BUFFER_NUMBER = 1;</span><br><span class="line"> 6 </span><br><span class="line"> 7 GLuint VAO_ID;</span><br><span class="line"> 8 GLuint VAO_NUMBER = 1;</span><br><span class="line"> 9 </span><br><span class="line">10 const int VERTICES_NUMBER = 6;</span><br><span class="line">11 const int vPosition = 0;</span><br><span class="line">12 </span><br><span class="line">13 void Initialize()</span><br><span class="line">14 &#123;</span><br><span class="line">15     //---------------------准备数据-------------------------------</span><br><span class="line">16     GLfloat vertices[VERTICES_NUMBER][2] = </span><br><span class="line">17     &#123;</span><br><span class="line">18         &#123; -0.90, -0.90 &#125;,</span><br><span class="line">19         &#123;  0.85, -0.90 &#125;,</span><br><span class="line">20         &#123; -0.90,  0.85 &#125;,</span><br><span class="line">21 </span><br><span class="line">22         &#123;  0.90, -0.85 &#125;,</span><br><span class="line">23         &#123;  0.90,  0.90 &#125;,</span><br><span class="line">24         &#123; -0.85,  0.90 &#125;</span><br><span class="line">25     &#125;;</span><br><span class="line">26 </span><br><span class="line">27     // 生成缓存对象</span><br><span class="line">28     glGenBuffers(BUFFER_NUMBER, &amp;Buffer_ID);</span><br><span class="line">29 </span><br><span class="line">30     // 绑定缓存对象</span><br><span class="line">31     glBindBuffer(GL_ARRAY_BUFFER, Buffer_ID);</span><br><span class="line">32 </span><br><span class="line">33     // 填入数据</span><br><span class="line">34     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line">35 </span><br><span class="line">36     //-------------------设置顶点数据属性------------------------------</span><br><span class="line">37     // 生成顶点数组对象</span><br><span class="line">38     glGenVertexArrays(VAO_NUMBER, &amp;VAO_ID);</span><br><span class="line">39 </span><br><span class="line">40     // 绑定顶点数组对象</span><br><span class="line">41     glBindVertexArray(VAO_ID);</span><br><span class="line">42 </span><br><span class="line">43     // 设置顶点属性</span><br><span class="line">44     glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));</span><br><span class="line">45     glEnableVertexAttribArray(vPosition);</span><br><span class="line">46 &#125;</span><br><span class="line">47 </span><br><span class="line">48 void display()</span><br><span class="line">49 &#123;</span><br><span class="line">50     glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">51 </span><br><span class="line">52     glBindVertexArray(VAO_ID);</span><br><span class="line">53     glDrawArrays(GL_TRIANGLES, 0, VERTICES_NUMBER);</span><br><span class="line">54 </span><br><span class="line">55     glFlush();</span><br><span class="line">56 &#125;</span><br><span class="line">57 </span><br><span class="line">58 int main(int argc, char **argv)</span><br><span class="line">59 &#123;</span><br><span class="line">60     glutInit(&amp;argc, argv);</span><br><span class="line">61     glutInitDisplayMode(GLUT_RGBA);</span><br><span class="line">62     glutInitWindowSize(512, 512);</span><br><span class="line">63     glutInitContextVersion(3, 3);</span><br><span class="line">64     glutInitContextProfile(GLUT_CORE_PROFILE);</span><br><span class="line">65     glutCreateWindow(argv[0]);</span><br><span class="line">66 </span><br><span class="line">67     glewExperimental = TRUE;</span><br><span class="line">68     if (glewInit())</span><br><span class="line">69     &#123;</span><br><span class="line">70           std::cerr &lt;&lt; &quot;Unable to initialize GLEW... Exiting...&quot; &lt;&lt; std::endl;</span><br><span class="line">71         std::exit(EXIT_FAILURE);</span><br><span class="line">72     &#125;</span><br><span class="line">73 </span><br><span class="line">74     Initialize();</span><br><span class="line">75     glutDisplayFunc(display);</span><br><span class="line">76     glutMainLoop();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数据输入步骤"><a href="#数据输入步骤" class="headerlink" title="数据输入步骤"></a>数据输入步骤</h2><p>任何系统都有输入输出（I/O）系统，如计算机硬件系统中有输入设备和输出设备；每一个编程语言都有自己的输入命令（类）和输出命令（类）；对于一个算法来说，也有其输入和输出。</p>
+<p>对于我们图形绘制系统来说，自然也少不了输入和输出。由于数据的输入只需要执行一次就可以，故写在Initialize函数中，并在main函数是执行。</p>
+<p>本例要绘制两个三角形，输入的数据自然就是两个三角形的顶点数据。由于绘制的是平面三角形，我们可以不指定z方向的坐标值（深度值）。16~25行的二维顶点数组是存放在内存中的，图形绘制是在显卡中执行的，所以需要将这些数据加载到显存中。这里出现了OpenGL编程中第一个重要的概念—— <code>缓存对象（Buffer Object）</code>。顾名思义，这一对象主要就是用来存放数据的，在这里，我们使用缓存来存放顶点数据。下面，我们来看看程序中是怎么使用缓存对象来加载顶点数据的。</p>
+<p>加载顶点数据到显存用了3条OpenGL API来实现数据的加载。</p>
+<h3 id="声明一个缓存对象ID"><a href="#声明一个缓存对象ID" class="headerlink" title="声明一个缓存对象ID"></a>声明一个缓存对象ID</h3><p>I：使用 <code>glGenBuffer</code> 声明一个缓存对象ID。编程语言中通过变量的方式来标识内存中的数据；操作系统中通过各种ID来感知各个实体，如进程标识符PID来标识进程，线程标识符TID来标识线程。OpenGL也是通过ID来标识各种对象。由于这里只要使用一个缓存对象，所以只要生成一个缓存ID即可，但要注意，这条指令可以生成多个缓存对象。</p>
+<h3 id="绑定其中一个缓存"><a href="#绑定其中一个缓存" class="headerlink" title="绑定其中一个缓存"></a>绑定其中一个缓存</h3><p>II：使用glBindBuffer来绑定其中一个缓存。刚才已经提到，缓存对象可以有多个，那OpenGL怎么知道要当前操作的是哪个缓存对象呢？这就需要使用glBindBuffer命令——这个命令的作用就是激活（Activate）其中一个缓存对象。参数很简单，就是刚才生成的缓存ID。</p>
+<h3 id="分配内存并拷贝数据到显存"><a href="#分配内存并拷贝数据到显存" class="headerlink" title="分配内存并拷贝数据到显存"></a>分配内存并拷贝数据到显存</h3><p>III：使用glBufferData来分配内存并拷贝数据到显存。这一步是我们最终目的——将数据从内存拷贝至显存。这个函数和C语言中内存拷贝memcpy很类似，函数签名为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>target　　—— 刚才绑定（激活）的缓存对象，这可以看做memcpy的目的地址；</p>
+</blockquote>
+<blockquote>
+<p>size　　　—— 这就是数据的大小，这和memcpy中的数据大小是一样的；</p>
+</blockquote>
+<blockquote>
+<p>data　　 —— 源数据的指针，这和memcpy中的源数据指针是一样的；</p>
+</blockquote>
+<blockquote>
+<p>usage　　—— 这个参数指定这个数据的用法，主要是为了优化OpenGL的内存管理——根据使用方法确定最优显存分配方案。 </p>
+</blockquote>
+<p>通过使用上述三条OpenGL API，我们就完成了数据从内存加载到缓存的功能。到此为止，故事还没有结束，OpenGL在获取顶点数据时并不知道缓存对象中的数据如何解析，所以需要告诉OpenGL，刚才上传的数据的格式是怎么样的。这就引入了第二个对象——顶点数组对象及顶点属性的概念。顶点数组对象就是用来描述刚才上传的顶点数据特征的一个对象，下面就继续来分析与顶点数组对象的相关API。</p>
+<p>I：使用glGenVertexArray声明一个顶点数组对象ID。这和缓存对象ID是一样的，都是为了便于OpenGL的组织管理；</p>
+<p>II：使用glBindVertexArray来激活其中的一个顶点数组对象，和缓存对象也是类似的；</p>
+<p>III：使用glVertexAttribPointer接口来填充当前绑定的顶点数组对象。这个函数的功能和缓存对象的glBindBuffer命令是一样的，只是对于缓存对象来说，只要拷贝一下数据就可以了，而这里需要填充顶点属性数据（就像填充一个结构体一样）。这个函数的参数比较多，其函数签名为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glVertexAttribPointer(GLuint index, GLsize size, GLint size, GLenum type, GLboolean normalized, GLsizei stribe, const GLvoid *pointer);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>index　　  　　——这是指定在该顶点在着色器中的属性。</p>
+</blockquote>
+<blockquote>
+<p>size　　   　　  ——该参数指定了每个顶点有几个分量，本例中二维顶点，故设为2；</p>
+</blockquote>
+<blockquote>
+<p>type　　  　　  ——该参数指定了顶点中分量的数据类型，这里顶点的坐标分量是浮点型数据，故设为GL_FLOAT；</p>
+</blockquote>
+<blockquote>
+<p>normalized　　——该参数表示顶点存储前是否需要进行归一化；</p>
+</blockquote>
+<blockquote>
+<p>stride　　　　  ——该参数指定两个顶点数据之间间隔的字节数，在本例中，顶点是连续存储的，故设为0；</p>
+</blockquote>
+<blockquote>
+<p>pointer　　　　——顶点数据在缓存对象中起始地址，在本例中，因为缓存对象中只存放了一个顶点数组，所以这一值设为0。</p>
+</blockquote>
+<p>IV: 使用glEnableVertexAttribArray来启用与index索引相关联的顶点数组。虽然前面设置了顶点数组属性，但如果没有启用的话，数据依然无法被OpenGL拿到。</p>
+<ol start="2">
+<li>图形绘制步骤</li>
+</ol>
+<p>数据及其格式设置后之后，就是根据这一数据进行图形的绘制。这部分代码是写在display函数中的，这一函数可能会调用多次。在这个显示函数中，最重要的一个OpenGL API就是glDrawArray函数——绘制基本图形，其函数签名如下：</p>
+<p>void glDrawArray(GLenum mode, GLint first, GLsizei count);</p>
+<p>mode　　——指定你要绘制的图元类型，比如三角形是GL_TRIANGLES，直线就是GL_LINES，闭合的直线就是GL_LINE_LOOP，顶点就是GL_POINTS。本例中要绘制三角形，故设为GL_TRIANGLES。</p>
+<p>first　　　——指定绘制图形时的起始顶点，本例中从第0个顶点开始；</p>
+<p>count　　——要绘制的顶点数，本例中设置为6。</p>
+<p>给这个函数设置不同的值，将出现不同的效果——可以使用不同的顶点来绘制不同的图形。</p>
+<p>剩下的，三个接口：</p>
+<p>glClear(GLbitfield mask);</p>
+<p>清空指定的缓存数据。每一次新的绘制，当然需要将上一次绘制过程中产生的一些数据给清空，以防止其对后一次绘制产生影响。在OpenGL中有三种缓存数据，分别是颜色缓存，深度缓存和模板缓存。其中深度缓存只有在三维的情形中才用到。本例中清空了颜色缓存。</p>
+<p>glFlush()；</p>
+<p>这个接口是一个同步接口——等待绘制完成再往下执行。这里需要说明的是，OpenGL采用的是客户机-服务器模式运作的——我们的应用程序就是客户机，显卡就是服务器。每一次执行OpenGL API相当于给显卡发送一条命令，一般情况下，这些命令是以异步的方式执行的。如果我们应用程序需要等显卡命令执行完毕才能往下执行，就需要调用这个函数。</p>
+<p>最后一个，glBindVertexArray——绑定操作对象，即glDrawArray绘制的是当前绑定的顶点数组。在本例中（只限本例）是可以不调用的，因为在Initialize函数中已经调用过了，并且display函数中没有其他的绑定。</p>
+<p>至此，我们运行程序，应该能够看到绘制出来的是两个白色的三角形。</p>
+<h2 id="第三步：添加着色器"><a href="#第三步：添加着色器" class="headerlink" title="第三步：添加着色器"></a>第三步：添加着色器</h2><p>我们先来看看OpenGL中的绘制管线，如下图所示：</p>
+<p>参考文章:<br><a href="https://www.cnblogs.com/android-blogs/p/5454698.html" target="_blank" rel="noopener">OpenGL学习之路</a></p>
+
       
     </div>
     
@@ -374,6 +465,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenGL/" rel="tag"># OpenGL</a>
+          
+        </div>
       
 
       
@@ -485,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -575,6 +681,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前沿"><span class="nav-number">1.</span> <span class="nav-text">前沿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据输入步骤"><span class="nav-number">3.</span> <span class="nav-text">数据输入步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明一个缓存对象ID"><span class="nav-number">3.1.</span> <span class="nav-text">声明一个缓存对象ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定其中一个缓存"><span class="nav-number">3.2.</span> <span class="nav-text">绑定其中一个缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分配内存并拷贝数据到显存"><span class="nav-number">3.3.</span> <span class="nav-text">分配内存并拷贝数据到显存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：添加着色器"><span class="nav-number">4.</span> <span class="nav-text">第三步：添加着色器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
