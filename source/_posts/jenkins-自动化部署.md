@@ -9,8 +9,18 @@ photos:
 ---
 ## 一、简述 ##
 
-1. `Jenkins` 本身是用 `java` 语言开发的，所以安装 `Jenkins` 之前，要保证你的电脑有`jdk`，如果没有，请到参考[《MAC安装JDK及环境变量配置》]() ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。
- 
+1. Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。      
+`Jenkins` 本身是用 `java` 语言开发的，所以安装 `Jenkins` 之前，要保证你的电脑有`jdk`，如果没有，请到参考[《MAC安装JDK及环境变量配置》]() ，另外建议git、ant、maven、gradle、groovy等工具也一并安装好，方便与这些构建工具集成。
+
+根据官方定义，Jenkins有以下的用途：
+      
+* 构建项目      
+* 跑测试用例检测bug      
+* 静态代码检测       
+* 部署      
+
+<!--more--> 
+
 ## 二、Jenkins的安装 ##
 
 ### 1.1 jenkins.pkg ###
@@ -96,12 +106,15 @@ java -jar jenkins.war --httpPort=8080
 
 * Xcode
 * Keychains and provisioning profiles management
-
+* Git Plugin
+* Xcode integration
 .... 
 
 如下图，进行管理:      
 ![](https://ws3.sinaimg.cn/large/006tNbRwgy1fvezz4ovfnj31kw0nxn2d.jpg)
- 
+
+![](http://upload-images.jianshu.io/upload_images/80578-e68106251e4a5eaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ### 项目实战 ###
 #### 1.新建一个自由风格的软件项目 ####
 
@@ -115,7 +128,39 @@ java -jar jenkins.war --httpPort=8080
 通过系统管理->系统设置->主目录 点击高级，可以查看到
 ![](http://upload-images.jianshu.io/upload_images/80578-a7d73b8be1152ced.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+在jenkins的workspace目录中，可以看到构建的项目
 
+![](http://upload-images.jianshu.io/upload_images/80578-7398252ed1c1104c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+#### 编译配置（很关键） ####
+
+上面虽然编译成功了，但是你发现根本没有看到ipa文件，所以还需要进行下面的配置：增加构建步骤
+
+这就用到我们上面安装的Xcode插件了
+
+![](https://ws2.sinaimg.cn/large/006tNbRwgy1fvh8d0pc1aj30hm0hsmyp.jpg)
+
+Xcode插件配置
+
+![](http://upload-images.jianshu.io/upload_images/80578-0da04c60564cecca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/80578-60758d04253a56b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+配置完成，点击立即构建，查看ipa所在的路径
+
+![](http://upload-images.jianshu.io/upload_images/80578-084d215fb776d43c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+OK，一个简单的打包就完成了。
+
+
+## 结合FastLane ##
+配置好Git，在 `增加构建步骤` 的时候，选择脚本
+
+![](https://ws2.sinaimg.cn/large/006tNbRwgy1fvh897f6v0j30ii0kw760.jpg)
+
+添加 shell 命令：
+![](https://ws2.sinaimg.cn/large/006tNbRwgy1fvh8al45v2j31f80giabm.jpg)
+
+> 我这里做了三步，1.cd 到项目路径  2，执行fastlane 打包  3，发送qq邮件
 ## 其他 ##
 
 ### 卸载 ###
@@ -134,3 +179,21 @@ Jenkins的安装方式不同（[Mac 安装 Jenkins](http://www.cnblogs.com/ihoji
 
 完成之后再次打开http://localhost:8080  访问不了，说明卸载成功
 
+## ##
+
+Jenkins做的操作其实很简单，它只是将我们平时做的每一步重复的操作自动化了而已。因此，iOS中Jenkins要做的分为以下几步：
+
+1. 拉取远端代码      
+2. 由于某种条件触发后开始自动编译，打包     
+3. 将生成的ipa文件上传到指定位置，供测试下载测试      
+        
+这三步中，每一步Jenkins什么都没做，它只是调用了Mac中的一些工具，具体的说就是使用了命令行工具。有的做成了可视化的插件，有的还是要通过自己写命令来实现。典型的就是编译和打包的命令是调用xcodebuild命令。         
+也就是说我们可以也可以结合 `Fastlane` 来打包，简化 `Jenkins`的操作和需要安装的插件。
+
+## 相关文章 ##
+
+[Jenkins持续集成iOS项目](https://www.jianshu.com/p/41ecb06ae95f)
+
+[Jenkins踩坑记录](https://www.imooc.com/article/26327?block_id=tuijian_wz#)
+
+[Jenkins 构建触发器](https://www.cnblogs.com/Rocky_/p/8297260.html)

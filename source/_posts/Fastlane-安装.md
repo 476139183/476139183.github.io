@@ -196,4 +196,10 @@ gem/brew uninstall fastlane
 
 # 后续 #
 
+#### 插件安装格式 ####
+
+fastlane add_plugin [name],需要到项目根目录下执行。
+
+fastlane update_plugins插件更新，同上，需要cd到项目根目录下。
+
 完成了发布到蒲公英之后肯定不再仅仅满足于此，毕竟 Fastlane 是集成一系列的自动化工具的，后面会进行一些详细的操作，比如上传到 `APP Store Connect`.详情请移步 [Fastlane (二)]()。

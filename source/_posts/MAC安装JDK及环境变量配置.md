@@ -14,6 +14,8 @@ photos:
     
 ![](http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135011647-96008710.png)
 
+<!--more-->
+
 2. 点击“JDK DOWNLOAD”按钮：
 
 ![](http://images2015.cnblogs.com/blog/877813/201601/877813-20160113135051835-861363050.png)

@@ -11,7 +11,9 @@ photos:
 
 # 打包到 AppStore #
 [上篇文章]() 我们已经成功的打包app到蒲公英了。那么我们也可以尝试将app上传到AppStore.
-废话不多说，先简单的打包一个 ipa 到 AppStore 。      
+废话不多说，先简单的打包一个 ipa 到 AppStore 。  
+    
+<!--more-->
 
 ```
   desc "release"
@@ -28,6 +30,7 @@ photos:
            force: true)
   end
 ```
+
 关于`scheme `的设置请查看[文档](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/ConfigureBots.html#//apple_ref/doc/uid/TP40013292-CH9-SW3)
 
 调用
@@ -48,7 +51,7 @@ fastlane release
 ```
 deliver init
 ```
-此时会要求输入你的 `Your Apple ID Username` 和 `password`,`The Bundle Identifier of your App`.(因为我已经登录过了。所以并未出现要输入账号的密码)。
+此时会要求输入你的 `Your Apple ID Username` 和 `password`,`The Bundle Identifier of your App`.(因为我已经登录过了。所以并未出现要输入账号的密码，也可以在 `Appfile` 编辑你的账号和 Bundle Identifier)。
 
 ![](https://upload-images.jianshu.io/upload_images/1533163-d4cae722f895945e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/787)
 
@@ -120,8 +123,8 @@ submission_information({
 
 # 应用审核小组的联系信息 app 审核信息
 app_review_information(
-  first_name: "段",
-  last_name: "xx",
+  first_name: "姓",
+  last_name: "名字",
   phone_number: "+86 18237485911",
   email_address: "xxxx@ apple.com.cn",
   demo_user: "测试登录账号",
@@ -131,12 +134,13 @@ app_review_information(
 
 ```
 
-更多[编辑内容](https://www.jianshu.com/p/867b397c7939)
+更多 [编辑内容](https://www.jianshu.com/p/867b397c7939)
 
 # 目录 #
+
 等待初始化完成之后，工程目录下就多了一个 fastlane目录，其内容如下：
 ![](http://cc.cocimg.com/api/uploads/20170519/1495177333947263.png)
-> `metadata` 是包含应用在ITC上面的各种信息，可以使用它配置我们的ITC，建议使用 `Deliverfile`，因为`Deliverfile`会覆盖 `metadata` 的设置
+> `metadata` 是包含应用在ITC上面的各种信息，可以使用它配置我们的ITC，配置项，宣传文本、app名称、关键字、隐私网址、app的logo, 但建议使用 `Deliverfile`，因为`Deliverfile`会覆盖 `metadata` 的设置
 > screenshots 屏幕截图数据。
 
 咱们来看主要的，Appfile 和 Fastfile, Deliverfile。

@@ -59,7 +59,7 @@ OpenGL ES 是基于 C 语言的 API ，所以可以无缝移植到 Objective—C
 
 三维坐标系，原点在中间，x 轴向右，y 轴向上，z 轴朝向我们，x y z 取值范围都是 [-1, 1]：
 
-![OpenGL坐标](https://images2017.cnblogs.com/blog/1207934/201707/1207934-20170727100049437-925043765.png)
+![OpenGL坐标](https://ws1.sinaimg.cn/large/006tNbRwgy1fw0ue5kq8lj306e05p0so.jpg)
 
 ### 纹理（texture） 坐标 ###
 
@@ -68,21 +68,45 @@ OpenGL ES 是基于 C 语言的 API ，所以可以无缝移植到 Objective—C
 纹理坐标是二维坐标系，使用纹理坐标获取纹理颜色叫做采样，其原点在左下角，s（x）轴向右，t（y）轴向上，x y 取值范围都是 [0, 1]。      
 下面的图片展示了我们是如何把纹理坐标映射到三角形上：
 
-![纹理坐标](http://7xkc7a.com1.z0.glb.clouddn.com/20170116148453793035367.jpg?imageView2/0/format/jpg)
+![纹理坐标](https://ws4.sinaimg.cn/large/006tNbRwgy1fw0ug0humaj30920723yu.jpg)
+
+## 渲染管道 ##
+管道，英文名叫Pipeline，相信用过FaceBook图片加载库的同学对这个管道并不陌生，因为SimpleImageDrawee里面也是用的管道来对图片进行的一个处理。由于其底层也是C，因此我可以大胆的猜想，FaceBook图片加载库的设计思路可能有参考OpenGL（这当然纯属臆想^_^）。 
+管道用正确的计算机语言来描述就是： 
+显卡执行的、从几何体到最终渲染图像的、数据传输处理计算的过程。
+
+即是管道，那就得有先后顺序。整体是从上游流到下游。 
+在OpenGL ES1.x中，它是固定管道，整体是封闭的，中间的各道工艺按固定的流程顺序走。看下图： 
+
+![](https://ws2.sinaimg.cn/large/006tNbRwgy1fw0vcoxubsj30qm0gvdi1.jpg)
+
+从上图可以看出，这些工艺顺序是固定的。整个过程又可以分成三部分：`处理顶点` 、`处理片元` 、`验证片元信息并存入内存` 。       
+
+Rasterizer:光栅化处理，当顶点处理完后，会交给rasterizer来进行光栅化处理，结果会把顶点的坐标信息转换成能在屏幕显示的像素信息即片元(fragments)。生成片元后，接下来就是对fragments片元的各种验证，即过滤掉无用的片元，裁剪掉不在视野内的片元，最终把有效片元存储入内存中。
+
 
 
 ## OpenGL 组成 ##
 
  OpengGL 主要包括三个要素： 原件（Primitives） 缓冲区（Buffers） 光栅化（Rasterisation）
 
-### 原件 ###
+### 原件(图元装配) ###
 
-原件 包括 点, 线 三角形。有的OpenGL版本还包括四边形，但在OpengGL ES中只有这三种原件
+原件 包括 点, 线 三角形。有的OpenGL版本还包括四边形，但在OpengGL ES中只有这三种原件,
 
-OpenGL 绘制的都是图形，包括形状和填充，基本形状是三角形。
+OpenGL 绘制的都是图形，包括形状和填充，基本形状是三角形。其它的复杂图元都是基于这些基本图元来绘成的
 每个形状都有顶点，Vertix，顶点的序列就是一个图形。
 图形有所谓的正反面，如果我们看向一个图形，它的顶点序列是逆时针方向，那我们看到的就是正面。
 
+在 `图元装配(Primitive Assembly)`阶段，那些经过顶点着色器(VertexShader)处理过的顶点数组或缓冲区的数据(VertexArrays/Buff Objects),被组装到一个个独立的几何图形中(eg:点，线，三角形等)。       
+
+对装配好的每一个图元，都必须确保它在世界坐标系（即能显示在屏幕的可见区域）中，而对于不在世界坐标系中的图元，就必须进行裁剪，使其处在世界坐标系中才能流到下一道工序(光栅化处理)。   
+    
+在这里注意下还有一个剔除操作（Cull），前提是这个功能的开关是打开的：
+
+```
+GLES20.glEnable(GLES20.GL_CULL_FACE); //剔除的是图元的背影，阴影，背面等。
+```
 
 ### 缓存区 ###
 
@@ -96,10 +120,13 @@ OpenGL 绘制的都是图形，包括形状和填充，基本形状是三角形�
 
 
 
-### 光栅化 ###
-![光栅化](http://7xkc7a.com1.z0.glb.clouddn.com/20170112706113F85123B-6006-4633-9D8C-C4C4DB4BA3AC.png)
+### Rasterizer/Rasterization （光栅化） ###     
 
-光栅化的过程就是根据缓冲区对象里提供的数据 经过渲染 从3D模型得到2D模型的过程。得到的2D图像会根据帧缓冲区的配置来决定是直接送到屏幕显示 或是 做别的用处。      
+![光栅化](https://ws3.sinaimg.cn/large/006tNbRwgy1fw0v3o0cl2j30ch05pdfu.jpg)
+
+光栅化的过程就是根据缓冲区对象里提供的数据 经过渲染 从3D模型得到2D模型的过程。得到的2D图像会根据帧缓冲区的配置来决定是直接送到屏幕显示 或是 做别的用处。    
+
+> 简单点，就是把矢量图形转化成像素点儿的过程。我们屏幕上显示的画面都是由像素组成，而三维物体都是点线面构成的。要让点线面，变成能在屏幕上显示的像素，就需要Rasterize这个过程。就是从矢量的点线面的描述，变成像素的描述。如上图   
 
 `在光栅化阶段，基本图元被转换为供片段着色器使用的片段（Fragment`），Fragment 表示可以被渲染到屏幕上的像素，它包含位置，颜色，纹理坐标等信息，这些值是由图元的顶点信息进行插值计算得到的。这些片元接着被送到片元着色器中处理。这是从顶点数据到可渲染在显示设备上的像素的质变过程。
 
@@ -119,7 +146,7 @@ Vertex Shader 对于3D模型网格的每一个顶点执行一次，主要是确�
 
 ### Fragment Shader（片元着色器） ###
 
-![](http://7xkc7a.com1.z0.glb.clouddn.com/20170112997054573CDB0-956C-4A00-837F-6BDA9BA4F550.png)
+![](https://ws4.sinaimg.cn/large/006tNbRwgy1fw0v2srjiaj30j10e9wfp.jpg)
 
 Fragment Shader(也叫片段着色器) 对于最终得到的2D图像的每一个像素处理一次。3D物体的表面最终显示成什么样将有它决定。例如为模型的可见表面添加纹理，处理光照 阴影的影响等等，都在这里做。 Fragment Shader 的输出是一个 RGBA 格式的像素颜色值。 简单点就是 控制形状内区域渲染，纹理填充内容。
 
@@ -154,6 +181,11 @@ EGAL 是Apple公司对EGL做了修改，自己实现的一套屏幕显示接口�
 
 
 参考文章：      
-https://www.2cto.com/kf/201706/647894.html       
-https://blog.csdn.net/wangyuchun_799/article/details/7736928       
+
+https://www.2cto.com/kf/201706/647894.html   
+    
+https://blog.csdn.net/wangyuchun_799/article/details/7736928  
+     
 https://www.jianshu.com/p/ce287a5460cd
+
+[如何理解 OpenGL 中着色器、渲染管线、光栅化等概念？](https://www.zhihu.com/question/29163054)
