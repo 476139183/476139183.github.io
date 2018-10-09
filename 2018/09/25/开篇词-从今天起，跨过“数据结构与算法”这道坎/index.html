@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<meta name="baidu-site-verification" content="SFuX9IYb7D" />
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="true" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,进阶," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="段雨田的Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="文章订阅 你好，我是王争，毕业于西安交通大学计算机专业。现在回想起来，本科毕业的时候，我的编程水平其实是很差的。直到读研究生的时候，一个师兄给了我一本《算法导论》，说你可以看看，对你的编程会很有帮助。 没想到，从此我对算法的“迷恋”便一发不可收拾。之后，我如饥似渴地把图书馆里几乎所有数据结构和算法书籍都读了一遍。 我常常边读边练。没多久，我就发现，写代码的时候，我会不由自主考虑很多性能方面的问题。">
+<meta name="keywords" content="算法,进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开篇词 | 从今天起，跨过“数据结构与算法”这道坎">
+<meta property="og:url" content="https://476139183.github.io/2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/index.html">
+<meta property="og:site_name" content="段雨田的Blog">
+<meta property="og:description" content="文章订阅 你好，我是王争，毕业于西安交通大学计算机专业。现在回想起来，本科毕业的时候，我的编程水平其实是很差的。直到读研究生的时候，一个师兄给了我一本《算法导论》，说你可以看看，对你的编程会很有帮助。 没想到，从此我对算法的“迷恋”便一发不可收拾。之后，我如饥似渴地把图书馆里几乎所有数据结构和算法书籍都读了一遍。 我常常边读边练。没多久，我就发现，写代码的时候，我会不由自主考虑很多性能方面的问题。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/56/49/56f17c4b9c5a3cc329ca37cc6b328c49.jpg">
+<meta property="og:updated_time" content="2018-10-09T02:35:53.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开篇词 | 从今天起，跨过“数据结构与算法”这道坎">
+<meta name="twitter:description" content="文章订阅 你好，我是王争，毕业于西安交通大学计算机专业。现在回想起来，本科毕业的时候，我的编程水平其实是很差的。直到读研究生的时候，一个师兄给了我一本《算法导论》，说你可以看看，对你的编程会很有帮助。 没想到，从此我对算法的“迷恋”便一发不可收拾。之后，我如饥似渴地把图书馆里几乎所有数据结构和算法书籍都读了一遍。 我常常边读边练。没多久，我就发现，写代码的时候，我会不由自主考虑很多性能方面的问题。">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/56/49/56f17c4b9c5a3cc329ca37cc6b328c49.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://476139183.github.io/2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/"/>
+
+
+
+
+
+  <title>开篇词 | 从今天起，跨过“数据结构与算法”这道坎 | 段雨田的Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<!--     <a href="https://github.com/476139183"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+ -->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">段雨田的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一个不知所云的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://476139183.github.io/2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Duan yutian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/localImage/background.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="段雨田的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">开篇词 | 从今天起，跨过“数据结构与算法”这道坎</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T10:27:53+08:00">
+                2018-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/" class="leancloud_visitors" data-flag-title="开篇词 | 从今天起，跨过“数据结构与算法”这道坎">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://static001.geekbang.org/resource/image/56/49/56f17c4b9c5a3cc329ca37cc6b328c49.jpg" rel="gallery_cjn146zk7000ivmfyyiwjsenn"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://static001.geekbang.org/resource/image/56/49/56f17c4b9c5a3cc329ca37cc6b328c49.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p><a href="https://time.geekbang.org/column/article/39922" target="_blank" rel="noopener">文章订阅</a></p>
+<p>你好，我是王争，毕业于西安交通大学计算机专业。现在回想起来，本科毕业的时候，我的编程水平其实是很差的。直到读研究生的时候，一个师兄给了我一本《算法导论》，说你可以看看，对你的编程会很有帮助。</p>
+<p>没想到，从此我对算法的“迷恋”便一发不可收拾。之后，我如饥似渴地把图书馆里几乎所有数据结构和算法书籍都读了一遍。</p>
+<p>我常常边读边练。没多久，我就发现，写代码的时候，我会不由自主考虑很多性能方面的问题。我写出时间复杂度高、空间复杂度高的垃圾代码越来越少了，算法能力提升了很多，编程能力也有了质的飞跃。得益于此，研究生毕业后，我直接进入 Google，从事 Google 翻译相关的开发工作。</p>
+<a id="more"></a>
+<p>这是我自己学习数据结构与算法的经历，现在，你可以想想你的情况。</p>
+<ul>
+<li>是不是从学校开始，你就觉得数据结构难学，然后一直没认真学？</li>
+<li>工作中，一遇到数据结构这个坑，你又发自本能地迅速避让，因为你觉得自己不懂，所以也不想深究，反正看起来无关大局？</li>
+<li>当你想换工作面试，或者研究某个开源项目源码，亦或者和团队讨论某个非框架层面的高可用难题的时候，你又发现，自己的基础跟不上别人的节奏？</li>
+</ul>
+<p>如果你是这种情况，其实你并不孤独，这不是你一个人遇到的问题。工作十年间，我见过许多程序员。他们有着各种各样的背景，有很多既有潜力又非常努力，但始终无法在自己现有水平上更进一步。</p>
+<p>在技术圈里，我们经常喜欢谈论高大上的架构，比如高可用、微服务、服务治理等等。鲜有人关注代码层面的编程能力，而愿意沉下心来，花几个月时间啃一啃计算机基础知识、认认真真夯实基础的人，简直就是凤毛麟角。</p>
+<p>我认识一位原来腾讯 T4 的技术大牛。在区块链大潮之前，他在腾讯工作了 10 多年，长期负责手机 QQ 后台整体建设。他经历了手机 QQ 从诞生到亿级用户在线的整个过程。后来他去了微众银行，有一天老板让他去做区块链。<code>他用了不到半年时间，就把区块链的整个技术脉络摸清楚了。</code> 现在，他是微众银行的区块链负责人，微众科技创新产品部的老总。你说厉害不？你可以花半年时间就能精通一个新的领域吗？为什么他就可以做到？</p>
+<p>我觉得这其中最重要的就是基础足够扎实。他曾经跟我说，像区块链、人工智能这些看似很新的技术，其实一点儿都不“新”。最初学编程的时候，他就把那些基础的知识都学透了。当面临行业变动、新技术更迭的时候，他不断发现，那些所谓的新技术，核心和本质的东西其实就是当初学的那些知识。掌握了这个“规律”之后，他学任何东西都很快，任何新技术都能快速迎头赶上。这就是他快速学习并且获得成功的秘诀。</p>
+<p>所以说，<code>基础知识就像是一座大楼的地基，它决定了我们的技术高度。而要想快速做出点事情，前提条件一定是基础能力过硬，“内功”要到位</code></p>
+<p>那技术人究竟都需要修炼哪些“内功”呢？我觉得，无外乎就是大学里的那些基础课程，操作系统、计算机网络、编译原理等等，当然还有数据结构和算法。</p>
+<p>可是，我们都知道，像《算法导论》这些经典书籍，虽然很全面，但是过于理论，学起来非常枯燥；而市面很多课程大多缺失真实的开发场景，费劲学完感觉好像还是用不上，过不了几天就忘了。</p>
+<p>所以，我尝试做 <code>一个让你能真正受用的数据结构与算法课程，希望给你指明一个简洁、高效的学习路径，教你一个学习基础知识的通用方法</code>  。那么，关于专栏内容，我是怎样设计的呢？</p>
+<ol>
+<li>我根据自己研读数十本算法书籍和多年项目开发的经验，在众多的数据结构和算法中，精选了最实用的内容进行讲解。</li>
+<li>我不只会教你怎么用，还会告诉你，我们为什么需要这种数据结构和算法，一点点帮你捋清它们背后的设计思想，培养你举一反三的能力。</li>
+<li>对于每种数据结构和算法，我都会结合真实的软件开发案例来讲解，让你知道，数据结构和算法，究竟应该如何应用到实际的编码中。</li>
+</ol>
+<p>为了 <code>由浅入深</code> 地带你学习，我把专栏分成四个 <code>递进</code> 的模块。</p>
+<h3 id="1-入门篇"><a href="#1-入门篇" class="headerlink" title="1. 入门篇"></a>1. 入门篇</h3><p>时间、空间复杂度分析是数据结构和算法中非常重要的知识点，贯穿整个专栏的学习过程。但同时也是比较难掌握的，所以我用了 2 节课来讲这部分内容，而且还举了大量的实例，让你一边学一边练，真正能掌握复杂度分析，为后面的学习铺路。</p>
+<p>我希望通过这一模块，你能掌握时间、空间复杂度的概念，大 O 表示法的由来，各种复杂度分析技巧，以及最好、最坏、平均、均摊复杂度分析方法。之后，面对任何代码的复杂度分析，你都能游刃有余、毫不畏惧！</p>
+<h3 id="2-基础篇"><a href="#2-基础篇" class="headerlink" title="2. 基础篇"></a>2. 基础篇</h3><p>这部分是专栏中篇幅最大的内容，也是我们学习的重点，共有 26 节内容，涵盖了最基础、最常用的数据结构和算法。针对每种数据结构和算法，我都会结合具体的软件开发实例，由浅入深进行讲解，并适时总结一些实用“宝典”，保证你印象深刻、学有所用。</p>
+<p>比如递归这一节，我会讲到，为什么递归代码比较难写？如何避免堆栈溢出？如何避免递归冗余计算？如何将递归代码转化为非递归代码？</p>
+<h3 id="3-高级篇"><a href="#3-高级篇" class="headerlink" title="3. 高级篇"></a>3. 高级篇</h3><p>这部分我会讲一些不是那么常用的数据结构和算法。虽然不常用，但是这些内容你也需要知道。设置这一部分的目的，是为了让你开拓视野，强化训练算法思维、逻辑思维。如果说学完基础部分可以考 80 分，那掌握这一部分就能让你成为尖子生！</p>
+<h3 id="4-实战篇"><a href="#4-实战篇" class="headerlink" title="4. 实战篇"></a>4. 实战篇</h3><p>我们整个专栏都是围绕数据结构和算法在具体软件实践中的应用来讲的，所以最后我会通过实战部分串讲一下前面讲到的数据结构和算法。我会拿一些开源项目、框架或者系统设计问题，剖析它们背后的数据结构和算法，让你有一个更加直观的感受。</p>
+<p>人生路上，我们会遇到很多的坎。跨过去，你就可以成长，跨不过去就是困难和停滞。而在后面很长的一段时间里，你都需要为这个困难买单。对于我们技术人来说，更是这样。 <code>既然数据结构和算法这个坎，我们总归是要跨过去，为什么不是现在呢？</code></p>
+<p>我很感激师兄当年给我的那本《算法导论》，这是我人生中为数不多的转折点之一。没有那本书，也可能就没有今天的我。我希望这个专栏也能成为你的一个人生转折点。</p>
+<p>我希望，通过这个专栏，不仅能帮你跨过数据结构与算法这个坎，还能帮你掌握一种学习知识和技能的方法，帮你度过职场甚至人生的重要时刻！一起加油吧！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/进阶/" rel="tag"># 进阶</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/21/推荐两个实用开源项目/" rel="next" title="推荐两个实用开源项目">
+                <i class="fa fa-chevron-left"></i> 推荐两个实用开源项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/25/是它，是它，就是它！/" rel="prev" title="是它，是它，就是它！ ---- 《小丑回魂》">
+                是它，是它，就是它！ ---- 《小丑回魂》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/localImage/background.png"
+                alt="Duan yutian" />
+            
+              <p class="site-author-name" itemprop="name">Duan yutian</p>
+              <p class="site-description motion-element" itemprop="description">雾里看花</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lx.nextdev.cn/" title="凌霄的博客" target="_blank">凌霄的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cherryblog.site" title="cherryBlog" target="_blank">cherryBlog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-入门篇"><span class="nav-number">1.</span> <span class="nav-text">1. 入门篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-基础篇"><span class="nav-number">2.</span> <span class="nav-text">2. 基础篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-高级篇"><span class="nav-number">3.</span> <span class="nav-text">3. 高级篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-实战篇"><span class="nav-number">4.</span> <span class="nav-text">4. 实战篇</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Duan yutian</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+<div class="theme-info">
+本站访客数 <span id="busuanzi_value_site_uv"></span>人次
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Duan.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://476139183.github.io/2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/';
+          this.page.identifier = '2018/09/25/开篇词-从今天起，跨过“数据结构与算法”这道坎/';
+          this.page.title = '开篇词 | 从今天起，跨过“数据结构与算法”这道坎';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Duan.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AYFPDPucaFnwsC3sQOuclf8Q-gzGzoHsz", "34fmvJUXrPSqsAfe7vqUPfxI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":80,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>
