@@ -6,7 +6,7 @@ tags:
 top:
 categories:
 photos:
-  -- https://upload-images.jianshu.io/upload_images/1194012-2c82a315c04b2a63.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/290
+  - https://ws4.sinaimg.cn/large/006tNbRwgy1fw0ydurepng30820821i2.gif
 ---
 
 *  [Weex](http://weex.apache.org/cn/guide/) 是2016年6月由阿里巴巴推出的一个动态化的高扩展跨平台解决方案，可以类比一下React Native,能够完美的兼容性能与动态性，让移动开发者通过简捷前端语法写出原生级别的性能体验,目前支持iOS、安卓及Web等多端开发部署。weex主要解决的是频繁发版和多端研发两大痛点，同时又解决了前端语言性能差和显示效果受限的问题，极大地解放开发者的同时又保证了用户体验。
@@ -14,6 +14,7 @@ photos:
 *  Weex 号称`一次编写 处处运行` 积极拥抱 Web 标准，专注于 Native 渲染层优化的细致工作，也清晰地展示了这个项目的自身定位和发展方向
 
 <!--more-->
+
 --
 * 搭载 Node 基础环境        
 * 可以直接在浏览器中调试JS代码,需要一些[ES6基础](http://es6.ruanyifeng.com)
@@ -225,3 +226,5 @@ ionic 的存在表示很尴尬，外壳包着web。。我浏览器，微信公�
 [Weex入门教学 (iOS端读取js ,拦截点击)](https://www.jianshu.com/p/bccad91fc327)
 
 [现有iOS集成weex](https://www.jianshu.com/p/f842811bd895)
+
+[Weex Ui 半年开源之路](https://alibaba.github.io/weex-ui/#/cn/)

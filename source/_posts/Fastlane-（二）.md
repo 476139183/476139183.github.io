@@ -118,7 +118,8 @@ submission_information({
     export_compliance_encryption_updated: false,
     export_compliance_uses_encryption: false,
     content_rights_contains_third_party_content: false,
-    add_id_info_uses_idfa: false
+    add_id_info_uses_idfa: false,
+    
 })
 
 # 应用审核小组的联系信息 app 审核信息
@@ -270,13 +271,13 @@ desc "企业版"
 
 交付文件。在这个文件里面可以设置iTunes connect的所有配置项，例如：
 
-release_notes，此版本新增内容。
+`release_notes`，此版本新增内容。
 
-copyright，版权信息。
+`copyright`，版权信息。
 
-submit_for_review，上传完成后是否直接提交新版本进行审查。
+`submit_for_review`，上传完成后是否直接提交新版本进行审查。
 
-force，跳过HTML报告文件验证。
+`force`，跳过HTML报告文件验证。
 
 ...
 
@@ -565,6 +566,7 @@ app_review_information(
 ...
 ```
 
+[fastlane工具 之 build_app 和 upload_to_app_store](https://www.jianshu.com/p/867b397c7939)
 
 最后，附上一个Fastfile脚本和一些自定义Actions：
 https://github.com/thierryxing/Fastfiles
