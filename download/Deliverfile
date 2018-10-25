@@ -1,0 +1,81 @@
+###################### More Options ######################
+# If you want to have even more control, check out the documentation
+# https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md
+
+
+###################### Automatically generated ######################
+# Feel free to remove the following line if you use fastlane (which you should)
+
+app_identifier "xxx.com" # The bundle identifier of your app
+username "xxx@xx.com" # your Apple ID user
+
+force(true);
+automatic_release(true);
+run_precheck_before_submit(false);
+precheck_include_in_app_purchases(false);
+
+# skip_metadata(true);
+metadata_path("./fastlane/metadata");
+
+# skip_screenshots(true);
+screenshots_path("./fastlane/screenshots/screenshots");
+
+# languages(['zh-Hans']);
+
+# 发布的消息
+# release_notes({
+#   'default' => "Shiny and new",
+# })
+
+# promotional_text( 
+#   "default" => "xxxx"
+# )
+
+# App 审核信息
+# app_review_information(
+#   first_name: "first_name",
+#   last_name: "last_name",
+#   phone_number: "+8615658820987",
+#   email_address: "jimmylot@126.com",
+#   demo_user: "+8615658820987",
+#   demo_password: "9527",
+#   notes: "备注信息"
+# )
+
+# 文件主要是 商务代表联系信息 的配置
+# trade_representative_contact_information(
+#   first_name: "first_name",
+#   last_name: "last_name",
+#   address_line1: "address_line1",
+#   address_line2: "address_line2",
+#   address_line3: "address_line3",
+#   city_name: "city_name",
+#   state: "state",
+#   country: "country",
+#   postal_code: "postal_code",
+#   phone_number: "+8615658820987",#位数必须正确
+#   email_address: "jimmylot@126.com",
+#   is_displayed_on_app_store:"false",
+#   trade_name:"XXXXXXXX Financial Information Service Co., Ltd."
+# )
+
+# 如果选择提交审核，请认真对照以下参数选项，根据自家App实际情况配置，如果配置错误，将不能提交成功
+submission_information({
+export_compliance_available_on_french_store: false,
+export_compliance_contains_proprietary_cryptography: false,
+export_compliance_contains_third_party_cryptography: false,
+export_compliance_is_exempt: false,
+export_compliance_uses_encryption: false,
+export_compliance_app_type: nil,
+export_compliance_encryption_updated: false,
+export_compliance_compliance_required: false,
+export_compliance_platform: "ios",
+content_rights_contains_third_party_content: false,
+content_rights_has_rights: false,
+add_id_info_limits_tracking: true,
+add_id_info_serves_ads: true,
+add_id_info_tracks_action: false,
+add_id_info_tracks_install: false,
+add_id_info_uses_idfa: true
+});
+
