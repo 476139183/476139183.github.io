@@ -364,7 +364,64 @@
       
         
           
-            
+            <p>没错，程序员节 节日快乐！！！  :smile:</p>
+<p>后续的 <a href="https://time.geekbang.org/column/intro/133" target="_blank" rel="noopener">《数据结构与算法之美》</a>不再提供，毕竟这是大神的付费文章，有兴趣还是去订阅他的讲课，支持一下知识产权。不过我还是会贴出一些课后习题，记录自己的一些学习感受和成果。</p>
+<h4 id="为什么要学算法？"><a href="#为什么要学算法？" class="headerlink" title="为什么要学算法？"></a>为什么要学算法？</h4><p>因为在生活中我们也会用到，比如</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwrdgxc59oj30qo0cgab9.jpg" alt=""></p>
+<p>你看，不会算法，我们连Wi-Fi密码都破译不了，</p>
+<p>。。。</p>
+<p>开一个玩笑， 我想很多人都想到了， 因为要面试啊。是的，面试是会问到算法，其实生活上也用的到，比如找女朋友，<br>由数学家 Merrill M. Flood 在 1949 提出的，他命名为“未婚妻选择问题”，可以看作是基于苏格拉底的 <code>麦穗原理</code> 得出的数学版本，这里有一篇文章可以去看看<a href="https://blog.csdn.net/FnqTyr45/article/details/78629810?locationNum=2&amp;fps=1" target="_blank" rel="noopener">传送门</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">炮灰男友数量EX=1/e*N=36.8%*N，其中N为预计所有男朋友的数量。</span><br></pre></td></tr></table></figure>
+<p>这只是一个尴尬而不失礼貌的例子，只为了说明,生活中的很多看起来很复杂的决策,原来都可以用算法来解决。</p>
+<h4 id="那为什么面试会问到算法呢？"><a href="#那为什么面试会问到算法呢？" class="headerlink" title="那为什么面试会问到算法呢？"></a>那为什么面试会问到算法呢？</h4><p>因为如果把编程比喻武学，那么算法就是驱动，是内功，内功雄厚，就可以像鸠摩智一样用小无相功催动的少林七十二绝技。编程亦然，掌握算法，了解核心思想那么就可以快速入门一门语言。所以大家都比较看重内力，这个是最能体现武学造诣。</p>
+<p>我们知道了算法的重要性，那么就要开始入门，掌握一下算法的基本概念。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwrdjdwd50j30go0ke0u7.jpg" alt="算法入门"></p>
+<p>看到这个图，心里肯定是一万匹羊驼跑过</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fwremn5h22j303c01o741.jpg" alt=""></p>
+<p>要是这么好入门，我会在这里写心得？不存在的。还是得靠自己去学习，比如一些有趣的书籍，大神推荐了一本趣味性的入门级书，<a href="">《算法图解》</a>，可以去试试。</p>
+<h4 id="最优方案"><a href="#最优方案" class="headerlink" title="最优方案"></a>最优方案</h4><p>算法入门之后，我们就需要对一些需求进行算法分析了。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwrdkd0w5hj30hs0a6t92.jpg" alt="正确的算法思路"></p>
+<p>此时我的心情是</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fwrdlx7uxnj30dw0dw3zz.jpg" alt=""></p>
+<p>这个小朋友的脑回路清奇，分分钟拿出了一个别具一格的方案，关键是真的解决了需求呀。当然实际上，这个就属于修炼内功出错的情况，方案肯定是不行的，说到这，就要提一下武学奇才 欧阳锋，修炼了错误的九阴真经居然真的成功了。但不是所有人都是欧阳锋，但正确的解决方案和算法分析都需要深厚的算法理论才行，欧阳锋九阴逆行，估计也是内功深厚啊。这里大神是推荐了一本书<a href="">《数据结构和算法分析》</a>.</p>
+<p> 内力深厚是离不开平时的苦修和练习的，所以这里附上<a href="https://time.geekbang.org/column/intro/133" target="_blank" rel="noopener">《数据结构与算法之美》</a>的第七章的课后习题，以及我对题目自己的想法，作为修炼，因为oc是兼容c的，所以我就直接使用了混编编写     </p>
+<p> 接招     </p>
+<ul>
+<li>单链表反转</li>
+</ul>
+<ul>
+<li><p>链表中环的检测</p>
+</li>
+<li><p>两个有序的链表合并</p>
+</li>
+<li><p>删除链表倒数第 n 个结点</p>
+</li>
+<li><p>求链表的中间结点</p>
+</li>
+</ul>
+<h4 id="单链表反转"><a href="#单链表反转" class="headerlink" title="单链表反转"></a>单链表反转</h4><p>我的想法是 假如有一个链表A，我们申明两个结点，一个持有当前结点的上一个结点O，一个持有当前结点的下一个结点Q，遍历链表A的所有结点P，Q指向P-&gt;next,P-&gt;next=O.需要注意边界问题</p>
+<h4 id="链表中环的检测"><a href="#链表中环的检测" class="headerlink" title="链表中环的检测"></a>链表中环的检测</h4><p>单链的中环检测 概念 如图： （也就是单链中存在循环）</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fwh4sn63dsj30ix08nt9d.jpg" alt=""></p>
+<ul>
+<li>单链表中环的检测</li>
+</ul>
+<blockquote>
+<p>首先设置两个指针，分别命名为fast和slow，fast指针每次向后移2步，slow指针每次向后移1步。</p>
+<blockquote>
+<p>如果，fast指针最后走到尾结点，则没有环。<br>如果，fast指针和slow指针相遇，则证明有环。</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>环的起始结点的查询</li>
+</ul>
+<blockquote>
+<p>当fast与slow相遇之后，<br>fast指针从头结点开始走，每次走1步<br>当fast再次与slow相遇以后，相遇处的结点为环的入口结点</p>
+</blockquote>
+<h4 id="两个有序的链表合并"><a href="#两个有序的链表合并" class="headerlink" title="两个有序的链表合并"></a>两个有序的链表合并</h4><p>我暂时没有很好的思路，只是想着用遍历A链表，用B链表的去比较大小，小，就插入A链表头，再用B链表的对比；如果，大，则比较下一个A链表结点。（里面需要用到多个临时结点）</p>
+<h4 id="删除链表倒数第-n-个结点"><a href="#删除链表倒数第-n-个结点" class="headerlink" title="删除链表倒数第 n 个结点"></a>删除链表倒数第 n 个结点</h4><p>用3个指针，A，B，C，其中A正常， B落后A n 步，C 再落后 B 一步，同时遍历链表，等A走到链表结尾的时候，B就是要删除的结点P，C就是P的前一个结点。</p>
+<h4 id="求链表的中间结点"><a href="#求链表的中间结点" class="headerlink" title="求链表的中间结点"></a>求链表的中间结点</h4><p>同理 快慢指针，还有注意最后快指针的奇偶。</p>
+<p>我的作业Git地址<a href="https://github.com/476139183/linkedlist" target="_blank" rel="noopener">传送门</a></p>
+
           
         
       
@@ -528,7 +585,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://static001.geekbang.org/resource/image/9e/ee/9efe0a80fac815101324e1d4de1e49ee.jpg" rel="gallery_cjnnwh2db001b6rfy44hgsaac"
+                 href="https://static001.geekbang.org/resource/image/9e/ee/9efe0a80fac815101324e1d4de1e49ee.jpg" rel="gallery_cjnwuh3dh001bfcfy0lrar382"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://static001.geekbang.org/resource/image/9e/ee/9efe0a80fac815101324e1d4de1e49ee.jpg" itemprop="contentUrl"/>
               </a>
@@ -714,7 +771,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://static001.geekbang.org/resource/image/ed/5a/edc6039771a3bdfa2ff132000710e85a.jpg" rel="gallery_cjnnwh2il001w6rfy37zwg33q"
+                 href="https://static001.geekbang.org/resource/image/ed/5a/edc6039771a3bdfa2ff132000710e85a.jpg" rel="gallery_cjnwuh3ex001wfcfygn2oex17"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://static001.geekbang.org/resource/image/ed/5a/edc6039771a3bdfa2ff132000710e85a.jpg" itemprop="contentUrl"/>
               </a>
@@ -901,7 +958,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://static001.geekbang.org/resource/image/1e/d3/1ef0181f71fe1bd731f172ff3b0fc2d3.jpg" rel="gallery_cjnnwh2cy00196rfy703r1zpf"
+                 href="https://static001.geekbang.org/resource/image/1e/d3/1ef0181f71fe1bd731f172ff3b0fc2d3.jpg" rel="gallery_cjnwuh3de0019fcfycemfo8ez"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://static001.geekbang.org/resource/image/1e/d3/1ef0181f71fe1bd731f172ff3b0fc2d3.jpg" itemprop="contentUrl"/>
               </a>
@@ -1087,7 +1144,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://static001.geekbang.org/resource/image/73/9f/731fdcdef7b7d56ce7a6e0bf88a1a99f.jpg" rel="gallery_cjnnwh2cw00186rfyjcpvz21v"
+                 href="https://static001.geekbang.org/resource/image/73/9f/731fdcdef7b7d56ce7a6e0bf88a1a99f.jpg" rel="gallery_cjnwuh3db0017fcfyds7ismnm"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://static001.geekbang.org/resource/image/73/9f/731fdcdef7b7d56ce7a6e0bf88a1a99f.jpg" itemprop="contentUrl"/>
               </a>
@@ -1251,7 +1308,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://ws4.sinaimg.cn/large/006tNbRwgy1fw0ydurepng30820821i2.gif" rel="gallery_cjnnwh2dr001n6rfys2e5ug9h"
+                 href="https://ws4.sinaimg.cn/large/006tNbRwgy1fw0ydurepng30820821i2.gif" rel="gallery_cjnwuh3dn001nfcfyyfnv0szj"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fw0ydurepng30820821i2.gif" itemprop="contentUrl"/>
               </a>
@@ -1610,7 +1667,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://static001.geekbang.org/resource/image/56/49/56f17c4b9c5a3cc329ca37cc6b328c49.jpg" rel="gallery_cjnnwh1wv000k6rfydplnn8o4"
+                 href="https://static001.geekbang.org/resource/image/56/49/56f17c4b9c5a3cc329ca37cc6b328c49.jpg" rel="gallery_cjnwuh37t000jfcfyd6djxd2v"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://static001.geekbang.org/resource/image/56/49/56f17c4b9c5a3cc329ca37cc6b328c49.jpg" itemprop="contentUrl"/>
               </a>
