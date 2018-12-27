@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-7d6b4dede764dfe2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-93f8dc19331592eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/980">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-643a36730b33d55c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
-<meta property="og:updated_time" content="2018-12-27T02:28:04.459Z">
+<meta property="og:updated_time" content="2018-12-27T02:30:27.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 制作和使用 Framework">
 <meta name="twitter:description" content="介绍假如你想将你开发的一些控件或者工具与别人分享，一种方法是直接提供源代码文件。然而，这种方法并不是很优雅。因为它会暴露所有的实现细节，而这些实现你可能并不想开源出来。此外，使用者也可能并不想看到你的所有代码，因为他们可能仅仅只是希望将你的这份代码的一部分植入自己的应用中去使用。 网上关于 Framework 制作的教程不说数不胜数吧，但绝对让人眼花缭乱。但很多都步骤过旧也过简单，更没有更新了，所">
@@ -408,7 +408,8 @@
       
         <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>假如你想将你开发的一些控件或者工具与别人分享，一种方法是直接提供源代码文件。然而，这种方法并不是很优雅。因为它会暴露所有的实现细节，而这些实现你可能并不想开源出来。此外，使用者也可能并不想看到你的所有代码，因为他们可能仅仅只是希望将你的这份代码的一部分植入自己的应用中去使用。</p>
 <p>网上关于 <code>Framework</code> 制作的教程不说数不胜数吧，但绝对让人眼花缭乱。但很多都步骤过旧也过简单，更没有更新了，所以这里就把我前些时候总结的 <code>制作Framework</code>的过程记录,重新捋一下。</p>
-<h5 id="我用的是Xcode-9-4"><a href="#我用的是Xcode-9-4" class="headerlink" title="我用的是Xcode 9.4"></a>我用的是Xcode 9.4</h5><h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先我们需要打开 Xcode，新建一个项目。 并且选择 <code>Cocoa touch Framework</code>。 如下图</p>
+<h5 id="我用的是Xcode-9-4"><a href="#我用的是Xcode-9-4" class="headerlink" title="我用的是Xcode 9.4"></a>我用的是Xcode 9.4</h5><a id="more"></a>
+<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先我们需要打开 Xcode，新建一个项目。 并且选择 <code>Cocoa touch Framework</code>。 如下图</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fvp1ukuuuhj314k0t8wi8.jpg" alt=""></p>
 <p>然后随便给这个 <code>Framework</code> 取一个名字,比如 <code>TestSDK</code></p>
 <p>为了区分，分别建立了 <code>PublicFile</code> <code>PrivateFile</code>  <code>ProjectFile</code> ,     </p>
