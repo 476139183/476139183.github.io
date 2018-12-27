@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<meta name="baidu-site-verification" content="SFuX9IYb7D" />
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="true" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="段雨田的Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="介绍假如你想将你开发的一些控件或者工具与别人分享，一种方法是直接提供源代码文件。然而，这种方法并不是很优雅。因为它会暴露所有的实现细节，而这些实现你可能并不想开源出来。此外，使用者也可能并不想看到你的所有代码，因为他们可能仅仅只是希望将你的这份代码的一部分植入自己的应用中去使用。 网上关于 Framework 制作的教程不说数不胜数吧，但绝对让人眼花缭乱。但很多都步骤过旧也过简单，更没有更新了，所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 制作和使用 Framework">
+<meta property="og:url" content="https://476139183.github.io/2018/12/10/iOS-制作和使用-Framework/index.html">
+<meta property="og:site_name" content="段雨田的Blog">
+<meta property="og:description" content="介绍假如你想将你开发的一些控件或者工具与别人分享，一种方法是直接提供源代码文件。然而，这种方法并不是很优雅。因为它会暴露所有的实现细节，而这些实现你可能并不想开源出来。此外，使用者也可能并不想看到你的所有代码，因为他们可能仅仅只是希望将你的这份代码的一部分植入自己的应用中去使用。 网上关于 Framework 制作的教程不说数不胜数吧，但绝对让人眼花缭乱。但很多都步骤过旧也过简单，更没有更新了，所">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fvp1ukuuuhj314k0t8wi8.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fvq663uja6j31kw0xf1kx.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fvq6lghlpcj31c60bq10i.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fvq6komvuuj31c40aeq4z.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-4ecee02abf98bfca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/950">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-6cbd6c664b58b84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-d7e9e393a4272e91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-02b693458c795191.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-7b8705b72984b275.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-f4a99a21af4042c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-8866144669207f3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-7d6b4dede764dfe2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-93f8dc19331592eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/980">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2845360-643a36730b33d55c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000">
+<meta property="og:updated_time" content="2018-12-27T02:28:04.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 制作和使用 Framework">
+<meta name="twitter:description" content="介绍假如你想将你开发的一些控件或者工具与别人分享，一种方法是直接提供源代码文件。然而，这种方法并不是很优雅。因为它会暴露所有的实现细节，而这些实现你可能并不想开源出来。此外，使用者也可能并不想看到你的所有代码，因为他们可能仅仅只是希望将你的这份代码的一部分植入自己的应用中去使用。 网上关于 Framework 制作的教程不说数不胜数吧，但绝对让人眼花缭乱。但很多都步骤过旧也过简单，更没有更新了，所">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fvp1ukuuuhj314k0t8wi8.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://476139183.github.io/2018/12/10/iOS-制作和使用-Framework/"/>
+
+
+
+
+
+  <title>iOS 制作和使用 Framework | 段雨田的Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<!--     <a href="https://github.com/476139183"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+ -->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">段雨田的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一个不知所云的人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://476139183.github.io/2018/12/10/iOS-制作和使用-Framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Duan yutian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/localImage/background.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="段雨田的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS 制作和使用 Framework</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T10:27:02+08:00">
+                2018-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/10/iOS-制作和使用-Framework/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/12/10/iOS-制作和使用-Framework/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/10/iOS-制作和使用-Framework/" class="leancloud_visitors" data-flag-title="iOS 制作和使用 Framework">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>假如你想将你开发的一些控件或者工具与别人分享，一种方法是直接提供源代码文件。然而，这种方法并不是很优雅。因为它会暴露所有的实现细节，而这些实现你可能并不想开源出来。此外，使用者也可能并不想看到你的所有代码，因为他们可能仅仅只是希望将你的这份代码的一部分植入自己的应用中去使用。</p>
+<p>网上关于 <code>Framework</code> 制作的教程不说数不胜数吧，但绝对让人眼花缭乱。但很多都步骤过旧也过简单，更没有更新了，所以这里就把我前些时候总结的 <code>制作Framework</code>的过程记录,重新捋一下。</p>
+<h5 id="我用的是Xcode-9-4"><a href="#我用的是Xcode-9-4" class="headerlink" title="我用的是Xcode 9.4"></a>我用的是Xcode 9.4</h5><h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先我们需要打开 Xcode，新建一个项目。 并且选择 <code>Cocoa touch Framework</code>。 如下图</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fvp1ukuuuhj314k0t8wi8.jpg" alt=""></p>
+<p>然后随便给这个 <code>Framework</code> 取一个名字,比如 <code>TestSDK</code></p>
+<p>为了区分，分别建立了 <code>PublicFile</code> <code>PrivateFile</code>  <code>ProjectFile</code> ,     </p>
+<p>如下图，并分别拖入到对应的 <code>Header</code>组</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fvq663uja6j31kw0xf1kx.jpg" alt=""></p>
+<blockquote>
+<p>在你弄清楚之前，这三个组的名称可能会让你迷惑，<em><font color="orange">Public</font></em> 是你期望的，开源出来的，<em><font color="orange">Private</font></em> 下的头文件依然是可以暴露出来的，因此名字可能有些误导。奇怪的是，在 <em><font color="orange">Project</font></em> 下的头文件对你的工程来说才是 <strong><code>“私有”</code></strong> 的，因此，你将会更多地希望你的头文件或者在 <code>Public</code> 下，或者在 <code>Project</code> 下</p>
+</blockquote>
+<h4 id="必须更改的两个注意点"><a href="#必须更改的两个注意点" class="headerlink" title="必须更改的两个注意点:"></a>必须更改的两个注意点:</h4><h6 id="搜索-mach-将工程改为-静态-。"><a href="#搜索-mach-将工程改为-静态-。" class="headerlink" title="搜索 mach 将工程改为 静态 。"></a>搜索 <code>mach</code> 将工程改为 <code>静态</code> 。</h6><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fvq6lghlpcj31c60bq10i.jpg" alt=""></p>
+<h6 id="搜索-Defines-Module-修改为NO"><a href="#搜索-Defines-Module-修改为NO" class="headerlink" title="搜索 Defines Module 修改为NO"></a>搜索 <code>Defines Module</code> 修改为NO</h6><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fvq6komvuuj31c40aeq4z.jpg" alt=""></p>
+<p>最后你还要更改 <code>SDK最低支持</code> 的版本,这个和项目更改 <code>系统支持</code> 的版本一样,不再赘述        </p>
+<p>到此基本配置基本完成,也实现了项目的闭源</p>
+<h2 id="打包（Bundle）资源"><a href="#打包（Bundle）资源" class="headerlink" title="打包（Bundle）资源"></a>打包（Bundle）资源</h2><h4 id="导入Bundle"><a href="#导入Bundle" class="headerlink" title="导入Bundle"></a>导入Bundle</h4><h4 id="在ImageViewer中使用Bundle"><a href="#在ImageViewer中使用Bundle" class="headerlink" title="在ImageViewer中使用Bundle"></a>在ImageViewer中使用Bundle</h4><h2 id="添加自动打包脚本环境-实现自动打包"><a href="#添加自动打包脚本环境-实现自动打包" class="headerlink" title="添加自动打包脚本环境,实现自动打包"></a>添加自动打包脚本环境,实现自动打包</h2><p><img src="https://upload-images.jianshu.io/upload_images/2845360-4ecee02abf98bfca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/950" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-6cbd6c664b58b84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-d7e9e393a4272e91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-02b693458c795191.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-7b8705b72984b275.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-f4a99a21af4042c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><h5 id="1-库"><a href="#1-库" class="headerlink" title="1. 库"></a>1. 库</h5><p>库是源代码经过编译，形成的二进制代码，别人项目中使用我们的库的时候，库在参与编译的时候，直接link就OK了，按照link的方式，可以把库分为静态库和动态库</p>
+<h5 id="2-静态库"><a href="#2-静态库" class="headerlink" title="2. 静态库"></a>2. 静态库</h5><p>静态库在编译的时候会被直接拷贝一份，复制到目标程序里，这段代码在目标程序里就不会再改变了。<br>一般以.a 和 .framework为文件后缀名<br>这种做法是牺牲应用“体量”来节省编译时间。</p>
+<h5 id="3-动态库"><a href="#3-动态库" class="headerlink" title="3. 动态库"></a>3. 动态库</h5><p>与静态库相反，动态库在编译时并不会被拷贝到目标程序中，目标程序中只会存储指向动态库的引用。等到程序运行时，动态库才会被真正加载进来。<br>动态库的优点是，不需要拷贝到目标程序中，不会影响目标程序的体积，而且同一份库可以被多个程序使用（因为这个原因，动态库也被称作共享库）。<br>同时，编译时才载入的特性，也可以让我们随时对库进行替换，而不需要重新编译代码。动态库带来的问题主要是，动态载入会带来一部分性能损失，使用动态库也会使得程序依赖于外部环境。如果环境缺少动态库或者库的版本不正确，就会导致程序无法运行<br>以.tbd(之前叫.dylib) 和 .framework 为文件后缀名<br>苹果系统为我们提供了很多动态链接库，我们可以在我们项目工程中查看一下<br><img src="https://upload-images.jianshu.io/upload_images/2845360-8866144669207f3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<h5 id="4-Framework"><a href="#4-Framework" class="headerlink" title="4. Framework"></a>4. Framework</h5><p>Framework 是一种打包方式，将库的二进制文件，头文件和有关的资源文件打包到一起，方便管理和分发。<br>Framework只是一种打包方式，其本身和静态、动态无关！<br>但Cocoa Touch Framework 的实际内容为 Header + 动态链接库 + 资源文件</p>
+<h5 id="对Framework认识的误区"><a href="#对Framework认识的误区" class="headerlink" title="对Framework认识的误区"></a>对Framework认识的误区</h5><p>误区①：.framework是动态库，.a是静态库，前面已经讲过，不再赘述<br>误区②：有人说“自定义的动态库苹果审核不通过”，那我打的framework是不是通不过审核？<br>任何没有时间前提的结论都是耍流氓！！！<br>在 iOS 8 / iOS6之前，iOS 平台不支持使用动态 Framework，开发者可以使用的 Framework 只有系统的framework，这种限制可能是出于安全的考虑<br>换一个角度讲，因为 iOS 应用都是运行在沙盒当中，不同的程序之间不能共享代码，同时动态下载代码又是被苹果明令禁止的，没办法发挥出动态库的优势，实际上动态库也就没有存在的必要了<br>但是，码农总是喜欢折腾的，一方面骨子里面有一种“你不让我做我偏要做的倔强”，另一方面用framework确实比用.a加头文件的方式简单，所以这一时期的开发者用了很多“奇淫技巧”来制作framework，这就有了Fake Framework 和 Real Framework的区分<br>在 iOS 8 / iOS6后，iOS平台添加了动态库的支持，同时， Xcode 6 也原生自带了 Framework 支持，注意，前后两个维度的不同是两件事，不要混淆。。。</p>
+<p>那么，为什么 iOS 8 要添加动态库的支持？<br>主要的理由大概就是 Extension 的出现。Extension 和 App 是两个分开的可执行文件，同时需要共享代码，这种情况下动态库的支持就是必不可少的了。但是这种动态 Framework 和系统的 UIKit.Framework 还是有很大区别；还有就是为了支持swift<br>虽然同样是动态框架，但是和系统 framework 不同，app 中的使用的 Cocoa Touch Framework 在打包和提交 app 时会被放到 app bundle 中（App 和 Extension 的 Bundle 是共享的），运行在沙盒里，而不是系统中。也就是说，不同的 app 就算使用了同样的 framework，但还是会有多份的框架被分别签名，打包和加载，因此苹果又把这种 Framework 称为 Embedded Framework，也正是代码签名机制，通过AppStore发布的APP是无法通过替换服务端下发framework的方式来进行热更新！</p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>同一个静态库在不同程序中使用时，每一个程序中都得导入一次，打包时也被打包进去，形成一个程序。而动态库在不同程序中，打包时并没有被打包进去，只在程序运行使用时，才链接载入（如系统的框架如UIKit、Foundation等），所以程序体积会小很多，但是苹果不让使用自己的动态库，否则审核就无法通过。这也是为什么前文将工程选择为 <code>静态</code>的原因</p>
+<h4 id="常见的错误"><a href="#常见的错误" class="headerlink" title="常见的错误:"></a>常见的错误:</h4><p>1, 没有改成静态,不支持动态</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-7d6b4dede764dfe2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<p>2, Defines Module 必须改成NO</p>
+<p>3, 支持bitcode的frame操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果自己想要制作支持 Bitcode 的 Framework，</span><br><span class="line">1, 工程中开启 Enable Bitcode </span><br><span class="line">2, Build Setting 中 Other Linker Flags 中加入 -fembed-bitcode。</span><br><span class="line">3, Build Setting 中 Other C Flags 中加入 -fembed-bitcode。</span><br><span class="line"></span><br><span class="line">作者：山神_云网工作室</span><br><span class="line">链接：https://www.jianshu.com/p/ef5a888e57f2</span><br><span class="line">來源：简书</span><br><span class="line">简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</span><br></pre></td></tr></table></figure>
+<p>同时支持模拟器真机的配置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-93f8dc19331592eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/980" alt=""></p>
+<p>静态库和自己项目同时开发的方案</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2845360-643a36730b33d55c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt=""></p>
+<p>上文中会用到自动打包的 shell 脚本,我使用的是公司其他大神写的根据项目需求配置的脚本,这里就不开源了, 大家可以使用以下脚本,也可以实现自动打包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">#要build的target名</span><br><span class="line">TARGET_NAME=$&#123;PROJECT_NAME&#125;</span><br><span class="line">if [[ $1 ]]</span><br><span class="line">then</span><br><span class="line">TARGET_NAME=$1</span><br><span class="line">fi</span><br><span class="line">UNIVERSAL_OUTPUT_FOLDER=&quot;$&#123;SRCROOT&#125;/$&#123;PROJECT_NAME&#125;/&quot;</span><br><span class="line"></span><br><span class="line">#创建输出目录，并删除之前的framework文件</span><br><span class="line">mkdir -p &quot;$&#123;UNIVERSAL_OUTPUT_FOLDER&#125;&quot;</span><br><span class="line">rm -rf &quot;$&#123;UNIVERSAL_OUTPUT_FOLDER&#125;/$&#123;TARGET_NAME&#125;.framework&quot;</span><br><span class="line"></span><br><span class="line">#分别编译模拟器和真机的Framework</span><br><span class="line">xcodebuild -target &quot;$&#123;TARGET_NAME&#125;&quot; ONLY_ACTIVE_ARCH=NO -configuration $&#123;CONFIGURATION&#125; -sdk iphoneos BUILD_DIR=&quot;$&#123;BUILD_DIR&#125;&quot; BUILD_ROOT=&quot;$&#123;BUILD_ROOT&#125;&quot; clean build</span><br><span class="line">xcodebuild -target &quot;$&#123;TARGET_NAME&#125;&quot; ONLY_ACTIVE_ARCH=NO -configuration $&#123;CONFIGURATION&#125; -sdk iphonesimulator BUILD_DIR=&quot;$&#123;BUILD_DIR&#125;&quot; BUILD_ROOT=&quot;$&#123;BUILD_ROOT&#125;&quot; clean build</span><br><span class="line"></span><br><span class="line">#拷贝framework到univer目录</span><br><span class="line">cp -R &quot;$&#123;BUILD_DIR&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;TARGET_NAME&#125;.framework&quot; &quot;$&#123;UNIVERSAL_OUTPUT_FOLDER&#125;&quot;</span><br><span class="line"></span><br><span class="line">#合并framework，输出最终的framework到build目录</span><br><span class="line">lipo -create -output &quot;$&#123;UNIVERSAL_OUTPUT_FOLDER&#125;/$&#123;TARGET_NAME&#125;.framework/$&#123;TARGET_NAME&#125;&quot; &quot;$&#123;BUILD_DIR&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;TARGET_NAME&#125;.framework/$&#123;TARGET_NAME&#125;&quot; &quot;$&#123;BUILD_DIR&#125;/$&#123;CONFIGURATION&#125;-iphoneos/$&#123;TARGET_NAME&#125;.framework/$&#123;TARGET_NAME&#125;&quot;</span><br><span class="line"></span><br><span class="line">#删除编译之后生成的无关的配置文件</span><br><span class="line">dir_path=&quot;$&#123;UNIVERSAL_OUTPUT_FOLDER&#125;/$&#123;TARGET_NAME&#125;.framework/&quot;</span><br><span class="line">for file in ls $dir_path</span><br><span class="line">do</span><br><span class="line">if [[ $&#123;file&#125; =~ &quot;.xcconfig&quot; ]]</span><br><span class="line">then</span><br><span class="line">rm -f &quot;$&#123;dir_path&#125;/$&#123;file&#125;&quot;</span><br><span class="line">fi</span><br><span class="line">done</span><br><span class="line">#判断build文件夹是否存在，存在则删除</span><br><span class="line">if [ -d &quot;$&#123;SRCROOT&#125;/build&quot; ]</span><br><span class="line">then</span><br><span class="line">rm -rf &quot;$&#123;SRCROOT&#125;/build&quot;</span><br><span class="line">fi</span><br><span class="line">rm -rf &quot;$&#123;BUILD_DIR&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator&quot; &quot;$&#123;BUILD_DIR&#125;/$&#123;CONFIGURATION&#125;-iphoneos&quot;</span><br><span class="line">#打开合并后的文件夹</span><br><span class="line">open &quot;$&#123;UNIVERSAL_OUTPUT_FOLDER&#125;&quot;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/01/王争：羁绊前行的，不是肆虐的狂风，而是内心的迷茫/" rel="next" title="王争：羁绊前行的，不是肆虐的狂风，而是内心的迷茫">
+                <i class="fa fa-chevron-left"></i> 王争：羁绊前行的，不是肆虐的狂风，而是内心的迷茫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/localImage/background.png"
+                alt="Duan yutian" />
+            
+              <p class="site-author-name" itemprop="name">Duan yutian</p>
+              <p class="site-description motion-element" itemprop="description">雾里看花</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lx.nextdev.cn/" title="凌霄的博客" target="_blank">凌霄的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cherryblog.site" title="cherryBlog" target="_blank">cherryBlog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#我用的是Xcode-9-4"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">我用的是Xcode 9.4</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正题"><span class="nav-number">2.</span> <span class="nav-text">正题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#必须更改的两个注意点"><span class="nav-number">2.0.1.</span> <span class="nav-text">必须更改的两个注意点:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#搜索-mach-将工程改为-静态-。"><span class="nav-number">2.0.1.0.1.</span> <span class="nav-text">搜索 mach 将工程改为 静态 。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#搜索-Defines-Module-修改为NO"><span class="nav-number">2.0.1.0.2.</span> <span class="nav-text">搜索 Defines Module 修改为NO</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包（Bundle）资源"><span class="nav-number">3.</span> <span class="nav-text">打包（Bundle）资源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导入Bundle"><span class="nav-number">3.0.1.</span> <span class="nav-text">导入Bundle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在ImageViewer中使用Bundle"><span class="nav-number">3.0.2.</span> <span class="nav-text">在ImageViewer中使用Bundle</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加自动打包脚本环境-实现自动打包"><span class="nav-number">4.</span> <span class="nav-text">添加自动打包脚本环境,实现自动打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#知识点"><span class="nav-number">5.0.1.</span> <span class="nav-text">知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-库"><span class="nav-number">5.0.1.1.</span> <span class="nav-text">1. 库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-静态库"><span class="nav-number">5.0.1.2.</span> <span class="nav-text">2. 静态库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-动态库"><span class="nav-number">5.0.1.3.</span> <span class="nav-text">3. 动态库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-Framework"><span class="nav-number">5.0.1.4.</span> <span class="nav-text">4. Framework</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对Framework认识的误区"><span class="nav-number">5.0.1.5.</span> <span class="nav-text">对Framework认识的误区</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">5.0.2.</span> <span class="nav-text">总结：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的错误"><span class="nav-number">5.0.3.</span> <span class="nav-text">常见的错误:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Duan yutian</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+<div class="theme-info">
+本站访客数 <span id="busuanzi_value_site_uv"></span>人次
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Duan.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://476139183.github.io/2018/12/10/iOS-制作和使用-Framework/';
+          this.page.identifier = '2018/12/10/iOS-制作和使用-Framework/';
+          this.page.title = 'iOS 制作和使用 Framework';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Duan.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AYFPDPucaFnwsC3sQOuclf8Q-gzGzoHsz", "34fmvJUXrPSqsAfe7vqUPfxI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":80,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>
