@@ -96,7 +96,7 @@
 <meta property="og:description" content="快速搭建 Hexo+Github 博客">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fv14rbu7bmj31kw0p2qk0.jpg">
-<meta property="og:updated_time" content="2018-09-14T09:53:07.815Z">
+<meta property="og:updated_time" content="2019-01-24T03:17:01.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 搭建博客（一）">
 <meta name="twitter:description" content="快速搭建 Hexo+Github 博客">
@@ -423,7 +423,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://ws4.sinaimg.cn/large/006tNbRwgy1fv14rbu7bmj31kw0p2qk0.jpg" rel="gallery_cjq60e4dm0009xsfyj8rkpfc5"
+                 href="https://ws4.sinaimg.cn/large/006tNbRwgy1fv14rbu7bmj31kw0p2qk0.jpg" rel="gallery_cjra1rl250009wywz1p146i2e"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fv14rbu7bmj31kw0p2qk0.jpg" itemprop="contentUrl"/>
               </a>
@@ -439,16 +439,19 @@
         <h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><ol>
 <li><p>安装安装环境:<code>homebrew</code>—&gt;<code>nodejs</code>—&gt;<code>hexo</code>,确保我们电脑安装了 ruby ,因为 homebrew 安装时依赖ruby的,使用<code>ruby --version</code>查看ruby版本    </p>
 <ul>
-<li>安装 <code>homebrew</code><br><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code> </li>
-<li>安装 nodejs<br><code>brew install node</code></li>
-<li>安装git(Xcode自带Git 可以忽略)</li>
-<li>安装 hexo<br><code>sudo npm install -g hexo</code> 如果安装失败 就使用 <code>sudo  npm install -g hexo-cli</code></li>
+<li><p>安装 <code>homebrew</code></p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p>创建文件夹，下面创建一个blog文件夹并在目录下初始化 hexo    </p>
-</li>
 </ol>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir blog</span><br><span class="line">cd blog</span><br><span class="line">hexo i <span class="comment">// init 的缩写</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>安装 <code>nodejs</code>  </p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> brew install node</span><br><span class="line"> ```   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> * 安装 git (Xcode自带Git 可以忽略)</span><br><span class="line"> *  安装 hexo      </span><br><span class="line">`sudo npm install -g hexo` 如果安装失败 就使用 `sudo  npm install -g hexo-cli`</span><br><span class="line"></span><br><span class="line">2. 创建文件夹，下面创建一个blog文件夹并在目录下初始化 hexo    </span><br><span class="line"></span><br><span class="line">``` objc</span><br><span class="line">mkdir blog</span><br><span class="line">cd blog</span><br><span class="line">hexo i // init 的缩写</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>此时blog文件下出现了很多文件和文件夹，如下图所示:   </p>
 <a id="more"></a> 
 <p><img src="/2018/08/30/Hexo-搭建博客/1.png" alt="目录"><br>然后我们可以试试创建一套静态网页</p>
@@ -777,7 +780,7 @@
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
